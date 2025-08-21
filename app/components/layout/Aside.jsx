@@ -4,10 +4,10 @@ import FolderIcon from '../common/FolderIcon';
 function Aside() {
   return (
     <>
-      <aside className='w-40 transform -translate-y-3 flex items-start justify-start h-full'>
-        <ul className="menu menu-xs bg-blue-500 text-white rounded-box  max-w-xs w-full capitalize">
+      <aside className='w-45 flex items-start justify-start'>
+        <ul className="menu menu-xs bg-sky-700 text-white rounded-b-lg max-w-xs w-full capitalize">
           <li>
-            <details>
+            <details open>
               <summary>
                 <FolderIcon />
                 home</summary>

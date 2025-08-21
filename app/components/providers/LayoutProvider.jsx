@@ -6,8 +6,12 @@ function LayoutProvider({ children }) {
     return (
         <>
             <Navbar />
-            {/* <Aside /> */}
-            {children}
+            <div className="flex">
+                <Aside />
+                <div className="capitalize bg-sky-700 w-full">
+                    {children}
+                </div>
+            </div>
             <Footer />
         </>
     )
