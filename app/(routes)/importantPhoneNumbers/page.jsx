@@ -1,8 +1,15 @@
+import ImpPhoneNumbers from '@/app/components/phoneNumbers/ImpPhoneNumbers'
 import React from 'react'
 
 function ImportantPhoneNumbers() {
   return (
-    <div>ImportantPhoneNumbers</div>
+    <>
+    <div className="bg-white">
+      <h1 className='text-xl font-semibold p-5 capitalize'>important phone numbers</h1>
+    <hr opacity={20}/>
+    <ImpPhoneNumbers/>
+    </div>
+    </>
   )
 }
 

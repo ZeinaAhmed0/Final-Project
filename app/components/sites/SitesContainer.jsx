@@ -2,6 +2,7 @@
 import { useSitesStore } from '@/app/store/UseSitesStore'
 import React from 'react'
 import ImgContainer from '../common/ImgContainer';
+import Link from 'next/link';
 
 function SitesContainer() {
     const { documentarySites, sportsSites, newsSites, ourSites, sisterCompanies } = useSitesStore()
@@ -18,7 +19,7 @@ function SitesContainer() {
                                 </div>
                                 <div className='p-4 flex items-center gap-2'>
                                     <ImgContainer img={site.img} imgAlt={site.name} className='fill' mdWidth='w-20' smWidth='w-15' />
-                                    <a href={site.url}>{site.name}</a>
+                                    <Link href={site.url}>{site.name}</Link>
                                 </div>
                             </div>
                         ))
@@ -34,7 +35,7 @@ function SitesContainer() {
                                 </div>
                                 <div className='p-4 flex items-center gap-2'>
                                     <ImgContainer img={site.img} imgAlt={site.name} className='fill' mdWidth='w-20' smWidth='w-15' />
-                                    <a href={site.url}>{site.name}</a>
+                                    <Link href={site.url}>{site.name}</Link>
                                 </div>
                             </div>
                         ))
@@ -50,7 +51,7 @@ function SitesContainer() {
                                 </div>
                             <div className='p-4 flex items-center gap-2'>
                                 <ImgContainer img={site.img} imgAlt={site.name} className='fill' mdWidth='w-20' smWidth='w-15' />
-                                <a href={site.url}>{site.name}</a>
+                                <Link href={site.url}>{site.name}</Link>
                             </div>
                             </div>
                         ))
@@ -66,7 +67,7 @@ function SitesContainer() {
                                 </div>
                             <div className='p-4 flex items-center gap-2'>
                                 <ImgContainer img={site.img} imgAlt={site.name} className='fill' mdWidth='w-20' smWidth='w-15' />
-                                <a href={site.url}>{site.name}</a>
+                                <Link href={site.url}>{site.name}</Link>
                             </div>
                             </div>
                         ))
@@ -82,7 +83,7 @@ function SitesContainer() {
                                 </div>
                             <div className='p-4 flex items-center gap-2'>
                                 <ImgContainer img={site.img} imgAlt={site.name} className='fill' mdWidth='w-20' smWidth='w-15' />
-                                <a href={site.url}>{site.name}</a>
+                                <Link href={site.url}>{site.name}</Link>
                             </div>
                             </div>
                         ))

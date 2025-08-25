@@ -1,8 +1,10 @@
 import React from 'react'
-
 function ReservationRequest() {
   return (
-    <div>ReservationRequest</div>
+    <>
+        <h1>Reservation Request</h1>
+        {/* <ReservationRequestForm/> */}
+    </>
   )
 }
 

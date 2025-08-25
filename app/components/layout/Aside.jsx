@@ -25,15 +25,21 @@ function Aside() {
             </details>
           </li>
           <li>
-            <details>
+            <details open>
               <summary> <FolderIcon /> services</summary>
               <ul>
                 <li>
-                  <details>
+                  <details open>
                     <summary> <FolderIcon /> HR services</summary>
                     <ul>
+                        <li>
+                        <Link href="/reservationRequest"> <FolderIcon /> reservation requests </Link>
+                      </li>
                       <li>
-                        <Link href="/HRServices"> <FolderIcon /> hR services </Link>
+                        <Link href="/vacationRequests"> <FolderIcon /> vacation requests </Link>
+                      </li>
+                      <li>
+                        <Link href="/publicRelationOffers"> <FolderIcon /> public relation offers </Link>
                       </li>
                     </ul>
                   </details>
@@ -62,9 +68,6 @@ function Aside() {
                     <summary> <FolderIcon /> works orders</summary>
                     <ul>
                       <li>
-                        <Link href="/reservationRequests"> <FolderIcon /> reservation requests </Link>
-                      </li>
-                      <li>
                         <Link href="/transportRequests"> <FolderIcon /> transport requests </Link>
                       </li>
                       <li>
@@ -82,22 +85,6 @@ function Aside() {
                       </li>
                       <li>
                         <Link href="/carRequests"> <FolderIcon /> car requests </Link>
-                      </li>
-                    </ul>
-                  </details>
-                </li>
-                <li>
-                  <details>
-                    <summary> <FolderIcon /> work orders </summary>
-                    <ul>
-                      <li>
-                        <Link href="/ITWorkOrders"> <FolderIcon /> IT work orders </Link>
-                      </li>
-                      <li>
-                        <Link href="/projectsWorkOrders"> <FolderIcon /> projects work orders </Link>
-                      </li>
-                      <li>
-                        <Link href="/projectsWorkOrders"> <FolderIcon /> engineering work orders </Link>
                       </li>
                     </ul>
                   </details>
