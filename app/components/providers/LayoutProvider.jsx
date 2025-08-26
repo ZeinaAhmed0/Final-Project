@@ -8,7 +8,7 @@ function LayoutProvider({ children }) {
             <Navbar />
             <div className="flex">
                 <Aside />
-                <div className="capitalize bg-sky-700 w-full">
+                <div className="capitalize w-full">
                     {children}
                 </div>
             </div>

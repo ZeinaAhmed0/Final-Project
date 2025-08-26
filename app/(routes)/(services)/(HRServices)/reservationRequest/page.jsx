@@ -1,11 +1,12 @@
+import ReservationPage from '@/app/pages/reservation/ReservationPage'
 import React from 'react'
-function ReservationRequest() {
+
+function page() {
   return (
     <>
-        <h1>Reservation Request</h1>
-        {/* <ReservationRequestForm/> */}
+    <ReservationPage/>
     </>
   )
 }
 
-export default ReservationRequest
+export default page

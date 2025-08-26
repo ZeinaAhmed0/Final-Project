@@ -1,7 +1,9 @@
+import HomePage from "./(routes)/home/page";
+
 export default function Home() {
   return (
     <>
-      <h1>welcome</h1>
+      <HomePage/>
     </>
   );
 }

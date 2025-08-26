@@ -1,11 +1,11 @@
-import Birthday from '@/app/components/birthday/Birthday'
-import RiyadAssalihin from '@/app/components/riyadAssalihin/RiyadAssalihin'
+import Birthday from '@/app/pages/birthday/Birthday'
+import RiyadAssalihin from '@/app/pages/riyadAssalihin/RiyadAssalihin'
 import React from 'react'
 
-function Home() {
+function HomePage() {
   return (
     <>
-      <div>
+      <div className='bg-sky-700'>
         <h1 className='lg:text-4xl md:text-3xl text-2xl bg-blue-200 p-6'>home</h1>
         <RiyadAssalihin />
         <Birthday />
@@ -14,4 +14,4 @@ function Home() {
   )
 }
 
-export default Home
+export default HomePage

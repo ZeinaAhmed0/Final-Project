@@ -1,4 +1,4 @@
-import ImpPhoneNumbers from '@/app/components/phoneNumbers/ImpPhoneNumbers'
+import ImpPhoneNumbers from '@/app/pages/phoneNumbers/ImpPhoneNumbers'
 import React from 'react'
 
 function ImportantPhoneNumbers() {

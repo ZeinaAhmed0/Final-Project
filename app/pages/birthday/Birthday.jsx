@@ -1,6 +1,6 @@
 import React from 'react'
 import HBD from '@/public/happy-birthday.webp'
-import ImgContainer from '../common/ImgContainer'
+import ImgContainer from '../../components/common/ImgContainer'
 function Birthday() {
   return (
     <>
