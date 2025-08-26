@@ -7,7 +7,9 @@ function LayoutProvider({ children }) {
         <>
             <Navbar />
             <div className="flex">
-                <Aside />
+                <div className='lg:block md:block sm:hidden hidden'>
+                    <Aside />
+                </div>
                 <div className="capitalize w-full">
                     {children}
                 </div>

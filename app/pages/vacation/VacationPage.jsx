@@ -12,10 +12,10 @@ function VacationPage() {
                 <hr className='opacity-25'/>
                 </div>
                 <div className="grid grid-cols-12 gap-5">
-                    <div className="col-span-8">
+                    <div className="lg:col-span-8 col-span-12">
                         <VacationForm />
                     </div>
-                    <div className="col-span-4">
+                    <div className="lg:col-span-4 col-span-12">
                         <Credit/>
                     </div>
                 </div>
