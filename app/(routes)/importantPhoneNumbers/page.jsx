@@ -1,3 +1,4 @@
+import Title from '@/app/components/common/Title'
 import ImpPhoneNumbers from '@/app/pages/phoneNumbers/ImpPhoneNumbers'
 import React from 'react'
 
@@ -5,7 +6,7 @@ function ImportantPhoneNumbers() {
   return (
     <>
     <div className="bg-white">
-      <h1 className='text-xl font-semibold p-5 capitalize'>important phone numbers</h1>
+      <Title title='important phone numbers'/>
     <hr opacity={20}/>
     <ImpPhoneNumbers/>
     </div>

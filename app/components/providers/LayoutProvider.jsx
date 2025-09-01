@@ -7,10 +7,10 @@ function LayoutProvider({ children }) {
         <>
             <Navbar />
             <div className="flex">
-                <div className='lg:block md:block sm:hidden hidden'>
+                <div className='lg:block md:block sm:hidden hidden bg-sky-700 py-2'>
                     <Aside />
                 </div>
-                <div className="capitalize w-full">
+                <div className='capitalize w-full bg-sky-700'>
                     {children}
                 </div>
             </div>

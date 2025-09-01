@@ -4,8 +4,8 @@ import FolderIcon from '../common/FolderIcon';
 function Aside() {
   return (
     <>
-      <aside className='w-45 flex items-start justify-start'>
-        <ul className="menu menu-xs bg-sky-700 text-white rounded-b-lg max-w-xs w-full capitalize">
+      <aside className='w-45 h-screen flex items-start justify-start'>
+        <ul className="menu menu-xs  text-white rounded-b-lg max-w-xs w-full capitalize">
           <li>
             <details open>
               <summary>
@@ -157,3 +157,10 @@ export default Aside
             Project-final.psd
           </a>
         </li> */}
+
+
+//         <aside className='w-45 h-screen flex items-start justify-start'>
+//   <ul className="menu menu-xs bg-sky-700 text-white rounded-b-lg max-w-xs w-full capitalize">
+//     {/* ...existing code... */}
+//   </ul>
+// </aside>

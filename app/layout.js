@@ -1,7 +1,6 @@
 import { Sen } from "next/font/google";
 import "./globals.css";
 import LayoutProvider from "./components/providers/LayoutProvider";
-import Home from "./(routes)/home/page";
 
 const senFont = Sen({
   variable: "--font-sen",
@@ -22,7 +21,7 @@ export default function RootLayout({ children }) {
 >
         <LayoutProvider>
           {children}
-          </LayoutProvider>
+        </LayoutProvider>
       </body>
     </html>
   );
