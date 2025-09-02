@@ -1,6 +1,7 @@
 import { Sen } from "next/font/google";
 import "./globals.css";
 import LayoutProvider from "./components/providers/LayoutProvider";
+import ProtectedRoute from "./store/ProtectedRoutes";
 
 const senFont = Sen({
   variable: "--font-sen",
@@ -17,11 +18,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={` ${senFont.variable}`}
->
-        <LayoutProvider>
+        className={` ${senFont.variable}`}>
+        <ProtectedRoute>
+          <LayoutProvider>
           {children}
         </LayoutProvider>
+        </ProtectedRoute>
       </body>
     </html>
   );

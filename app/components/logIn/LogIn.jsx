@@ -3,6 +3,7 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useAuthStore } from '@/app/store/AuthStore';
+import { useRouter } from 'next/navigation';
 
 const LoginSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email address').required('Email is required'),
@@ -10,17 +11,20 @@ const LoginSchema = Yup.object().shape({
 });
 
 function LoginPage() {
+    const router = useRouter()
     const { token, fetchToken } = useAuthStore();
     const [status, setStatus] = React.useState({});
 
     const onSubmit = async (values, { setSubmitting }) => {
         setStatus({});
+
         try {
             const jwt = await fetchToken(values.email, values.password);
             if (jwt) {
                 setStatus({ success: 'Login successful!' });
                 console.log(jwt);
                 localStorage.setItem('token', jwt);
+                router.push('/')
             } else {
                 setStatus({ error: 'Login failed' });
             }
