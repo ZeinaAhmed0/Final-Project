@@ -1,9 +1,12 @@
 'use client'
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useAuthStore } from '@/app/store/AuthStore';
 import { useRouter } from 'next/navigation';
+import LoadingPage from '@/app/pages/LoadingPage/LoadingPage';
+import ErrorPage from '@/app/pages/ErrorPage/ErrorPage';
+import { UseLoadingStore } from '@/app/store/UseLoadingStore';
 
 const LoginSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email address').required('Email is required'),
@@ -12,18 +15,21 @@ const LoginSchema = Yup.object().shape({
 
 function LoginPage() {
     const router = useRouter()
-    const { token, fetchToken } = useAuthStore();
-    const [status, setStatus] = React.useState({});
-
+    const { token, setToken, fetchToken, isLogin, setIsLogin } = useAuthStore();
+    const {loading, setLoading} = UseLoadingStore()
+    const [status, setStatus] = useState({});
+    if (loading) return <LoadingPage />;
     const onSubmit = async (values, { setSubmitting }) => {
         setStatus({});
-
         try {
             const jwt = await fetchToken(values.email, values.password);
             if (jwt) {
+                setToken(jwt);
+                setLoading(true);
                 setStatus({ success: 'Login successful!' });
-                console.log(jwt);
                 localStorage.setItem('token', jwt);
+                setIsLogin(true);
+                console.log(jwt);
                 router.push('/')
             } else {
                 setStatus({ error: 'Login failed' });
@@ -32,6 +38,7 @@ function LoginPage() {
             setStatus({ error: 'Login failed' });
             console.log(error);
         } finally {
+            setLoading(false);
             setSubmitting(false);
         }
     };
