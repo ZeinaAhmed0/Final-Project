@@ -5,7 +5,7 @@ function ImgContainer({ img, imgAlt, className, mdWidth,  smWidth }) {
     return (
         <>
             <div className={`img-container relative ${mdWidth} ${smWidth}`}>
-                <Image src={img} alt={imgAlt} className={className} />
+                <Image src={img} alt={imgAlt} className={className} priority={false}/>
             </div>
         </>
     )

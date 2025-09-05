@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 import axios from 'axios';
 import { persist } from 'zustand/middleware';
+import { endPoint } from './UseApisStore';
+
 
 export const useAuthStore = create(persist(
     (set) => ({
@@ -10,7 +12,7 @@ export const useAuthStore = create(persist(
         setIsLogin: (isLogin) => set({ isLogin }),
         fetchToken: async (email, password) => {
             try {
-                const res = await axios.post('http://localhost:1337/api/auth/local', {
+                const res = await axios.post(`${endPoint}auth/local`, {
                     identifier: email,
                     password: password,
                 });

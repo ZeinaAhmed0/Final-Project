@@ -1,12 +1,16 @@
+'use client'
 import React from 'react'
-
+import dynamic from 'next/dynamic';
 function LoadingPage() {
+    const LottiePlayer = dynamic(
+        () =>
+            import('@lottiefiles/react-lottie-player').then((mod) => mod.Player),
+        { ssr: false }
+    );
     return (
         <>
-            <div>
-                <h1 className='text-4xl font-bold text-red-600 w-full'>loading...
-                    <span className="loading loading-spinner text-neutral"></span>
-                </h1>
+            <div className='flex justify-center items-center h-screen w-screen'>
+                    <LottiePlayer autoplay loop src="/LoadingFiles.json" className='w-full h-full' />
             </div>
         </>
     )

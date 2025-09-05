@@ -16,21 +16,18 @@ const LoginSchema = Yup.object().shape({
 function LoginPage() {
     const router = useRouter()
     const { token, setToken, fetchToken, isLogin, setIsLogin } = useAuthStore();
-    const {loading, setLoading} = UseLoadingStore()
+    const { loading, setLoading } = UseLoadingStore()
     const [status, setStatus] = useState({});
-    if (loading) return <LoadingPage />;
     const onSubmit = async (values, { setSubmitting }) => {
         setStatus({});
         try {
             const jwt = await fetchToken(values.email, values.password);
             if (jwt) {
                 setToken(jwt);
-                setLoading(true);
-                setStatus({ success: 'Login successful!' });
                 localStorage.setItem('token', jwt);
                 setIsLogin(true);
-                console.log(jwt);
-                router.push('/')
+                setStatus({ success: 'Login successful!' });
+                router.push('/');
             } else {
                 setStatus({ error: 'Login failed' });
             }
@@ -38,54 +35,57 @@ function LoginPage() {
             setStatus({ error: 'Login failed' });
             console.log(error);
         } finally {
-            setLoading(false);
             setSubmitting(false);
         }
     };
     return (
         <div className="min-h-screen flex items-center justify-center bg-blue-100">
-            <Formik
-                initialValues={{ id: '', email: '', password: '' }}
-                validationSchema={LoginSchema}
-                onSubmit={onSubmit}
-            >
-                {({ isSubmitting }) => (
-                    <Form className="bg-white p-8 rounded shadow-md w-full max-w-sm">
-                        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
-                        {status.error && (
-                            <div className="text-red-500 text-center mb-4">{status.error}</div>
+            {
+                loading ? <LoadingPage /> : (
+                    <Formik
+                        initialValues={{ email: '', password: '' }}
+                        validationSchema={LoginSchema}
+                        onSubmit={onSubmit}
+                    >
+                        {({ isSubmitting }) => (
+                            <Form className="bg-white p-8 rounded shadow-md w-full max-w-sm">
+                                <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+                                {status.error && (
+                                    <div className="text-red-500 text-center mb-4">{status.error}</div>
+                                )}
+                                {status.success && (
+                                    <div className="text-green-500 text-center mb-4">{status.success}</div>
+                                )}
+                                <div className="mb-4">
+                                    <label className="block mb-2 font-semibold">Email</label>
+                                    <Field
+                                        type="email"
+                                        name="email"
+                                        className="w-full p-2 border rounded"
+                                    />
+                                    <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
+                                </div>
+                                <div className="mb-6">
+                                    <label className="block mb-2 font-semibold">Password</label>
+                                    <Field
+                                        type="password"
+                                        name="password"
+                                        className="w-full p-2 border rounded"
+                                    />
+                                    <ErrorMessage name="password" component="div" className="text-red-500 text-sm mt-1" />
+                                </div>
+                                <button
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                    className="w-full bg-sky-700 text-white py-2 rounded font-bold hover:bg-sky-800"
+                                >
+                                    {isSubmitting ? 'Logging in...' : 'Login'}
+                                </button>
+                            </Form>
                         )}
-                        {status.success && (
-                            <div className="text-green-500 text-center mb-4">{status.success}</div>
-                        )}
-                        <div className="mb-4">
-                            <label className="block mb-2 font-semibold">Email</label>
-                            <Field
-                                type="email"
-                                name="email"
-                                className="w-full p-2 border rounded"
-                            />
-                            <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
-                        </div>
-                        <div className="mb-6">
-                            <label className="block mb-2 font-semibold">Password</label>
-                            <Field
-                                type="password"
-                                name="password"
-                                className="w-full p-2 border rounded"
-                            />
-                            <ErrorMessage name="password" component="div" className="text-red-500 text-sm mt-1" />
-                        </div>
-                        <button
-                            type="submit"
-                            disabled={isSubmitting}
-                            className="w-full bg-sky-700 text-white py-2 rounded font-bold hover:bg-sky-800"
-                        >
-                            {isSubmitting ? 'Logging in...' : 'Login'}
-                        </button>
-                    </Form>
-                )}
-            </Formik>
+                    </Formik>
+                )
+            }
         </div>
     );
 }
