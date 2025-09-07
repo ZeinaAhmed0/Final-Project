@@ -2,7 +2,6 @@ import { Sen } from "next/font/google";
 import "./globals.css";
 import LayoutProvider from "./components/providers/LayoutProvider";
 import ProtectedRoute from "./store/ProtectedRoutes";
-import RoutesProvider from "./components/providers/RoutesProvider";
 
 const senFont = Sen({
   variable: "--font-sen",

@@ -7,7 +7,6 @@ function VacationRequest() {
     <>
       <OuterContainer>
         <div className=" p-8 bg-white">
-          طلبات الاجازة
           <button className='btn rounded-2xl'>form</button>
           <VacationPage />
         </div>

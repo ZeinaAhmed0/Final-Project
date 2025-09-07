@@ -1,7 +1,7 @@
 'use client'
 import Title from '@/app/components/common/Title'
 import Credit from '@/app/components/credit/Credit'
-import VacationForm from '@/app/components/vacationForm/VacationForm'
+import VacationForm from '@/app/components/vacation/VacationForm'
 import React from 'react'
 
 function VacationPage() {

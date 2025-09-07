@@ -1,6 +1,13 @@
-import React from 'react'
+'use client'
+import { UseEmpInformationStore } from '@/app/store/UseEmpInformationStore';
+import React, { useEffect } from 'react'
 
 function VacationTable() {
+    const { userData, fetchUser } = UseEmpInformationStore();
+        useEffect(() => {
+            fetchUser();
+        }, []);
+        
     return (
         <>
             <div className="overflow-x-auto">

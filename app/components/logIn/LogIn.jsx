@@ -5,7 +5,6 @@ import * as Yup from 'yup';
 import { useAuthStore } from '@/app/store/AuthStore';
 import { useRouter } from 'next/navigation';
 import LoadingPage from '@/app/pages/LoadingPage/LoadingPage';
-import ErrorPage from '@/app/pages/ErrorPage/ErrorPage';
 import { UseLoadingStore } from '@/app/store/UseLoadingStore';
 
 const LoginSchema = Yup.object().shape({
@@ -15,7 +14,7 @@ const LoginSchema = Yup.object().shape({
 
 function LoginPage() {
     const router = useRouter()
-    const { token, setToken, fetchToken, isLogin, setIsLogin } = useAuthStore();
+    const {setToken, fetchToken, isLogin, setIsLogin } = useAuthStore();
     const { loading, setLoading } = UseLoadingStore()
     const [status, setStatus] = useState({});
     const onSubmit = async (values, { setSubmitting }) => {
@@ -24,12 +23,13 @@ function LoginPage() {
             const jwt = await fetchToken(values.email, values.password);
             if (jwt) {
                 setToken(jwt);
-                localStorage.setItem('token', jwt);
                 setIsLogin(true);
+                localStorage.setItem('token', jwt);
                 setStatus({ success: 'Login successful!' });
                 router.push('/');
             } else {
                 setStatus({ error: 'Login failed' });
+                setIsLogin(false);
             }
         } catch (error) {
             setStatus({ error: 'Login failed' });
