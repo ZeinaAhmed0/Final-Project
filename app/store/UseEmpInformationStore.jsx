@@ -5,6 +5,7 @@ import { endPoint } from './UseApisStore';
 
 export const UseEmpInformationStore = create((set) => ({
     userData: null,
+    empName: null,
     fetchUser: async () => {
         const token = localStorage.getItem('token');
         if (!token) {
@@ -25,9 +26,9 @@ export const UseEmpInformationStore = create((set) => ({
             const employeeData = empRes.data?.data;
             if (!employeeData || employeeData.length === 0) {
             }
-            set({ userData: employeeData});
+            set({ userData: employeeData, empName: employeeData[0]?.fullName });
         } catch (error) {
-            set({ userData: null});
+            set({ userData: null, empName:null});
         }
     },
 }));

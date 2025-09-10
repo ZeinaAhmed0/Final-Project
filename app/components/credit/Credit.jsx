@@ -17,7 +17,7 @@ function Credit() {
                 <div className="overflow-x-auto">
                     <table className="table">
                         <thead>
-                            <tr>
+                            <tr className='text-sky-700'>
                                 <th>type</th>
                                 <th>Your vacations</th>
                                 <th>Remaining </th>
