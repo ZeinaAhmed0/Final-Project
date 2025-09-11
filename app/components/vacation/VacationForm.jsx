@@ -43,24 +43,25 @@ function VacationForm() {
           }}
           validationSchema={validationSchema}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
-            const dataToSend = { ...values, empName };
+            const token = localStorage.getItem('token');
+            const dataToSend = JSON.stringify({ data: { ...values } });
             try {
-              const response = await axios.post(`${endPoint}vacations`, dataToSend, {
+              const res = await axios.post(`${endPoint}vacations`, dataToSend, {                
                 headers: {
-                  'Content-Type': 'application/json',
+                  "Content-Type": 'application/json',
+                  Authorization: `Bearer ${token}`,
                 },
               });
-              console.log('API response:', response.data);
+              console.log(res);
               toast.success('Send successfully!');
               resetForm();
             } catch (error) {
-              console.error('Error sending vacation request:', error);
+              console.error(error);
               toast.error('Failed to send request. Please try again.');
             } finally {
               setSubmitting(false);
             }
           }}
-
         >
           {({ isSubmitting }) => (
             <Form className="space-y-4 p-6 bg-white rounded shadow-md">
