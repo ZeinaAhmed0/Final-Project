@@ -1,6 +1,7 @@
 'use client'
 import Title from '@/app/components/common/Title'
 import Credit from '@/app/components/credit/Credit'
+import VacationApproval from '@/app/components/vacation/VacationApproval'
 import VacationArchive from '@/app/components/vacation/VacationArchive'
 import Link from 'next/link'
 import React from 'react'
@@ -28,6 +29,9 @@ function VacationPage() {
                     <div className="lg:col-span-4 col-span-12">
                         <Credit />
                     </div>
+                </div>
+                <div className='mt-10'>
+                    <VacationApproval/>
                 </div>
             </div>
         </>

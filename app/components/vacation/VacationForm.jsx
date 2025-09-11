@@ -44,7 +44,7 @@ function VacationForm() {
           validationSchema={validationSchema}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             const token = localStorage.getItem('token');
-            const dataToSend = JSON.stringify({ data: { ...values } });
+            const dataToSend = JSON.stringify({ data: { ...values, empName: empName } });
             try {
               const res = await axios.post(`${endPoint}vacations`, dataToSend, {                
                 headers: {
