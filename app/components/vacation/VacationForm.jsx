@@ -17,12 +17,13 @@ function VacationForm() {
   const validationSchema = Yup.object({
     dateFrom: Yup.date().required(),
     dateTo: Yup.date().required(),
-    type: Yup.string().required(),
+    leavesType: Yup.string().required(),
     notes: Yup.string(),
     description: Yup.string(),
     manager: Yup.string().required(),
     directManager: Yup.string().required(),
   });
+
   return (
     <>
       <Toaster />
@@ -35,7 +36,7 @@ function VacationForm() {
           initialValues={{
             dateFrom: '',
             dateTo: '',
-            type: '',
+            leavesType: '',
             notes: '',
             description: '',
             manager: '',
@@ -44,19 +45,17 @@ function VacationForm() {
           validationSchema={validationSchema}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             const token = localStorage.getItem('token');
-            const dataToSend = JSON.stringify({ data: { ...values, empName: empName } });
+            const dataToSend = JSON.stringify({ data: { ...values, empName: empName, insertDate: new Date().toISOString().split('T')[0] } });
             try {
-              const res = await axios.post(`${endPoint}vacations`, dataToSend, {                
+              const res = await axios.post(`${endPoint}vacations`, dataToSend, {
                 headers: {
                   "Content-Type": 'application/json',
                   Authorization: `Bearer ${token}`,
                 },
               });
-              console.log(res);
               toast.success('Send successfully!');
               resetForm();
             } catch (error) {
-              console.error(error);
               toast.error('Failed to send request. Please try again.');
             } finally {
               setSubmitting(false);
@@ -84,11 +83,11 @@ function VacationForm() {
               </div>
 
               <div className='flex gap-3'>
-                <label className='text-sky-700 text-xl font-bold' htmlFor="type">type:</label>
-                <Field name="type" as="select" className="select select-bordered bg-stone-100">
-                  <option value="Annual vacations">Annual vacations</option>
-                  <option value="Emergency Leave">Emergency Leave</option>
-                  <option value="rest days">rest days</option>
+                <label className='text-sky-700 text-xl font-bold' htmlFor="leavesType">type:</label>
+                <Field name="leavesType" as="select" className="select select-bordered bg-stone-100">
+                  <option value="annual vacations">annual vacations</option>
+                  <option value="emergency vacation">emergency vacation</option>
+                  <option value="rest day">rest days</option>
                 </Field>
                 <ErrorMessage name="type" component="div" className="text-red-500" />
               </div>
@@ -109,7 +108,7 @@ function VacationForm() {
                   <option value=""></option>
                   <option value={userData?.[0]?.directManager}>{userData?.[0]?.directManager}</option>
                 </Field>
-                <ErrorMessage name="manager" component="div" className="text-red-500" />
+                <ErrorMessage name="directManager" component="div" className="text-red-500" />
               </div>
               <div className='flex gap-3'>
                 <label className='text-sky-700 text-xl font-bold' htmlFor="manager"> manager:</label>

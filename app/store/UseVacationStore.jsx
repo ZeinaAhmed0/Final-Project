@@ -5,9 +5,13 @@ import axios from "axios";
 
 export const UseVacationStore = create((set) => ({
     vacations: [],
+    approvedVacations: [],
     fetchVac: async () => {
         try {
             const token = localStorage.getItem('token');
+            if (!token) {
+                return;
+            }
             const res = await axios.get(`${endPoint}vacations`, {
                 headers: {
                     "Content-Type": 'application/json',
@@ -15,6 +19,7 @@ export const UseVacationStore = create((set) => ({
                 },
             });
             set({ vacations: res.data.data });
+            set({ approvedVacations: res.data.data.filter(vac => vac.approval === true) });
         } catch (error) {
             console.error("Failed to fetch vacations:", error);
         }
@@ -22,10 +27,13 @@ export const UseVacationStore = create((set) => ({
     updateVacationStatus: async (documentId, approval) => {
         try {
             const token = localStorage.getItem('token');
+            if (!token) {
+                return;
+            }
             await axios.put(
                 `${endPoint}vacations/${documentId}`,
                 {
-                    data: { approval: approval }
+                    data: { approval: approval , approveDate:new Date().toISOString().split('T')[0] }
                 },
                 {
                     headers: {
@@ -36,7 +44,7 @@ export const UseVacationStore = create((set) => ({
             );
         } catch (error) {
             console.error(`Failed to update vacation status for id ${documentId}:`, error);
-
         }
     },
+    
 }));

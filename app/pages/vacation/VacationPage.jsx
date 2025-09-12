@@ -2,9 +2,9 @@
 import Title from '@/app/components/common/Title'
 import Credit from '@/app/components/credit/Credit'
 import VacationApproval from '@/app/components/vacation/VacationApproval'
-import VacationArchive from '@/app/components/vacation/VacationArchive'
-import Link from 'next/link'
 import React from 'react'
+import VacationHistoryPage from './VacationHistoryPage'
+import VacationArchivePage from './VacationArchivePage'
 
 function VacationPage() {
     return (
@@ -12,26 +12,15 @@ function VacationPage() {
             <div>
                 <div className='flex justify-between items-center'>
                     <Title title='vacations' />
-                    <Link href="/VacationForm" >
-                        <button className="btn rounded-2xl capitalize">send leave request</button>
-                    </Link>
+                    <VacationHistoryPage/>
                 </div>
                 <hr className='opacity-25' />
                 <div className="grid grid-cols-12 gap-5 mt-10">
-                    <div className='lg:col-span-8 col-span-12'>
-                        <Title title='vacations requests' />
-                        
-                    </div>
-                    <div className='lg:col-span-8 col-span-12'>
-                        <Title title='vacations archive' />
-                        <VacationArchive />
-                    </div>
+                        <VacationApproval/>
+                        <VacationArchivePage />
                     <div className="lg:col-span-4 col-span-12">
                         <Credit />
                     </div>
-                </div>
-                <div className='mt-10'>
-                    <VacationApproval/>
                 </div>
             </div>
         </>
