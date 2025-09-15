@@ -24,7 +24,7 @@ function InCome() {
 
     return (
         <>
-            <Title title='my income' bg='bg-gray-400' />
+            <Title title='my income' bg='bg-sky-700' textColor='text-white' />
             <div className="flex flex-col gap-2 bg-white p-5">
                 <div className='flex gap-2 items-center'>
                     <label htmlFor="monthSelect" className="font-semibold">pick a month :</label>

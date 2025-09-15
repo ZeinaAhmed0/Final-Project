@@ -6,6 +6,7 @@ import axios from "axios";
 export const UseVacationStore = create((set) => ({
     vacations: [],
     approvedVacations: [],
+    pendedVacations: [],
     fetchVac: async () => {
         try {
             const token = localStorage.getItem('token');
@@ -19,7 +20,8 @@ export const UseVacationStore = create((set) => ({
                 },
             });
             set({ vacations: res.data.data });
-            set({ approvedVacations: res.data.data.filter(vac => vac.approval === true) });
+            set({ approvedVacations: res.data.data.filter(vac => vac.approval !== null) });
+            set({ pendedVacations: res.data.data.filter(vac => vac.approval !== false && vac.approval !== true) });
         } catch (error) {
             console.error("Failed to fetch vacations:", error);
         }

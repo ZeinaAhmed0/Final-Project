@@ -5,6 +5,7 @@ import VacationApproval from '@/app/components/vacation/VacationApproval'
 import React from 'react'
 import VacationHistoryPage from './VacationHistoryPage'
 import VacationArchivePage from './VacationArchivePage'
+import VacationPending from '@/app/components/vacation/VacationPending'
 
 function VacationPage() {
     return (
@@ -12,13 +13,14 @@ function VacationPage() {
             <div>
                 <div className='flex justify-between items-center'>
                     <Title title='vacations' />
-                    <VacationHistoryPage/>
+                    <VacationHistoryPage />
                 </div>
                 <hr className='opacity-25' />
                 <div className="grid grid-cols-12 gap-5 mt-10">
-                        <VacationApproval/>
-                        <VacationArchivePage />
-                    <div className="lg:col-span-4 col-span-12">
+                    <VacationPending />
+                    <VacationApproval />
+                    <VacationArchivePage />
+                    <div className="col-span-12">
                         <Credit />
                     </div>
                 </div>

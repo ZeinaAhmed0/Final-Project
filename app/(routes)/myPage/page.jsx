@@ -8,23 +8,23 @@ import React from 'react'
 function MyPage() {
   return (
     <>
-    <div className='bg-blue-200'>
-      <Title title='my page'/>
-      <div className='grid grid-cols-2 flex-col gap-4 m-4'>
-        <div className='col-span-6'>
-          <Information/>
-        </div>
-        <div className='col-span-6'><Calendar /></div>
-        <div className='col-span-6 w-fit'>
-          <InCome/>
-        </div>
-        
-        <div className='col-span-6'>
-          <Title title='vacations'/>
-          <VacationTable/>
+      <div className='bg-blue-200 p-3'>
+        <Title title='my page' />
+        <div className='m-4 space-y-4'>
+          <div>
+            <Information />
+          </div>
+          <div className='grid grid-cols-2 gap-4'>
+            <div className='flex flex-col gap-3'>
+              <div> <InCome /></div>
+              <div><Calendar /></div>
+            </div>
+            <div>
+              <VacationTable />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
     </>
   )
 }

@@ -2,13 +2,11 @@
 import { UseEmpInformationStore } from '@/app/store/UseEmpInformationStore';
 import { UseVacationStore } from '@/app/store/UseVacationStore';
 import React, { useEffect } from 'react';
-import Tile from 'react-calendar/dist/Tile';
 import Title from '../common/Title';
 
 function Credit() {
     const { userData, fetchUser  } = UseEmpInformationStore();
     const { fetchVac} = UseVacationStore();
-
     useEffect(() => {
         fetchUser ();
         fetchVac();
@@ -35,7 +33,6 @@ function Credit() {
         <div className="flex flex-col gap-2 rounded-lg shadow-md p-5 max-w-md mx-auto">
             <div>
                 <Title title='credit'/>
-                <hr className='opacity-25' />
             </div>
             <div className="overflow-x-auto">
                 <table className="table-auto w-full border-collapse border border-gray-300 text-sky-700">

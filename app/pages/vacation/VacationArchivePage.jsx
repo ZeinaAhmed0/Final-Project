@@ -24,7 +24,7 @@ function VacationArchivePage() {
     }
 
     return (
-        <div className='lg:col-span-8 col-span-12'><VacationArchiveTable /></div>
+        <div className='col-span-12'><VacationArchiveTable /></div>
     );
 }
 

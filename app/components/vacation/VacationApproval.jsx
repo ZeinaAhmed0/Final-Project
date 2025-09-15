@@ -13,16 +13,11 @@ function VacationApproval() {
     useEffect(() => {
         fetchVac();
     }, []);
-
-    if (!userData || userData[0]?.department !== "management") {
-        return null;
-    }
     const filteredVacations = vacations.filter(vac => {
         return (vac.directManager === empName || vac.manager === empName)
             && vac.empName !== empName
-            && (vac.approval === null );
+            && (vac.approval === null);
     });
-
     const handleCheckboxChange = (documentId) => {
         setSelected(prev => ({
             ...prev,
@@ -67,13 +62,31 @@ function VacationApproval() {
             console.error(error);
         }
     };
+    // switch (leaveType) {
+    //                 case "annualLeaves":
+    //                     updatedEmployeeData.annualLeavesTaken = (userData.annualLeavesTaken || 0) + 1;
+    //                     break;
+    //                 case "emergencyLeave":
+    //                     updatedEmployeeData.emergencyLeaveTaken = (userData.emergencyLeaveTaken || 0) + 1;
+    //                     break;
+    //                 case "restDay":
+    //                     updatedEmployeeData.restDayTaken = (userData.restDayTaken || 0) + 1;
+    //                     break;
+    //                 default:
+    //                     console.warn('Unknown leave type:', leaveType);
+    //                     return;
+    //             }
+
+    if (!userData || userData[0]?.department !== "management") {
+        return null;
+    }
 
     return (
         <div className='lg:col-span-8 col-span-12'>
             <Toaster />
             <Title title='vacations requests' />
             {filteredVacations.length === 0 ? (
-                <p className="text-center text-gray-500 mt-4">No pending or rejected vacation requests.</p>
+                <p className="text-center text-gray-500 mt-4">No pending vacation requests.</p>
             ) : (
                 <>
                     <table className="min-w-full border-collapse border border-black bg-gray-100 text-sky-700">
@@ -95,7 +108,7 @@ function VacationApproval() {
                                     <td className="border border-black">{vac.empName || '-'}</td>
                                     <td className="border border-black">{vac.dateFrom}</td>
                                     <td className="border border-black">{vac.dateTo}</td>
-                                    <td className="border border-black">{vac.type}</td>
+                                    <td className="border border-black">{vac.leavesType}</td>
                                     <td className="border border-black">{vac.notes || '-'}</td>
                                     <td className="border border-black">{vac.description || '-'}</td>
                                     <td className="border border-black">
@@ -134,7 +147,4 @@ function VacationApproval() {
 }
 
 export default VacationApproval;
-
-
-
 
