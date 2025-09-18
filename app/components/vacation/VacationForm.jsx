@@ -16,7 +16,7 @@ function VacationForm() {
   }, []);
   const validationSchema = Yup.object({
     dateFrom: Yup.date().required(),
-    dateTo: Yup.date().required(),
+    dateTo: Yup.date().required().min(Yup.ref('dateFrom'), 'End date cannot be before start date'),
     leavesType: Yup.string().required(),
     notes: Yup.string(),
     description: Yup.string(),
