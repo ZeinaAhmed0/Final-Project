@@ -6,10 +6,6 @@ function page() {
   return (
     <>
     <div>
-      <div>
-        <Title title='car requests'/>
-        <hr className='opacity-20'/>
-      </div>
       <CarRequestPage/>
     </div>
     </>

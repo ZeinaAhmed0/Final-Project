@@ -9,7 +9,6 @@ import Title from '../common/Title';
 import toast, { Toaster } from 'react-hot-toast';
 
 function AddNewEmpForm() {
-    const token = localStorage.getItem('token');
     const initialValues = {
         fullName: '',
         employeePassword: '',
@@ -23,7 +22,6 @@ function AddNewEmpForm() {
         department: '',
         subDepartment: '',
         directManager: '',
-        vacations: '',
         annualLeaves: '',
         emergencyLeave: '',
         restDay: '',
@@ -48,20 +46,20 @@ function AddNewEmpForm() {
     });
 
     const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-        const dataToSend = {data : {...values, phoneNumber: Number(values.phoneNumber),
-            salary: Number(values.salary), vacations: Number(values.vacations), annualLeaves: Number(values.annualLeaves), emergencyLeave: Number(values.emergencyLeave), restDay: Number(values.restDay)} };
-            console.log(dataToSend);
-            
+        const token = localStorage.getItem('token');
+        const dataToSend ={data : {...values, phoneNumber: Number(values.phoneNumber),salary: Number(values.salary), restDay: Number(values.restDay), annualLeaves: Number(values.annualLeaves), emergencyLeave: Number(values.emergencyLeave), restDay: Number(values.restDay)} };
         try {
             await axios.post(`${endPoint}employees`, dataToSend, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            toast.success('Send successfully!');
+            toast.success('new employee added successfully!');
             resetForm();
         } catch (error) {
-            toast.error('Failed to send request. Please try again.');
+            toast.error('Failed to add. Please try again.');
+            console.log(error);
+            
         } finally {
             setSubmitting(false);
         }
@@ -93,10 +91,17 @@ function AddNewEmpForm() {
                                     <Field name="employeePassword" type="password" className="input input-bordered bg-stone-100 w-full" />
                                     <ErrorMessage name="employeePassword" component="div" className="text-red-500 mt-1" />
                                 </div>
+                            </div>
+                            <div className="flex flex-col md:flex-row gap-4">
                                 <div className='flex-1'>
                                     <label htmlFor="employeeEmail" className="block font-semibold text-sky-700 mb-1">Email :</label>
                                     <Field name="employeeEmail" type="email" className="input input-bordered bg-stone-100 w-full" />
                                     <ErrorMessage name="employeeEmail" component="div" className="text-red-500 mt-1" />
+                                </div>
+                                <div className="flex-1">
+                                    <label htmlFor="jobTitle" className="block font-semibold text-sky-700 mb-1">Job Title :</label>
+                                    <Field name="jobTitle" type="text" className="input input-bordered bg-stone-100 w-full" />
+                                    <ErrorMessage name="jobTitle" component="div" className="text-red-500 mt-1" />
                                 </div>
                             </div>
                             <div className="flex flex-col md:flex-row gap-4">
@@ -145,18 +150,6 @@ function AddNewEmpForm() {
                                     <label htmlFor="subDepartment" className="block font-semibold text-sky-700 mb-1">Sub Department :</label>
                                     <Field name="subDepartment" type="text" className="input input-bordered bg-stone-100 w-full" />
                                     <ErrorMessage name="subDepartment" component="div" className="text-red-500 mt-1" />
-                                </div>
-                            </div>
-                            <div className="flex flex-col md:flex-row gap-4">
-                                <div className="flex-1">
-                                    <label htmlFor="vacations" className="block font-semibold text-sky-700 mb-1">Vacations :</label>
-                                    <Field name="vacations" type="number" className="input input-bordered bg-stone-100 w-full" />
-                                    <ErrorMessage name="vacations" component="div" className="text-red-500 mt-1" />
-                                </div>
-                                <div className="flex-1">
-                                    <label htmlFor="jobTitle" className="block font-semibold text-sky-700 mb-1">Job Title :</label>
-                                    <Field name="jobTitle" type="text" className="input input-bordered bg-stone-100 w-full" />
-                                    <ErrorMessage name="jobTitle" component="div" className="text-red-500 mt-1" />
                                 </div>
                             </div>
                             <div className='flex flex-col md:flex-row gap-4'>

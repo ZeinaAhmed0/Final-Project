@@ -1,7 +1,7 @@
 import AddNewEmpForm from '@/app/components/addNewEmpForm/AddNewEmpForm'
 import React from 'react'
 
-function PublicRelationOffers() {
+function page() {
   return (
     <>
       <AddNewEmpForm/>
@@ -9,4 +9,4 @@ function PublicRelationOffers() {
   )
 }
 
-export default PublicRelationOffers
+export default page

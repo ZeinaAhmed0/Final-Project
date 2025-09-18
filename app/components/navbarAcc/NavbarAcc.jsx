@@ -19,7 +19,7 @@ function NavbarAcc() {
                     <li><Link href="/">home</Link></li>
                 </ul>
             </div>
-            <Theme />
+            {/* <Theme /> */}
         </>
     )
 }

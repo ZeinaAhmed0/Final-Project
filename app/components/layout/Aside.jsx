@@ -47,9 +47,16 @@ function Aside() {
                         <li>
                           <Link href="/vacationRequests"> <FolderIcon /> vacation requests </Link>
                         </li>
-                        {userData?.[0]?.jobTitle?.toLowerCase() === 'hr manager' && <li>
+                        {userData?.[0]?.jobTitle?.toLowerCase() === 'hr manager' && 
+                        <>
+                        <li>
                           <Link href="/addNewEmp"> <FolderIcon /> add new emp </Link>
-                        </li>}
+                        </li>
+                        <li>
+                          <Link href="/removeEmp"> <FolderIcon /> remove emp </Link>
+                        </li>
+                        </>
+                        }
                       </ul>
                     </details>
                   </li>
@@ -77,10 +84,10 @@ function Aside() {
                       <summary> <FolderIcon /> works orders</summary>
                       <ul>
                         <li>
-                          <Link href="/transportRequests"> <FolderIcon /> transport requests </Link>
+                          <Link href="/projectsWorkOrders"> <FolderIcon /> projects work orders </Link>
                         </li>
                         <li>
-                          <Link href="/doctors"> <FolderIcon /> doctors </Link>
+                          <Link href="/itWorkOrders"> <FolderIcon /> IT work orders </Link>
                         </li>
                       </ul>
                     </details>
@@ -109,7 +116,7 @@ function Aside() {
                     <Link href="/"> <FolderIcon />  </Link>
                   </li>
                   <li>
-                    <Link href="/ITServices"> <FolderIcon />  </Link>
+                    <Link href="/"> <FolderIcon />  </Link>
                   </li>
                 </ul>
               </details>

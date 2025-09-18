@@ -7,7 +7,6 @@ import { UseEmpInformationStore } from '@/app/store/UseEmpInformationStore';
 function VacationTable() {
     const { fetchVac, approvedVacations } = UseVacationStore();
     const { userData, fetchUser  } = UseEmpInformationStore();
-
     useEffect(() => {
         fetchVac();
         fetchUser ();
@@ -15,8 +14,6 @@ function VacationTable() {
     const myVac = approvedVacations.filter(
         (vac) => vac.empName === userData?.[0]?.fullName
     );
-console.log(myVac);
-
     return (
         <>
             <div className='flex flex-col gap-2 rounded-lg shadow-md p-5 mx-auto bg-white'>
