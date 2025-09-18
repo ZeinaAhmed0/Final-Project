@@ -52,12 +52,12 @@ function Birthday() {
                         <td>
                           <div className="flex items-center lg:flex-row md:flex-col sm:flex-col gap-3">
                             <div className="avatar">
-                              <div className="mask mask-squircle h-12 w-12 relative" >
+                              <div className="w-15 h-15 rounded-full relative shadow-lg overflow-hidden relative" >
                                 <Image
                                   src={emp.employeeImg?.[0]?.formats?.thumbnail?.url ? `http://localhost:1337${emp.employeeImg[0].formats.thumbnail.url}` : '/default-avatar.png'}
                                   alt={emp.fullName}
                                   fill
-                                  className='object-cover'
+                                  className='object-contain'
                                 />
                               </div>
                             </div>
@@ -66,12 +66,12 @@ function Birthday() {
                             </div>
                           </div>
                         </td>
-                        <td className='flex justify-center flex-col flex-wrap'>
-                          <span className='lg:text-sm sm:text-xs'>{emp.department}</span>
+                        <td className='flex justify-center items-center flex-col flex-wrap'>
+                          <span className='lg:text-sm sm:text-xs uppercase'>{emp.department}</span>
                           <br />
                           <span className="badge badge-ghost badge-sm">{emp.subDepartment}</span>
                         </td>
-                        <td>{emp.jobTitle}</td>
+                        <td className='lg:text-sm sm:text-xs uppercase'>{emp.jobTitle}</td>
                       </tr>
                     )) : (
                       <tr>

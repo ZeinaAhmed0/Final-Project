@@ -13,12 +13,19 @@ const LoginSchema = Yup.object().shape({
 });
 
 function LoginPage() {
-    const router = useRouter()
-    const {setToken, fetchToken, isLogin, setIsLogin } = useAuthStore();
-    const { loading, setLoading } = UseLoadingStore()
+    const router = useRouter();
+    const { setToken, fetchToken, isLogin, setIsLogin } = useAuthStore();
+    const { loading, setLoading } = UseLoadingStore();
     const [status, setStatus] = useState({});
+
+    React.useEffect(() => {
+        if (isLogin) {
+            router.push('/');
+        }
+    }, [isLogin, router]);
     const onSubmit = async (values, { setSubmitting }) => {
         setStatus({});
+        setLoading(true);
         try {
             const jwt = await fetchToken(values.email, values.password);
             if (jwt) {
@@ -36,59 +43,62 @@ function LoginPage() {
             console.log(error);
         } finally {
             setSubmitting(false);
+            setLoading(false);
         }
     };
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-blue-100">
-            {
-                loading ? <LoadingPage /> : (
-                    <Formik
-                        initialValues={{ email: '', password: '' }}
-                        validationSchema={LoginSchema}
-                        onSubmit={onSubmit}
-                    >
-                        {({ isSubmitting }) => (
-                            <Form className="bg-white p-8 rounded shadow-md w-full max-w-sm">
-                                <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
-                                {status.error && (
-                                    <div className="text-red-500 text-center mb-4">{status.error}</div>
-                                )}
-                                {status.success && (
-                                    <div className="text-green-500 text-center mb-4">{status.success}</div>
-                                )}
-                                <div className="mb-4">
-                                    <label className="block mb-2 font-semibold">Email</label>
-                                    <Field
-                                        type="email"
-                                        name="email"
-                                        className="w-full p-2 border rounded"
-                                    />
-                                    <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
-                                </div>
-                                <div className="mb-6">
-                                    <label className="block mb-2 font-semibold">Password</label>
-                                    <Field
-                                        type="password"
-                                        name="password"
-                                        className="w-full p-2 border rounded"
-                                    />
-                                    <ErrorMessage name="password" component="div" className="text-red-500 text-sm mt-1" />
-                                </div>
-                                <button
-                                    type="submit"
-                                    disabled={isSubmitting}
-                                    className="w-full bg-sky-700 text-white py-2 rounded font-bold hover:bg-sky-800"
-                                >
-                                    {isSubmitting ? 'Logging in...' : 'Login'}
-                                </button>
-                            </Form>
-                        )}
-                    </Formik>
-                )
-            }
+            {loading ? (
+                <LoadingPage />
+            ) : (
+                <Formik
+                    initialValues={{ email: '', password: '' }}
+                    validationSchema={LoginSchema}
+                    onSubmit={onSubmit}
+                >
+                    {({ isSubmitting }) => (
+                        <Form className="bg-white p-8 rounded shadow-md w-full max-w-sm">
+                            <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+                            {status.error && (
+                                <div className="text-red-500 text-center mb-4">{status.error}</div>
+                            )}
+                            {status.success && (
+                                <div className="text-green-500 text-center mb-4">{status.success}</div>
+                            )}
+                            <div className="mb-4">
+                                <label className="block mb-2 font-semibold">Email</label>
+                                <Field
+                                    type="email"
+                                    name="email"
+                                    className="w-full p-2 border rounded"
+                                />
+                                <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
+                            </div>
+                            <div className="mb-6">
+                                <label className="block mb-2 font-semibold">Password</label>
+                                <Field
+                                    type="password"
+                                    name="password"
+                                    className="w-full p-2 border rounded"
+                                />
+                                <ErrorMessage name="password" component="div" className="text-red-500 text-sm mt-1" />
+                            </div>
+                            <button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className="w-full bg-sky-700 text-white py-2 rounded font-bold hover:bg-sky-800"
+                            >
+                                {isSubmitting ? 'Logging in...' : 'Login'}
+                            </button>
+                        </Form>
+                    )}
+                </Formik>
+            )}
         </div>
     );
 }
 
 export default LoginPage;
+
 
