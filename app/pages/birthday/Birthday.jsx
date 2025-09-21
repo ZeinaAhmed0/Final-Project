@@ -67,11 +67,11 @@ function Birthday() {
                           </div>
                         </td>
                         <td className='flex justify-center items-center flex-col flex-wrap'>
-                          <span className='lg:text-sm sm:text-xs uppercase'>{emp.department}</span>
+                          <span className='lg:text-sm sm:text-xs'>{emp.department}</span>
                           <br />
                           <span className="badge badge-ghost badge-sm">{emp.subDepartment}</span>
                         </td>
-                        <td className='lg:text-sm sm:text-xs uppercase'>{emp.jobTitle}</td>
+                        <td className='lg:text-sm sm:text-xs '>{emp.jobTitle}</td>
                       </tr>
                     )) : (
                       <tr>

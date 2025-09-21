@@ -147,4 +147,3 @@ function VacationApproval() {
 }
 
 export default VacationApproval;
-

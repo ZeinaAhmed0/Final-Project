@@ -47,15 +47,15 @@ function Aside() {
                         <li>
                           <Link href="/vacationRequests"> <FolderIcon /> vacation requests </Link>
                         </li>
-                        {userData?.[0]?.jobTitle?.toLowerCase() === 'hr manager' && 
-                        <>
-                        <li>
-                          <Link href="/addNewEmp"> <FolderIcon /> add new emp </Link>
-                        </li>
-                        <li>
-                          <Link href="/removeEmp"> <FolderIcon /> remove emp </Link>
-                        </li>
-                        </>
+                        {userData?.[0]?.jobTitle?.toLowerCase() === 'hr manager' &&
+                          <>
+                            <li>
+                              <Link href="/addNewEmp"> <FolderIcon /> add new emp </Link>
+                            </li>
+                            <li>
+                              <Link href="/removeEmp"> <FolderIcon /> remove emp </Link>
+                            </li>
+                          </>
                         }
                       </ul>
                     </details>
@@ -99,9 +99,30 @@ function Aside() {
                         <li>
                           <Link href="/maintenanceCar"> <FolderIcon /> maintenance car </Link>
                         </li>
-                        <li>
-                          <Link href="/carRequests"> <FolderIcon /> car requests </Link>
-                        </li>
+                        {
+                          userData?.[0]?.jobTitle?.toLowerCase() !== 'driver' &&
+                          <>
+                            <li>
+                              <Link href="/carRequests"> <FolderIcon />car request </Link>
+                            </li>
+                          </>
+                        }
+                        {
+                          userData?.[0]?.department?.toLowerCase() === 'management' &&
+                          <>
+                            <li>
+                              <Link href="/carRequestApproval"> <FolderIcon />car request approval </Link>
+                            </li>
+                          </>
+                        }
+                        {
+                          userData?.[0]?.jobTitle?.toLowerCase() === 'driver' &&
+                          <>
+                            <li>
+                              <Link href="/carOrder"> <FolderIcon />car orders </Link>
+                            </li>
+                          </>
+                        }
                       </ul>
                     </details>
                   </li>

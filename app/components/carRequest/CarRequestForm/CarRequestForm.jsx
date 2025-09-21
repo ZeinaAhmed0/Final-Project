@@ -105,6 +105,7 @@ function CarRequestForm() {
                   <option value="suv">SUV</option>
                   <option value="van">van</option>
                   <option value="pickup truck">pickup truck</option>
+                  <option value="truck">truck</option>
                 </Field>
                 <ErrorMessage name="carType" component="div" className="text-red-500" />
               </div>
@@ -146,9 +147,10 @@ function CarRequestForm() {
                 <label htmlFor="serviceType" className='text-sky-700 text-xl font-bold mb-1'>Type of Service:</label>
                 <Field name="serviceType" as="select" className="select select-bordered bg-stone-100">
                   <option hidden> Select Service Type </option>
-                  <option value="personal">Personal</option>
-                  <option value="official">Official</option>
-                  <option value="emergency">Emergency</option>
+                  <option value="hr">hr</option>
+                  <option value="procurement and supply">procurement and supply</option>
+                  <option value="operation">operation</option>
+                  <option value="transportation">transportation</option>
                 </Field>
                 <ErrorMessage name="serviceType" component="div" className="text-red-500" />
               </div>

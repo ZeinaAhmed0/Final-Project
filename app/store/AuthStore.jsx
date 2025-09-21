@@ -18,6 +18,8 @@ export const useAuthStore = create((set) => ({
             return jwt;
         } catch (error) {
             console.error('Login failed:', error.response?.data?.message || error.message);
+            const message = 'Invalid email or password';
+            throw new Error(message);
         }
     },
     loadTokenFromStorage: () => {

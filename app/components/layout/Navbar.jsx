@@ -18,7 +18,7 @@ function Navbar() {
               <SlMenu />
             </div>
             <div className="logo">
-              <ImgContainer img={logo} imgAlt="logo" className='fill' smWidth='w-8' mdWidth='w-10' />
+              <ImgContainer img={logo} imgAlt="logo" className='fill' smWidth='w-8' mdWidth='w-10' height='h-15' />
             </div>
           </div>
           <div className='flex items-center gap-5 justify-center'>
