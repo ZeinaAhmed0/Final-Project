@@ -40,7 +40,7 @@ function VacationArchiveTable() {
                     <tbody>
                         {myVacations.length === 0 ? (
                             <tr>
-                                <td colSpan={7} className="text-center py-4 text-gray-500">
+                                <td colSpan={12} className="text-center py-4 text-gray-500">
                                     No approved vacations found.
                                 </td>
                             </tr>

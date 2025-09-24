@@ -27,7 +27,7 @@ function CarRequestForm() {
     <>
       <Toaster />
       <div className='bg-white'>
-        <Title title='Car Request' />
+        <Title title='car request' />
         <hr className='opacity-25' />
       </div>
       <OuterContainer>

@@ -85,7 +85,8 @@ function VacationForm() {
               <div className='flex gap-3'>
                 <label className='text-sky-700 text-xl font-bold' htmlFor="leavesType">type:</label>
                 <Field name="leavesType" as="select" className="select select-bordered bg-stone-100">
-                  <option value="annual vacations">annual vacations</option>
+                  <option hidden>choose type</option>
+                  <option value="annual vacation">annual vacation</option>
                   <option value="emergency vacation">emergency vacation</option>
                   <option value="rest day">rest days</option>
                 </Field>

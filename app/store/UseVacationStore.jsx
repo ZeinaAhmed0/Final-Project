@@ -23,7 +23,7 @@ export const UseVacationStore = create((set) => ({
             set({ approvedVacations: res.data.data.filter(vac => vac.approval !== null) });
             set({ pendedVacations: res.data.data.filter(vac => vac.approval !== false && vac.approval !== true) });
         } catch (error) {
-            console.error("Failed to fetch vacations:", error);
+            console.error(error);
         }
     },
     updateVacationStatus: async (documentId, approval) => {
@@ -35,7 +35,7 @@ export const UseVacationStore = create((set) => ({
             await axios.put(
                 `${endPoint}vacations/${documentId}`,
                 {
-                    data: { approval: approval , approveDate:new Date().toISOString().split('T')[0] }
+                    data: { approval: approval, approveDate: new Date().toISOString().split('T')[0] }
                 },
                 {
                     headers: {
@@ -44,9 +44,37 @@ export const UseVacationStore = create((set) => ({
                     },
                 }
             );
-        } catch (error) {
-            console.error(`Failed to update vacation status for id ${documentId}:`, error);
-        }
+        } catch (err) {}
     },
-    
+    updateEmployeeLeaveTakenByName: async (empName, field, days) => {
+        try {
+            const token = localStorage.getItem('token');
+            const res = await axios.get(
+                `${endPoint}employees?filters[fullName][$eq]=${encodeURIComponent(empName)}`,
+                {
+                    headers: {
+                        "Content-Type": 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            const employees = res.data.data;
+            const employee = employees[0];
+            const currentTaken = employee[field] || 0;
+            const newTaken = currentTaken + days;
+            const employeeDocId = employee.documentId;
+            await axios.put(
+                `${endPoint}employees/${employeeDocId}`,
+                {
+                    data: { [field]: newTaken }
+                },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+        } catch (err) {}
+    },
 }));

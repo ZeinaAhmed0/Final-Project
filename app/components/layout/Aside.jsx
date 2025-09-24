@@ -142,19 +142,6 @@ function Aside() {
                 </ul>
               </details>
             </li>
-            <li>
-              <details>
-                <summary> <FolderIcon />equipment catalogue </summary>
-                <ul>
-                  <li>
-                    <Link href="/HRServices"> <FolderIcon />  </Link>
-                  </li>
-                  <li>
-                    <Link href="/ITServices"> <FolderIcon />  </Link>
-                  </li>
-                </ul>
-              </details>
-            </li>
           </ul>
         </aside>)
       }

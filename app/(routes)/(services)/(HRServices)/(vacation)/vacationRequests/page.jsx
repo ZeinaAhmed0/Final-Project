@@ -1,5 +1,5 @@
 import OuterContainer from '@/app/components/common/OuterContainer'
-import VacationPage from '@/app/pages/vacation/VacationPage'
+import VacationPage from '@/app/pages/vacationRequestPage/VacationPage'
 import React from 'react'
 function VacationRequest() {
   return (
