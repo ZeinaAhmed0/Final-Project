@@ -3,7 +3,7 @@ import { endPoint, useApisStore } from "@/app/store/UseApisStore";
 import { UseEmpInformationStore } from "@/app/store/UseEmpInformationStore";
 import Image from "next/image";
 import React, { useEffect } from "react"
-import Title from "../common/Title";
+import Title from "../../common/Title";
 
 function Information() {
     const { userData, fetchUser } = UseEmpInformationStore();

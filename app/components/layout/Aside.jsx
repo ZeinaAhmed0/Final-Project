@@ -68,7 +68,7 @@ function Aside() {
                           <Link href="/hospitals"> <FolderIcon /> hospitals </Link>
                         </li>
                         <li>
-                          <Link href="/medicalRequests"> <FolderIcon /> medical requests </Link>
+                          <Link href="/medicalRequest"> <FolderIcon /> medical requests </Link>
                         </li>
                         <li>
                           <Link href="/doctors"> <FolderIcon /> doctors </Link>

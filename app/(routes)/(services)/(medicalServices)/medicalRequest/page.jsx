@@ -1,8 +1,11 @@
+import MedicalRequestPage from '@/app/pages/medicalRequestPage/MedicalRequestPage'
 import React from 'react'
 
 function page() {
   return (
-    <div>page</div>
+    <>
+    <MedicalRequestPage/>
+    </>
   )
 }
 

@@ -1,4 +1,4 @@
-import SitesContainer from '@/app/pages/sites/SitesContainer'
+import SitesContainer from '@/app/pages/sitesPage/SitesContainer'
 import React from 'react'
 
 function InterestedSites() {

@@ -1,4 +1,4 @@
-import ReservationForm from '@/app/components/reservationForm/ReservationForm'
+import ReservationForm from '@/app/components/reservation/ReservationForm'
 import React from 'react'
 
 function ReservationPage() {

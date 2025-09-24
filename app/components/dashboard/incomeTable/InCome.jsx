@@ -1,7 +1,7 @@
 "use client";
 import { UseEmpInformationStore } from "@/app/store/UseEmpInformationStore";
 import React, { useEffect, useState } from "react";
-import Title from "../common/Title";
+import Title from "../../common/Title";
 
 function InCome() {
     const { userData, fetchUser } = UseEmpInformationStore();

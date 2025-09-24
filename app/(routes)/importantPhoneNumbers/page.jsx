@@ -1,5 +1,5 @@
 import Title from '@/app/components/common/Title'
-import ImpPhoneNumbers from '@/app/pages/phoneNumbers/ImpPhoneNumbers'
+import ImpPhoneNumbers from '@/app/components/phoneNumbers/ImpPhoneNumbers'
 import React from 'react'
 
 function ImportantPhoneNumbers() {

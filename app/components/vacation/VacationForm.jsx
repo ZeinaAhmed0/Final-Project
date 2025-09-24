@@ -121,7 +121,7 @@ function VacationForm() {
               </div>
 
               <div className='flex justify-end'>
-                <button type="submit" disabled={isSubmitting} className="btn bg-sky-700">
+                <button type="submit" disabled={isSubmitting} className="btn bg-sky-700 hover:bg-sky-800 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-colors">
                   create
                 </button>
               </div>

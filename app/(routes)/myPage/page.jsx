@@ -1,7 +1,7 @@
-import Calendar from '@/app/components/calender/Calender'
+import Calendar from '@/app/components/dashboard/calender/Calender'
 import Title from '@/app/components/common/Title'
-import InCome from '@/app/components/incomeTable/InCome'
-import Information from '@/app/components/information/Information'
+import InCome from '@/app/components/dashboard/incomeTable/InCome'
+import Information from '@/app/components/dashboard/information/Information'
 import VacationTable from '@/app/components/vacation/VacationTable'
 import React from 'react'
 

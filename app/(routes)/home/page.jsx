@@ -1,6 +1,6 @@
 import Title from '@/app/components/common/Title'
-import Birthday from '@/app/pages/birthday/Birthday'
-import RiyadAssalihin from '@/app/pages/riyadAssalihin/RiyadAssalihin'
+import Birthday from '@/app/components/dashboard/birthday/Birthday'
+import RiyadAssalihin from '@/app/components/riyadAssalihin/RiyadAssalihin'
 import React from 'react'
 
 function HomePage() {

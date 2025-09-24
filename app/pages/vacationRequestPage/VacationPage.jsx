@@ -1,6 +1,6 @@
 'use client'
 import Title from '@/app/components/common/Title'
-import Credit from '@/app/components/credit/Credit'
+import Credit from '@/app/components/vacation/credit/Credit'
 import VacationApproval from '@/app/components/vacation/VacationApproval'
 import React from 'react'
 import VacationHistoryPage from './VacationHistoryPage'

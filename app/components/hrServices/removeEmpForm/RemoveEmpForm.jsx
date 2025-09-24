@@ -4,8 +4,8 @@ import { useApisStore, endPoint } from "@/app/store/UseApisStore";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { FaTrash } from "react-icons/fa";
-import Title from "../common/Title";
-import OuterContainer from "../common/OuterContainer";
+import Title from "../../common/Title";
+import OuterContainer from "../../common/OuterContainer";
 
 function RemoveEmpForm() {
     const { emp, fetchApi } = useApisStore();

@@ -1,10 +1,10 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import HBD from '@/public/happy-birthday.webp'
-import ImgContainer from '../../components/common/ImgContainer'
+import ImgContainer from '../../common/ImgContainer'
 import { useApisStore } from '@/app/store/UseApisStore';
 import { UseLoadingStore } from '@/app/store/UseLoadingStore';
-import LoadingPage from '../LoadingPage/LoadingPage';
+import LoadingPage from '../../../pages/LoadingPage/LoadingPage';
 import Image from 'next/image';
 
 function Birthday() {

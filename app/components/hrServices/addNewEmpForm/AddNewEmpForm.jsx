@@ -2,10 +2,10 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import OuterContainer from '../common/OuterContainer';
+import OuterContainer from '../../common/OuterContainer';
 import axios from 'axios';
 import { endPoint } from '@/app/store/UseApisStore';
-import Title from '../common/Title';
+import Title from '../../common/Title';
 import toast, { Toaster } from 'react-hot-toast';
 
 function AddNewEmpForm() {

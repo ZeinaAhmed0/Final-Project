@@ -1,4 +1,4 @@
-import MyFrame from '@/app/pages/aboutIframe/MyFrame'
+import MyFrame from '@/app/components/aboutIframe/MyFrame'
 import React from 'react'
 
 const About = () => {

@@ -2,7 +2,7 @@
 import { UseEmpInformationStore } from '@/app/store/UseEmpInformationStore';
 import { UseVacationStore } from '@/app/store/UseVacationStore'; 
 import React, { useEffect, useState } from 'react'; 
-import Title from '../common/Title';
+import Title from '../../common/Title';
 import LoadingPage from '@/app/pages/LoadingPage/LoadingPage';
 
 function Credit() {
