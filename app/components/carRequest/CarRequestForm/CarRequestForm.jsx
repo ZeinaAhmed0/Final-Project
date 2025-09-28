@@ -27,141 +27,253 @@ function CarRequestForm() {
     <>
       <Toaster />
       <div className='bg-white'>
-        <Title title='car request' />
-        <hr className='opacity-25' />
+        <Title title='Car Request' />
+        <hr className='opacity-25 border-gray-300' />
       </div>
       <OuterContainer>
-        <Formik
-          initialValues={{
-            driverName: '',
-            numberOfPassengers: 0,
-            carType: '',
-            yourLocation: '',
-            destination: '',
-            dateFrom: '',
-            dateTo: '',
-            reason: '',
-            notes: '',
-            serviceType: '',
-          }}
-          validationSchema={validationSchema}
-          onSubmit={async (values, { setSubmitting, resetForm }) => {
-            const token = localStorage.getItem('token');
-            const dataToSend = JSON.stringify({
-              data: {
-                ...values,
-                insertDate: new Date().toISOString().split('T')[0],
-                empName: empName,
-              },
-            });
-            try {
-              const res = await axios.post(`${endPoint}car-requests`, dataToSend, {
-                headers: {
-                  'Content-Type': 'application/json',
-                  Authorization: `Bearer ${token}`,
-                },
-              });
-              toast.success('Request sent successfully!');
-              resetForm();
-            } catch (error) {
-              toast.error('Failed to send request. Please try again.');
-              console.log(error);
-              
-            } finally {
-              setSubmitting(false);
-            }
-          }}
-        >
-          {({ isSubmitting }) => (
-            <Form className="space-y-4 p-6 bg-white rounded shadow-md mx-auto capitalize">
-              <div className="flex items-center justify-between">
-                <div>
-                <label className='font-semibold'> <span className='text-sky-700 text-xl font-bold'>employee name :</span> {empName}</label>
-              </div>
-              <div>
-                <label className='font-semibold'> <span className='text-sky-700 text-xl font-bold'>insert date :</span>  {new Date().toISOString().split('T')[0]}</label>
-              </div>
-              </div>
-              <div className='flex gap-3 items-center'>
-                <label htmlFor="driverName" className='text-sky-700 text-xl font-bold mb-1'>Driver:</label>
-                <Field name="driverName" as="select" className="select select-bordered bg-stone-100" >
-                  <option hidden> choose driver </option>
-                  <option value="ramy hany">ramy hany</option>
-                  <option value="adam youssef">adam youssef</option>
-                  <option value="zain adam">zain adam</option>
-                </Field>
-                <ErrorMessage name="driverName" component="div" className="text-red-500" />
-              </div>
-              <div className='flex gap-3 items-center'>
-                <label htmlFor="numberOfPassengers" className='text-sky-700 text-xl font-bold mb-1'>Number of Passengers:</label>
-                <Field name="numberOfPassengers" type="number" min="1" max="20" className="input input-bordered bg-stone-100" />
-                <ErrorMessage name="numberOfPassengers" component="div" className="text-red-500" />
-              </div>
-              <div className='flex gap-3 items-center'>
-                <label htmlFor="carType" className='text-sky-700 text-xl font-bold mb-1'>Type of the Car:</label>
-                <Field name="carType" as="select" className="select select-bordered bg-stone-100">
-                  <option hidden> Select Car Type </option>
-                  <option value="sedan">sedan</option>
-                  <option value="suv">SUV</option>
-                  <option value="van">van</option>
-                  <option value="pickup truck">pickup truck</option>
-                  <option value="truck">truck</option>
-                </Field>
-                <ErrorMessage name="carType" component="div" className="text-red-500" />
-              </div>
-              <div className="flex items-center justify-between">
-                <div className='flex gap-3 items-center'>
-                <label htmlFor="yourLocation" className='text-sky-700 text-xl font-bold mb-1'>your location</label>
-                <Field name="yourLocation" type="text" className="input input-bordered bg-stone-100" />
-                <ErrorMessage name="yourLocation" component="div" className="text-red-500" />
-              </div>
-              <div className='flex gap-3 items-center'>
-                <label htmlFor="destination" className='text-sky-700 text-xl font-bold mb-1'>destination</label>
-                <Field name="destination" type="text" className="input input-bordered bg-stone-100" />
-                <ErrorMessage name="destination" component="div" className="text-red-500" />
-              </div>
-              </div>
-              <div className='flex items-center justify-between'>
-                <div className='flex gap-3 items-center'>
-                <label htmlFor="dateFrom" className='text-sky-700 text-xl font-bold mb-1'>date from:</label>
-                <Field name="dateFrom" type="date" className="input input-bordered bg-stone-100" />
-                <ErrorMessage name="dateFrom" component="div" className="text-red-500" />
-              </div>
-              <div className='flex gap-3 items-center'>
-                <label htmlFor="dateTo" className='text-sky-700 text-xl font-bold mb-1'>Date To:</label>
-                <Field name="dateTo" type="date" className="input input-bordered bg-stone-100" />
-                <ErrorMessage name="dateTo" component="div" className="text-red-500" />
-              </div>
-              </div>
-              <div className='flex gap-3 items-center'>
-                <label htmlFor="reason" className='text-sky-700 text-xl font-bold mb-1'>Reason:</label>
-                <Field name="reason" as="textarea" className="textarea textarea-bordered bg-stone-100" />
-                <ErrorMessage name="reason" component="div" className="text-red-500" />
-              </div>
-              <div className='flex gap-3 items-center'>
-                <label htmlFor="notes" className='text-sky-700 text-xl font-bold mb-1'>Notes:</label>
-                <Field name="notes" as="textarea" className="textarea textarea-bordered bg-stone-100" />
-                <ErrorMessage name="notes" component="div" className="text-red-500" />
-              </div>
-              <div className='flex gap-3 items-center'>
-                <label htmlFor="serviceType" className='text-sky-700 text-xl font-bold mb-1'>Type of Service:</label>
-                <Field name="serviceType" as="select" className="select select-bordered bg-stone-100">
-                  <option hidden> Select Service Type </option>
-                  <option value="hr">hr</option>
-                  <option value="procurement and supply">procurement and supply</option>
-                  <option value="operation">operation</option>
-                  <option value="transportation">transportation</option>
-                </Field>
-                <ErrorMessage name="serviceType" component="div" className="text-red-500" />
-              </div>
-              <div className='flex justify-end'>
-                <button type="submit" disabled={isSubmitting} className="btn bg-sky-700 text-white">
-                  Submit Request
-                </button>
-              </div>
-            </Form>
-          )}
-        </Formik>
+        <div className="max-w-2xl mx-auto">
+          <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-200">
+            <Formik
+              initialValues={{
+                driverName: '',
+                numberOfPassengers: '',
+                carType: '',
+                yourLocation: '',
+                destination: '',
+                dateFrom: '',
+                dateTo: '',
+                reason: '',
+                notes: '',
+                serviceType: '',
+              }}
+              validationSchema={validationSchema}
+              onSubmit={async (values, { setSubmitting, resetForm }) => {
+                const token = localStorage.getItem('token');
+                const dataToSend = JSON.stringify({
+                  data: {
+                    ...values,
+                    insertDate: insertDate,
+                    empName: empName,
+                  },
+                });
+                try {
+                  const res = await axios.post(`${endPoint}car-requests`, dataToSend, {
+                    headers: {
+                      'Content-Type': 'application/json',
+                      Authorization: `Bearer ${token}`,
+                    },
+                  });
+                  if (res.status === 200 || res.status === 201) {
+                    toast.success('Car request submitted successfully!');
+                    resetForm();
+                  } else {
+                    throw new Error(`API Error: ${res.status} ${res.statusText}`);
+                  }
+                } catch (error) {
+                  toast.error('Failed to send request. Please try again.');
+                  console.error(`Error submitting request: ${error.response?.data?.message || error.message}`);
+                } finally {
+                  setSubmitting(false);
+                }
+              }}
+            >
+              {({ isSubmitting }) => (
+                <Form className="space-y-6">
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <div className="flex items-center space-x-3">
+                      <label className="text-sm font-medium text-gray-700">Employee Name:</label>
+                      <span className="text-sky-700 font-bold">{empName}</span>
+                    </div>
+                    <div className="flex items-center space-x-3 mt-2">
+                      <label className="text-sm font-medium text-gray-700">Insert Date:</label>
+                      <span className="text-sky-700 font-bold">{new Date().toISOString().split('T')[0]}</span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    <h3 className="text-xl font-bold text-sky-700 border-b border-sky-200 pb-2">Car Details</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700" htmlFor="driverName">
+                          Driver <span className="text-red-500">*</span>
+                        </label>
+                        <Field
+                          name="driverName"
+                          as="select"
+                          className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
+                        >
+                          <option hidden>Choose Driver</option>
+                          <option value="ramy hany">Ramy Hany</option>
+                          <option value="adam youssef">Adam Youssef</option>
+                          <option value="zain adam">Zain Adam</option>
+                        </Field>
+                        <ErrorMessage name="driverName" component="div" className="text-red-500 text-sm mt-1" />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700" htmlFor="numberOfPassengers">
+                          Number of Passengers <span className="text-red-500">*</span>
+                        </label>
+                        <Field
+                          name="numberOfPassengers"
+                          type="number"
+                          min="1"
+                          max="20"
+                          className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
+                        />
+                        <ErrorMessage name="numberOfPassengers" component="div" className="text-red-500 text-sm mt-1" />
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="block text-sm font-semibold text-gray-700" htmlFor="carType">
+                        Car Type <span className="text-red-500">*</span>
+                      </label>
+                      <Field
+                        name="carType"
+                        as="select"
+                        className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
+                      >
+                        <option hidden>Select Car Type</option>
+                        <option value="sedan">Sedan</option>
+                        <option value="suv">SUV</option>
+                        <option value="van">Van</option>
+                        <option value="pickup truck">Pickup Truck</option>
+                        <option value="truck">Truck</option>
+                      </Field>
+                      <ErrorMessage name="carType" component="div" className="text-red-500 text-sm mt-1" />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="block text-sm font-semibold text-gray-700" htmlFor="serviceType">
+                        Service Type <span className="text-red-500">*</span>
+                      </label>
+                      <Field
+                        name="serviceType"
+                        as="select"
+                        className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
+                      >
+                        <option hidden>Select Service Type</option>
+                        <option value="hr">HR</option>
+                        <option value="procurement and supply">Procurement and Supply</option>
+                        <option value="operation">Operation</option>
+                        <option value="transportation">Transportation</option>
+                      </Field>
+                      <ErrorMessage name="serviceType" component="div" className="text-red-500 text-sm mt-1" />
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    <h3 className="text-xl font-bold text-sky-700 border-b border-sky-200 pb-2">Trip Details</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700" htmlFor="yourLocation">
+                          Your Location <span className="text-red-500">*</span>
+                        </label>
+                        <Field
+                          name="yourLocation"
+                          type="text"
+                          className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
+                          placeholder="Enter your current location"
+                        />
+                        <ErrorMessage name="yourLocation" component="div" className="text-red-500 text-sm mt-1" />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700" htmlFor="destination">
+                          Destination <span className="text-red-500">*</span>
+                        </label>
+                        <Field
+                          name="destination"
+                          type="text"
+                          className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
+                          placeholder="Enter destination"
+                        />
+                        <ErrorMessage name="destination" component="div" className="text-red-500 text-sm mt-1" />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700" htmlFor="dateFrom">
+                          Start Date <span className="text-red-500">*</span>
+                        </label>
+                        <Field
+                          name="dateFrom"
+                          type="date"
+                          className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
+                        />
+                        <ErrorMessage name="dateFrom" component="div" className="text-red-500 text-sm mt-1" />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700" htmlFor="dateTo">
+                          End Date <span className="text-red-500">*</span>
+                        </label>
+                        <Field
+                          name="dateTo"
+                          type="date"
+                          className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
+                        />
+                        <ErrorMessage name="dateTo" component="div" className="text-red-500 text-sm mt-1" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    <h3 className="text-xl font-bold text-sky-700 border-b border-sky-200 pb-2">Additional Information</h3>
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700" htmlFor="reason">
+                          Reason <span className="text-red-500">*</span>
+                        </label>
+                        <Field
+                          name="reason"
+                          as="textarea"
+                          rows={3}
+                          className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical"
+                          placeholder="Describe the reason for the request"
+                        />
+                        <ErrorMessage name="reason" component="div" className="text-red-500 text-sm mt-1" />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700" htmlFor="notes">
+                          Notes
+                        </label>
+                        <Field
+                          name="notes"
+                          as="textarea"
+                          rows={3}
+                          className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical"
+                          placeholder="Any additional notes (optional)"
+                        />
+                        <ErrorMessage name="notes" component="div" className="text-red-500 text-sm mt-1" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-end pt-4">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="btn bg-sky-700 hover:bg-sky-800 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[150px]"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <span className="loading loading-spinner loading-xs mr-2"></span>
+                          Submitting...
+                        </>
+                      ) : (
+                        'Submit Request'
+                      )}
+                    </button>
+                  </div>
+                </Form>
+              )}
+            </Formik>
+          </div>
+        </div>
       </OuterContainer>
     </>
   );

@@ -3,7 +3,6 @@ import React from 'react'
 import { RiArrowDownSFill } from "react-icons/ri";
 import { VscPerson } from "react-icons/vsc";
 import Link from 'next/link';
-import Theme from '../theme/Theme';
 import { UseEmpInformationStore } from '@/app/store/UseEmpInformationStore';
 
 function NavbarAcc() {
@@ -19,7 +18,6 @@ function NavbarAcc() {
                     <li><Link href="/">home</Link></li>
                 </ul>
             </div>
-            {/* <Theme /> */}
         </>
     )
 }

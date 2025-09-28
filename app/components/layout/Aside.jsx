@@ -4,7 +4,8 @@ import Link from 'next/link';
 import FolderIcon from '../common/FolderIcon';
 import { UseEmpInformationStore } from '@/app/store/UseEmpInformationStore';
 import useAuthStore from '@/app/store/AuthStore';
-function Aside() {
+import { AiOutlineClose } from 'react-icons/ai'; 
+function Aside({ toggleAside }) {
   const { userData, fetchUser } = UseEmpInformationStore();
   const { isLogin } = useAuthStore();
   useEffect(() => {
@@ -13,8 +14,15 @@ function Aside() {
   return (
     <>
       {
-        isLogin && (<aside className='w-45 h-screen flex items-start justify-start'>
-          <ul className="menu menu-xs  text-white rounded-b-lg max-w-xs w-full capitalize">
+        isLogin && (<aside className='w-45 h-screen flex items-start justify-start relative'>
+          <button 
+              onClick={toggleAside} 
+              className="text-white text-2xl mb-4 top-0 right-0 bg-sky-700 fixed lg:hidden md:block sm:block p-3 cursor-pointer"
+              aria-label="Close menu"
+            >
+              <AiOutlineClose />
+            </button>
+          <ul className="menu menu-xs text-white rounded-b-lg max-w-xs w-full capitalize pt-6">
             <li>
               <details open>
                 <summary>
@@ -47,6 +55,12 @@ function Aside() {
                         <li>
                           <Link href="/vacationRequests"> <FolderIcon /> vacation requests </Link>
                         </li>
+                        {
+                          userData?.[0]?.department?.toLowerCase() === 'management' &&
+                          <li>
+                            <Link href="/vacationApproval"> <FolderIcon /> vacation approval</Link>
+                          </li>
+                        }
                         {userData?.[0]?.jobTitle?.toLowerCase() === 'hr manager' &&
                           <>
                             <li>
@@ -68,9 +82,6 @@ function Aside() {
                           <Link href="/hospitals"> <FolderIcon /> hospitals </Link>
                         </li>
                         <li>
-                          <Link href="/medicalRequest"> <FolderIcon /> medical requests </Link>
-                        </li>
-                        <li>
                           <Link href="/doctors"> <FolderIcon /> doctors </Link>
                         </li>
                       </ul>
@@ -84,10 +95,7 @@ function Aside() {
                       <summary> <FolderIcon /> works orders</summary>
                       <ul>
                         <li>
-                          <Link href="/projectsWorkOrders"> <FolderIcon /> projects work orders </Link>
-                        </li>
-                        <li>
-                          <Link href="/itWorkOrders"> <FolderIcon /> IT work orders </Link>
+                          <Link href="/WorkOrders"> <FolderIcon /> orders </Link>
                         </li>
                       </ul>
                     </details>
@@ -96,9 +104,6 @@ function Aside() {
                     <details>
                       <summary> <FolderIcon /> transport services </summary>
                       <ul>
-                        <li>
-                          <Link href="/maintenanceCar"> <FolderIcon /> maintenance car </Link>
-                        </li>
                         {
                           userData?.[0]?.jobTitle?.toLowerCase() !== 'driver' &&
                           <>
@@ -125,19 +130,6 @@ function Aside() {
                         }
                       </ul>
                     </details>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <details>
-                <summary> <FolderIcon />  QHSE & en </summary>
-                <ul>
-                  <li>
-                    <Link href="/"> <FolderIcon />  </Link>
-                  </li>
-                  <li>
-                    <Link href="/"> <FolderIcon />  </Link>
                   </li>
                 </ul>
               </details>

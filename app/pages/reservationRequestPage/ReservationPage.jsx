@@ -3,10 +3,9 @@ import React from 'react'
 
 function ReservationPage() {
   return (
-<>
-<div>ReservationPage</div>
-<ReservationForm/>
-</>
+    <>
+      <ReservationForm />
+    </>
   )
 }
 

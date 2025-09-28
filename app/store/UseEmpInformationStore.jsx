@@ -28,8 +28,6 @@ export const UseEmpInformationStore = create((set) => ({
                 headers: { Authorization: `Bearer ${token}` },
             });
             const employeeData = empRes.data?.data;
-            if (!employeeData || employeeData.length === 0) {
-            }
             set({ userData: employeeData, empName: employeeData[0]?.fullName });
         } catch (error) {
             set({ userData: null, empName:null});

@@ -18,7 +18,6 @@ function VacationPage() {
                 <hr className='opacity-25' />
                 <div className="grid grid-cols-12 gap-5 mt-10">
                     <VacationPending />
-                    <VacationApproval />
                     <VacationArchivePage />
                     <div className="col-span-12">
                         <Credit />

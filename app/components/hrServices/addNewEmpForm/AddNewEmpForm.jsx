@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import OuterContainer from '../../common/OuterContainer';
@@ -9,9 +9,11 @@ import Title from '../../common/Title';
 import toast, { Toaster } from 'react-hot-toast';
 
 function AddNewEmpForm() {
+    const [preview, setPreview] = useState(null);
     const initialValues = {
         fullName: '',
         employeePassword: '',
+        employeeImg: null,
         employeeEmail: '',
         birthday: '',
         phoneNumber: '',
@@ -42,28 +44,55 @@ function AddNewEmpForm() {
         directManager: Yup.string().required('Direct Manager is required'),
         annualLeaves: Yup.number(),
         emergencyLeave: Yup.number(),
-        restDay:Yup.number(),
+        restDay: Yup.number(),
+        employeeImg: Yup.mixed().required('Employee image is required')
     });
 
     const handleSubmit = async (values, { setSubmitting, resetForm }) => {
         const token = localStorage.getItem('token');
-        const dataToSend ={data : {...values, phoneNumber: Number(values.phoneNumber),salary: Number(values.salary), restDay: Number(values.restDay), annualLeaves: Number(values.annualLeaves), emergencyLeave: Number(values.emergencyLeave), restDay: Number(values.restDay)} };
         try {
+            let uploadedImageId = null;
+            if (values.employeeImg) {
+                const formData = new FormData();
+                formData.append('files', values.employeeImg);
+                const uploadRes = await axios.post(`${endPoint}upload/`, formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                uploadedImageId = uploadRes.data[0].id;
+            }
+            const dataToSend = {
+                data: {
+                    ...values,
+                    phoneNumber: Number(values.phoneNumber),
+                    salary: Number(values.salary),
+                    restDay: Number(values.restDay),
+                    annualLeaves: Number(values.annualLeaves),
+                    emergencyLeave: Number(values.emergencyLeave),
+                    employeeImg: uploadedImageId, 
+                },
+            };
+console.log(values);
             await axios.post(`${endPoint}employees`, dataToSend, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            toast.success('new employee added successfully!');
+
+            toast.success('New employee added successfully!');
             resetForm();
+            setPreview(null);
         } catch (error) {
             toast.error('Failed to add. Please try again.');
             console.log(error);
-            
         } finally {
             setSubmitting(false);
         }
-    }
+        
+        
+    };
 
     return (
         <>
@@ -78,7 +107,7 @@ function AddNewEmpForm() {
                     validationSchema={validationSchema}
                     onSubmit={handleSubmit}
                 >
-                    {({ isSubmitting }) => (
+                    {({ isSubmitting, setFieldValue }) => (
                         <Form className="space-y-4 p-6 bg-white rounded shadow-md">
                             <div className='flex flex-col md:flex-row gap-4'>
                                 <div className='flex-1'>
@@ -168,6 +197,31 @@ function AddNewEmpForm() {
                                     <Field name="restDay" type="number" className="input input-bordered bg-stone-100 w-full" />
                                     <ErrorMessage name="restDay" component="div" className="text-red-500 mt-1" />
                                 </div>
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <label htmlFor="employeeImg" className="block font-semibold text-sky-700 mb-1">Employee Image :</label>
+                                <input
+                                    id="employeeImg"
+                                    name="employeeImg"
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={(event) => {
+                                        const file = event.currentTarget.files[0];
+                                        setFieldValue('employeeImg', file);
+                                        if (file) {
+                                            const reader = new FileReader();
+                                            reader.onloadend = () => setPreview(reader.result);
+                                            reader.readAsDataURL(file);
+                                        } else {
+                                            setPreview(null);
+                                        }
+                                    }}
+                                    className="input input-bordered bg-stone-100 w-full"
+                                />
+                                <ErrorMessage name="employeeImg" component="div" className="text-red-500 mt-1" />
+                                {preview && (
+                                    <img src={preview} alt="Preview" className="w-24 h-24 object-cover rounded mt-2" />
+                                )}
                             </div>
                             <div className="flex justify-end">
                                 <button type="submit" disabled={isSubmitting} className="btn bg-sky-700">

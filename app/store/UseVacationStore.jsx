@@ -23,7 +23,6 @@ export const UseVacationStore = create((set) => ({
             set({ approvedVacations: res.data.data.filter(vac => vac.approval !== null) });
             set({ pendedVacations: res.data.data.filter(vac => vac.approval !== false && vac.approval !== true) });
         } catch (error) {
-            console.error(error);
         }
     },
     updateVacationStatus: async (documentId, approval) => {
