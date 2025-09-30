@@ -7,7 +7,7 @@ export const UseEmpInformationStore = create((set) => ({
     userData: null,
     empName: null,
     fetchUser: async () => {
-        const token = localStorage.getItem('token');
+        const token = sessionStorage.getItem('token');
         if (!token) {
             set({ userData: null });
             return;

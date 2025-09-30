@@ -28,10 +28,11 @@ function InCome() {
     return (
         <>
             <div className="overflow-x-auto">
-                <Title title="my income" bg="bg-sky-700" textColor="text-white" />
+                <Title title="my income" bg="bg-(--color-primary)" textColor="text-white" />
                 <div className="flex flex-col gap-2 bg-white p-5">
-                    <div className="flex gap-2 items-center">
-                        <label htmlFor="monthSelect" className="font-semibold">
+                    <div className="flex flex-col sm:flex-row gap-2 items-center">
+                        <div className="flex gap-4 items-center">
+                            <label htmlFor="monthSelect" className="font-semibold md:text-lg sm:text-sm">
                             pick a month :
                         </label>
                         <select
@@ -48,9 +49,10 @@ function InCome() {
                                 ))
                             }
                         </select>
+                        </div>
                         {error && <p className="text-red-600">{error}</p>}
                         <div className="flex items-center gap-4">
-                            <button onClick={handleShowIncome} className="btn">
+                            <button onClick={handleShowIncome} className="btn md:text-lg sm:text-sm">
                                 show my income
                             </button>
                             {showIncome && <span>your income : {userData?.[0]?.salary}</span>}

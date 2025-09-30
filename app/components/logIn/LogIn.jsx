@@ -35,7 +35,7 @@ function LoginPage() {
             if (jwt) {
                 setToken(jwt);
                 setIsLogin(true);
-                localStorage.setItem("token", jwt);
+                sessionStorage.setItem("token", jwt);
                 router.push("/");
             }
         } catch (error) {
@@ -116,14 +116,13 @@ function LoginPage() {
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full bg-sky-700 text-white py-2 rounded font-bold hover:bg-sky-800 disabled:opacity-50"
+                                className="w-full bg-(--color-primary) text-white py-2 rounded font-bold hover:bg-sky-800 disabled:opacity-50"
                             >
                                 {isSubmitting ? "Logging in..." : "Login"}
                             </button>
                             {status && (
                                 <div className="text-red-600 text-sm mt-2 text-center">{status}</div>
                             )}
-
                         </Form>
                     )}
                 </Formik>

@@ -9,7 +9,7 @@ export const UseVacationStore = create((set) => ({
     pendedVacations: [],
     fetchVac: async () => {
         try {
-            const token = localStorage.getItem('token');
+            const token = sessionStorage.getItem('token');
             if (!token) {
                 return;
             }
@@ -27,7 +27,7 @@ export const UseVacationStore = create((set) => ({
     },
     updateVacationStatus: async (documentId, approval) => {
         try {
-            const token = localStorage.getItem('token');
+            const token = sessionStorage.getItem('token');
             if (!token) {
                 return;
             }
@@ -47,7 +47,7 @@ export const UseVacationStore = create((set) => ({
     },
     updateEmployeeLeaveTakenByName: async (empName, field, days) => {
         try {
-            const token = localStorage.getItem('token');
+            const token = sessionStorage.getItem('token');
             const res = await axios.get(
                 `${endPoint}employees?filters[fullName][$eq]=${encodeURIComponent(empName)}`,
                 {

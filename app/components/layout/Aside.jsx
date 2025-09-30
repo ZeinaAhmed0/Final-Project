@@ -17,7 +17,7 @@ function Aside({ toggleAside }) {
         isLogin && (<aside className='w-45 h-screen flex items-start justify-start relative'>
           <button 
               onClick={toggleAside} 
-              className="text-white text-2xl mb-4 top-0 right-0 bg-sky-700 fixed lg:hidden md:block sm:block p-3 cursor-pointer"
+              className="text-white text-2xl mb-4 top-0 right-0 bg-(--color-primary) fixed lg:hidden md:block sm:block p-3 cursor-pointer"
               aria-label="Close menu"
             >
               <AiOutlineClose />

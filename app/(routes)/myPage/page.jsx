@@ -7,26 +7,23 @@ import React from 'react'
 
 function MyPage() {
   return (
-    <>
-      <div className='bg-blue-200 p-3'>
-        <Title title='my page' />
-        <div className='m-4 space-y-4'>
-          <div>
-            <Information />
-          </div>
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-            <div className='flex flex-col gap-3'>
-              <div><InCome /></div>
-              <div><Calendar /></div>
-            </div>
-            <div>
-              <VacationTable />
-            </div>
-          </div>
+<>
+  <div className="bg-blue-200 p-3 min-h-screen">
+    <Title title="my page" />
+    <div className="m-4 space-y-6">
+      <Information />
+      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="flex flex-col gap-6 justify-start">
+          <InCome />
+          <Calendar />
+        </div>
+        <div>
+          <VacationTable />
         </div>
       </div>
-
-    </>
+    </div>
+  </div>
+</>
   )
 }
 

@@ -2,14 +2,19 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import toast, { Toaster } from 'react-hot-toast';
-import { endPoint } from '@/app/store/UseApisStore';
+import { endPoint, useApisStore } from '@/app/store/UseApisStore';
 import axios from 'axios';
 import { UseEmpInformationStore } from '@/app/store/UseEmpInformationStore';
 import OuterContainer from '../../common/OuterContainer';
 import Title from '../../common/Title';
+import { useEffect } from 'react';
 
 function CarRequestForm() {
-  const {empName} = UseEmpInformationStore();
+  const { empName } = UseEmpInformationStore();
+  const { emp, fetchApi } = useApisStore();
+  useEffect(() => {
+    fetchApi();
+  }, []);
   const validationSchema = Yup.object({
     driverName: Yup.string().required(),
     numberOfPassengers: Yup.number().required(),
@@ -22,6 +27,8 @@ function CarRequestForm() {
     notes: Yup.string(),
     serviceType: Yup.string().required(),
   });
+  const drivers = emp.filter(ele => ele.jobTitle.toLowerCase() === 'driver');
+  console.log(drivers);
 
   return (
     <>
@@ -48,7 +55,7 @@ function CarRequestForm() {
               }}
               validationSchema={validationSchema}
               onSubmit={async (values, { setSubmitting, resetForm }) => {
-                const token = localStorage.getItem('token');
+                const token = sessionStorage.getItem('token');
                 const dataToSend = JSON.stringify({
                   data: {
                     ...values,
@@ -82,16 +89,16 @@ function CarRequestForm() {
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                     <div className="flex items-center space-x-3">
                       <label className="text-sm font-medium text-gray-700">Employee Name:</label>
-                      <span className="text-sky-700 font-bold">{empName}</span>
+                      <span className="text-(--color-primary) font-bold">{empName}</span>
                     </div>
                     <div className="flex items-center space-x-3 mt-2">
                       <label className="text-sm font-medium text-gray-700">Insert Date:</label>
-                      <span className="text-sky-700 font-bold">{new Date().toISOString().split('T')[0]}</span>
+                      <span className="text-(--color-primary) font-bold">{new Date().toISOString().split('T')[0]}</span>
                     </div>
                   </div>
 
                   <div className="space-y-6">
-                    <h3 className="text-xl font-bold text-sky-700 border-b border-sky-200 pb-2">Car Details</h3>
+                    <h3 className="text-xl font-bold text-(--color-primary) border-b border-sky-200 pb-2">Car Details</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="driverName">
@@ -103,13 +110,14 @@ function CarRequestForm() {
                           className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
                         >
                           <option hidden>Choose Driver</option>
-                          <option value="ramy hany">Ramy Hany</option>
-                          <option value="adam youssef">Adam Youssef</option>
-                          <option value="zain adam">Zain Adam</option>
+                          {
+                            drivers.map((ele) => (
+                              <option key={ele.id} value={ele.fullName}>{ele.fullName}</option>
+                            ))
+                          }
                         </Field>
                         <ErrorMessage name="driverName" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
-
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="numberOfPassengers">
                           Number of Passengers <span className="text-red-500">*</span>
@@ -124,7 +132,6 @@ function CarRequestForm() {
                         <ErrorMessage name="numberOfPassengers" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
                     </div>
-
                     <div className="space-y-2">
                       <label className="block text-sm font-semibold text-gray-700" htmlFor="carType">
                         Car Type <span className="text-red-500">*</span>
@@ -164,7 +171,7 @@ function CarRequestForm() {
                   </div>
 
                   <div className="space-y-6">
-                    <h3 className="text-xl font-bold text-sky-700 border-b border-sky-200 pb-2">Trip Details</h3>
+                    <h3 className="text-xl font-bold text-(--color-primary) border-b border-sky-200 pb-2">Trip Details</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="yourLocation">
@@ -221,7 +228,7 @@ function CarRequestForm() {
                   </div>
 
                   <div className="space-y-6">
-                    <h3 className="text-xl font-bold text-sky-700 border-b border-sky-200 pb-2">Additional Information</h3>
+                    <h3 className="text-xl font-bold text-(--color-primary) border-b border-sky-200 pb-2">Additional Information</h3>
                     <div className="space-y-4">
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="reason">
@@ -257,7 +264,7 @@ function CarRequestForm() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="btn bg-sky-700 hover:bg-sky-800 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[150px]"
+                      className="btn bg-(--color-primary) hover:bg-sky-800 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[150px]"
                     >
                       {isSubmitting ? (
                         <>

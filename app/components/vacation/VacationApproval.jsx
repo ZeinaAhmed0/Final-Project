@@ -116,9 +116,9 @@ function VacationApproval() {
                 <Title title='vacations requests' />
                 <>
                     <div className="overflow-x-auto rounded-lg ">
-                        <table className="min-w-full border-collapse border border-gray-300 text-sky-700 rounded-lg ">
+                        <table className="min-w-full border-collapse border border-gray-300 text-(--color-primary) rounded-lg ">
                             <thead>
-                                <tr className='bg-sky-700 text-white font-semibold'>
+                                <tr className='bg-(--color-primary) text-white font-semibold'>
                                     <th className="border border-gray-300 px-4 py-2">emp name</th>
                                     <th className="border border-gray-300 px-4 py-2">from</th>
                                     <th className="border border-gray-300 px-4 py-2">to</th>

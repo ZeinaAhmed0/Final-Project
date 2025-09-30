@@ -9,7 +9,7 @@ export const UseCarRequestStore = create((set) => ({
     pendedCarRequests: [],
     fetchReq: async () => {
         try {
-            const token = localStorage.getItem('token');
+            const token = sessionStorage.getItem('token');
             if (!token) {
                 return;
             }
@@ -28,7 +28,7 @@ export const UseCarRequestStore = create((set) => ({
     },
     updateCarRequestStatus: async (documentId, approval) => {
         try {
-            const token = localStorage.getItem('token');
+            const token = sessionStorage.getItem('token');
             if (!token) {
                 return;
             }

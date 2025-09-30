@@ -1,6 +1,5 @@
 'use client'
 import { UseEmpInformationStore } from '@/app/store/UseEmpInformationStore';
-import { UseVacationStore } from '@/app/store/UseVacationStore'; 
 import React, { useEffect, useState } from 'react'; 
 import Title from '../../common/Title';
 import LoadingPage from '@/app/pages/LoadingPage/LoadingPage';
@@ -49,9 +48,9 @@ function Credit() {
                 <Title title='credit'/>
             </div>
             <div className="overflow-x-auto">
-                <table className="table-auto w-full border-collapse border border-gray-300 text-sky-700">
+                <table className="table-auto w-full border-collapse border border-gray-300 text-(--color-primary)">
                     <thead>
-                        <tr className='bg-sky-700  text-white'>
+                        <tr className='bg-(--color-primary)  text-white'>
                             <th className="border border-gray-300 px-4 py-2">Type</th>
                             <th className="border border-gray-300 px-4 py-2">Total Available</th>
                             <th className="border border-gray-300 px-4 py-2">Remaining</th>

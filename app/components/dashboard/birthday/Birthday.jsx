@@ -52,7 +52,7 @@ function Birthday() {
                         <td>
                           <div className="flex items-center lg:flex-row md:flex-col sm:flex-col gap-3">
                             <div className="avatar">
-                              <div className="w-15 h-15 rounded-full relative shadow-lg overflow-hidden relative" >
+                              <div className="w-15 h-15 rounded-full relative shadow-lg overflow-hidden" >
                                 <Image
                                   src={emp.employeeImg?.[0]?.formats?.thumbnail?.url ? `http://localhost:1337${emp.employeeImg[0].formats.thumbnail.url}` : '/default-avatar.png'}
                                   alt={emp.fullName}

@@ -14,9 +14,9 @@ function VacationPending() {
             <div className='flex flex-col gap-4 rounded-lg shadow-lg p-6 bg-white max-w-7xl mx-auto'>
                 <Title title='Vacation pending' />
                 <div className='overflow-x-auto'>
-                    <table className='min-w-full border-collapse border border-gray-300 text-sky-700'>
+                    <table className='min-w-full border-collapse border border-gray-300 text-(--color-primary)'>
                         <thead>
-                            <tr className="bg-sky-700 text-white font-semibold">
+                            <tr className="bg-(--color-primary) text-white font-semibold">
                             <th className="border border-gray-300 px-4 py-2">Insert Date</th>
                             <th className="border border-gray-300 px-4 py-2">Manager</th>
                             <th className="border border-gray-300 px-4 py-2">Direct Manager</th>

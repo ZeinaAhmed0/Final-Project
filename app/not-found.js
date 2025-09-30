@@ -10,7 +10,7 @@ function NotFoundPage() {
           <ErrorPage/>
         <Link
           href="/"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors inline-block"
+          className="bg-blue-500 hover:bg-blue-700 text(--color-white) font-bold py-2 px-4 rounded transition-colors inline-block"
         >
           Go Home
         </Link>

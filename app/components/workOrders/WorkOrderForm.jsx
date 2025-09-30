@@ -48,7 +48,7 @@ function WorkOrderForm() {
                             }}
                             validationSchema={validationSchema}
                             onSubmit={async (values, { setSubmitting, resetForm }) => {
-                                const token = localStorage.getItem('token');
+                                const token = sessionStorage.getItem('token');
                                 const dataToSend = JSON.stringify({
                                     data: {
                                         ...values,
@@ -80,16 +80,16 @@ function WorkOrderForm() {
                                     <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                                         <div className="flex items-center space-x-3">
                                             <label className="text-sm font-medium text-gray-700">Employee Name:</label>
-                                            <span className="text-sky-700 font-bold">{empName}</span>
+                                            <span className="text-(--color-primary) font-bold">{empName}</span>
                                         </div>
                                         <div className="flex items-center space-x-3 mt-2">
                                             <label className="text-sm font-medium text-gray-700">Insert Date:</label>
-                                            <span className="text-sky-700 font-bold">{new Date().toISOString().split('T')[0]}</span>
+                                            <span className="text-(--color-primary) font-bold">{new Date().toISOString().split('T')[0]}</span>
                                         </div>
                                     </div>
 
                                     <div className="space-y-6">
-                                        <h3 className="text-xl font-bold text-sky-700 border-b border-sky-200 pb-2">Service Details</h3>
+                                        <h3 className="text-xl font-bold text-(--color-primary) border-b border-sky-200 pb-2">Service Details</h3>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div className="space-y-2">
                                                 <label className="block text-sm font-semibold text-gray-700" htmlFor="serviceType">
@@ -167,7 +167,7 @@ function WorkOrderForm() {
                                         </div>
                                     </div>
                                     <div className="space-y-6">
-                                        <h3 className="text-xl font-bold text-sky-700 border-b border-sky-200 pb-2">Service Description</h3>
+                                        <h3 className="text-xl font-bold text-(--color-primary) border-b border-sky-200 pb-2">Service Description</h3>
                                         <div className="space-y-4">
                                             <div className="space-y-2">
                                                 <label className="block text-sm font-semibold text-gray-700" htmlFor="serviceDescription">
@@ -189,7 +189,7 @@ function WorkOrderForm() {
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
-                                            className="btn bg-sky-700 hover:bg-sky-800 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[150px]"
+                                            className="btn bg-(--color-primary) hover:bg-sky-800 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[150px]"
                                         >
                                             {isSubmitting ? (
                                                 <>

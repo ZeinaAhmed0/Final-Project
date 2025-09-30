@@ -12,8 +12,6 @@ export const useApisStore = create((set ) => ({
             }
             })
             set({ emp: res.data.data })
-        } catch (err) {
-            console.log(err)
-        }
+        } catch (err) {}
     }
 }))

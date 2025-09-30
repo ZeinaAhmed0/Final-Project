@@ -6,7 +6,7 @@ import React from 'react'
 function HomePage() {
   return (
     <>
-      <div className='bg-sky-700 h-full'>
+      <div className='bg-(--color-primary) h-full'>
         <Title title='home' bg='bg-blue-200'/>
         <RiyadAssalihin />
         <Birthday />

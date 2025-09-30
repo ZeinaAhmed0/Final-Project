@@ -20,7 +20,7 @@ function HistoryTable() {
                     <p className="text-center text-gray-500 py-4">No vacations found.</p>
                 ) : (
                     <table className="min-w-full border border-gray-300 rounded-md overflow-hidden">
-                        <thead className="bg-sky-700 text-white">
+                        <thead className="bg-(--color-primary) text-white">
                             <tr>
                                 <th className="px-6 py-3 text-left font-semibold">Employee Name</th>
                                 <th className="px-6 py-3 text-center font-semibold">From</th>
@@ -34,7 +34,7 @@ function HistoryTable() {
                             {vacations.map((vac, i) => (
                                 <tr
                                     key={vac.documentId}
-                                    className={`text-sky-700 ${
+                                    className={`text-(--color-primary) ${
                                         i % 2 === 0 ? 'bg-sky-50' : 'bg-white'
                                     }`}
                                 >

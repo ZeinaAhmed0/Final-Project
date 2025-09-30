@@ -28,7 +28,6 @@ function CarRequestApproval() {
                 return false;
         }
     });
-
     const handleCheckboxChange = (documentId) => {
         setSelected(prev => ({
             ...prev,
@@ -50,11 +49,9 @@ function CarRequestApproval() {
             setSelected({});
             await fetchReq();
         } catch (error) {
-            toast.error('Failed to approve CarRequests.');
-            console.error(error);
+            toast.error('Failed to approve Requests.');
         }
     };
-
     const handleRejectSelected = async () => {
         const selectedIds = Object.keys(selected).filter(id => selected[id]);
         if (selectedIds.length === 0) {
@@ -84,7 +81,7 @@ function CarRequestApproval() {
                 <>
                     <div className="overflow-x-auto mt-4 rounded-lg bg-white">
                         <table className="min-w-full border border-gray-300 overflow-hidden ">
-                            <thead className="bg-sky-700 text-white">
+                            <thead className="bg-(--color-primary) text-white">
                                 <tr>
                                     <th className="border border-gray-300 px-4 py-2">Emp Name</th>
                                     <th className="border border-gray-300 px-4 py-2">From</th>

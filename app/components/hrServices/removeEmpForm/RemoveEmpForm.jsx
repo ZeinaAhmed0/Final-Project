@@ -20,7 +20,7 @@ function RemoveEmpForm() {
         (employee) => employee.jobTitle.toLowerCase() !== "general manager"
     );
     const handleDelete = async (employeeId) => {
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
         try {
             setLoading(true);
             await axios.delete(`${endPoint}employees/${employeeId}`, {
@@ -31,7 +31,6 @@ function RemoveEmpForm() {
             toast.success("Employee removed successfully!");
             await fetchApi();
         } catch (error) {
-            console.error("Delete error:", error.response || error);
             toast.error("Failed to remove employee. Please try again.");
         } finally {
             setLoading(false);
@@ -56,9 +55,9 @@ function RemoveEmpForm() {
                             className="mb-4 p-2 border border-gray-300 rounded w-full max-w-sm"
                         />
                         <div className="overflow-x-auto">
-                            <table className="min-w-full border-collapse border border-gray-300 text-sky-700">
+                            <table className="min-w-full border-collapse border border-gray-300 text-(--color-primary)">
                                 <thead>
-                                    <tr className="bg-sky-700 text-white font-semibold">
+                                    <tr className="bg-(--color-primary) text-white font-semibold">
                                         <th className="border border-gray-300 px-4 py-2"> Full Name </th> 
                                         <th className="border border-gray-300 px-4 py-2"> Job Title </th> 
                                         <th className="border border-gray-300 px-4 py-2"> Location </th> 

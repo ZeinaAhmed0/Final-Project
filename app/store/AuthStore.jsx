@@ -17,14 +17,13 @@ export const useAuthStore = create((set) => ({
             set({ token: jwt, isLogin: true });
             return jwt;
         } catch (error) {
-            console.error('Login failed:', error.response?.data?.message || error.message);
             const message = 'Invalid email or password';
             throw new Error(message);
         }
     },
     loadTokenFromStorage: () => {
         if (typeof window !== 'undefined') {
-            const token = localStorage.getItem('token');
+            const token = sessionStorage.getItem('token');
             if (token) {
                 set({ token, isLogin: true });
             }
