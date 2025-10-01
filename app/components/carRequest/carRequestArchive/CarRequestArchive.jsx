@@ -1,27 +1,18 @@
 'use client'
 import { UseEmpInformationStore } from '@/app/store/UseEmpInformationStore';
-import { UseLoadingStore } from '@/app/store/UseLoadingStore';
-import LoadingPage from '@/app/pages/LoadingPage/LoadingPage';
 import React, { useEffect } from 'react';
 import Title from '../../common/Title';
 import { UseCarRequestStore } from '@/app/store/UseCarRequestStore';
 
 function CarRequestArchive() {
     const { fetchUser, empName } = UseEmpInformationStore();
-    const { setLoading, loading } = UseLoadingStore();
     const { approvedCarRequests, fetchReq } = UseCarRequestStore();
     useEffect(() => {
         fetchUser ();
         fetchReq();
-        setLoading(false);
     }, [fetchUser , fetchReq]);
-    if (loading) {
-        return <LoadingPage/>;
-        
-    }
+
     const myCarRequests = approvedCarRequests.filter(req => req.empName === empName);
-
-
     return (
         <>
             <div className="flex flex-col gap-4 rounded-lg shadow-lg p-6 bg-white max-w-7xl mx-auto">

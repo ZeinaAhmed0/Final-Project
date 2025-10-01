@@ -1,23 +1,17 @@
 'use client'
-import LoadingPage from '@/app/pages/LoadingPage/LoadingPage';
 import { UseEmpInformationStore } from '@/app/store/UseEmpInformationStore';
-import { UseLoadingStore } from '@/app/store/UseLoadingStore';
 import React, { useEffect } from 'react'
 import Title from '../common/Title';
 import { UseOrderStore } from '@/app/store/UseOrdersStore';
 
 function MyOrders() {
     const { fetchUser, empName } = UseEmpInformationStore();
-    const {setLoading, loading} = UseLoadingStore();
     const { orders, fetchOrders } = UseOrderStore();
     useEffect(() => {
         fetchUser ();
         fetchOrders();
-        setLoading(false);
     }, [fetchUser]);
-    if (loading) {
-        return <LoadingPage/>;
-    }
+
     const myOrders = orders.filter(req => req.empName === empName);
     return (
         <div className="flex flex-col gap-4 rounded-lg shadow-lg p-6 bg-white max-w-7xl mx-auto">

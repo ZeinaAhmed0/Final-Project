@@ -1,5 +1,5 @@
 'use client';
-import { useSitesStore } from '@/app/store/UseSitesStore';
+import { useSitesStore } from '@/app/hooks/UseSitesStore';
 import React from 'react';
 import ImgContainer from '../../components/common/ImgContainer';
 import Link from 'next/link';

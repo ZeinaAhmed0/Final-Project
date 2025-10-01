@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import logo from '@/public/logo.png';
+import logo from '@/public/images/logo.png';
 import ImgContainer from '../common/ImgContainer';
 import { SlMenu } from "react-icons/sl";
 import NavbarAcc from '../navbarAcc/NavbarAcc';
@@ -19,7 +19,7 @@ function Navbar({ toggleAside }) {
                 <SlMenu />
               </div>
               <div className="logo">
-                <ImgContainer img={logo} imgAlt="logo" className='fill' smWidth='w-8' mdWidth='w-10' height='h-15' />
+                <ImgContainer img={logo} imgAlt="logo" className='fill' smWidth='w-8' mdWidth='w-10' height='h-10' />
               </div>
             </div>
             <div className='flex items-center gap-5 justify-center'>

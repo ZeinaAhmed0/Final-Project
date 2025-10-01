@@ -1,6 +1,4 @@
 'use client'
-import LoadingPage from '@/app/pages/LoadingPage/LoadingPage';
-import { UseLoadingStore } from '@/app/store/UseLoadingStore';
 import React, { useEffect } from 'react'
 import Title from '../common/Title';
 import { UseOrderStore } from '@/app/store/UseOrdersStore';
@@ -8,16 +6,11 @@ import { UseEmpInformationStore } from '@/app/store/UseEmpInformationStore';
 
 function Orders() {
     const { userData, fetchUser } = UseEmpInformationStore();
-    const { setLoading, loading } = UseLoadingStore();
     const { orders, fetchOrders } = UseOrderStore();
     useEffect(() => {
         fetchOrders();
         fetchUser();
-        setLoading(false);
     }, []);
-    if (loading) {
-        return <LoadingPage />;
-    }
     const myWork = orders.filter(ele => `${ele.department} manager` === userData?.[0]?.jobTitle);
     if (userData?.[0].department === 'management') {
         return (

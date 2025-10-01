@@ -4,32 +4,23 @@ import { UseVacationStore } from '@/app/store/UseVacationStore';
 import React, { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import Title from '../common/Title';
-import { UseLoadingStore } from '@/app/store/UseLoadingStore';
-import LoadingPage from '@/app/pages/LoadingPage/LoadingPage';
 import { FaCheck, FaTimes } from 'react-icons/fa';
 
 function VacationApproval() {
-    const { empName, userData, fetchUser } = UseEmpInformationStore();
+    const { empName, fetchUser } = UseEmpInformationStore();
     const { vacations, fetchVac, updateVacationStatus, updateEmployeeLeaveTakenByName } = UseVacationStore();
     const [selected, setSelected] = useState({});
-    const { loading, setLoading } = UseLoadingStore();
 
     useEffect(() => {
         fetchVac();
         fetchUser();
-        setLoading(false);
     }, []);
-    loading ? <LoadingPage /> : '';
-    if (!userData?.[0] || userData[0]?.department !== "management") {
-        return null;
-    }
 
     const filteredVacations = vacations.filter(vac => {
         return (vac.directManager === empName || vac.manager === empName)
             && vac.empName !== empName
             && (vac.approval === null);
     });
-
     const calculateDaysTaken = (dateFrom, dateTo) => {
         const from = new Date(dateFrom);
         const to = new Date(dateTo);
@@ -37,7 +28,6 @@ function VacationApproval() {
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
         return diffDays;
     };
-
     const getLeaveTypeField = (leaveType) => {
         const type = leaveType.toLowerCase().trim();
         switch (type) {
@@ -148,7 +138,7 @@ function VacationApproval() {
                                             <td className="border border-gray-300">
                                                 {vac.approval === true ? 'Approved' : vac.approval === false ? 'Rejected' : 'Pending'}
                                             </td>
-                                            <td className="border border-black">
+                                            <td className="border border-gray-300">
                                                 <input
                                                     type="checkbox"
                                                     checked={!!selected[vac.documentId]}

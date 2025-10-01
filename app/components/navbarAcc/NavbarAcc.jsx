@@ -4,9 +4,12 @@ import { RiArrowDownSFill } from "react-icons/ri";
 import { VscPerson } from "react-icons/vsc";
 import Link from 'next/link';
 import { UseEmpInformationStore } from '@/app/store/UseEmpInformationStore';
-
+import { useEffect } from 'react';
 function NavbarAcc() {
-    const {empName} = UseEmpInformationStore();
+    const { empName, userData, fetchUser } = UseEmpInformationStore();
+    // useEffect(() => {
+    //     fetchUser();
+    // }, [])
     return (
         <>
             <div className="dropdown dropdown-center ">
@@ -16,6 +19,10 @@ function NavbarAcc() {
                 <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm ">
                     <li><Link href="/myPage">my page</Link></li>
                     <li><Link href="/">home</Link></li>
+                    {/* {
+                        userData?.[0]?.department?.toLowerCase() === 'secretary' &&
+                        <li><Link href="/managerAccount">manager account</Link></li>
+                    } */}
                 </ul>
             </div>
         </>

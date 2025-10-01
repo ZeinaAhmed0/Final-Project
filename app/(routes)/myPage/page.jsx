@@ -8,9 +8,9 @@ import React from 'react'
 function MyPage() {
   return (
 <>
-  <div className="bg-blue-200 p-3 min-h-screen">
-    <Title title="my page" />
-    <div className="m-4 space-y-6">
+  <div className="bg-(--color-secondary) min-h-screen">
+    <Title title="my page" bg="bg-white" />
+    <div className="m-4 space-y-6 p-3">
       <Information />
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="flex flex-col gap-6 justify-start">

@@ -10,7 +10,7 @@ function ErrorPage() {
     return (
         <>
             <div className='flex justify-center items-center h-screen overflow-hidden'>
-                    <LottiePlayer autoplay loop src="/404ErrorPageFiles.json" className='lg:min-w-8/12 md:w-10/12 sm:w-11/12 w-12/12 h-screen' />
+                    <LottiePlayer autoplay loop src="/animation/404ErrorPageFiles.json" className='lg:min-w-8/12 md:w-10/12 sm:w-11/12 w-12/12 h-screen' />
             </div>
         </>
     )

@@ -10,7 +10,7 @@ function LoadingPage() {
     return (
         <>
             <div className='flex justify-center items-center h-screen w-screen'>
-                    <LottiePlayer autoplay loop src="/LoadingFiles.json" className='w-full h-full' />
+                    <LottiePlayer autoplay loop src="/animation/LoadingFiles.json" className='w-full h-full' />
             </div>
         </>
     )

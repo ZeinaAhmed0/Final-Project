@@ -9,7 +9,6 @@ import OuterContainer from "../../common/OuterContainer";
 
 function RemoveEmpForm() {
     const { emp, fetchApi } = useApisStore();
-    const [loading, setLoading] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
@@ -22,7 +21,6 @@ function RemoveEmpForm() {
     const handleDelete = async (employeeId) => {
         const token = sessionStorage.getItem("token");
         try {
-            setLoading(true);
             await axios.delete(`${endPoint}employees/${employeeId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -32,8 +30,6 @@ function RemoveEmpForm() {
             await fetchApi();
         } catch (error) {
             toast.error("Failed to remove employee. Please try again.");
-        } finally {
-            setLoading(false);
         }
     };
     const searchFilteredEmp = filteredEmp?.filter((employee) =>
@@ -80,7 +76,7 @@ function RemoveEmpForm() {
                                                     } hover:bg-sky-100`}
                                             >
                                                 <td className="border border-gray-300 px-4 py-2 flex items-center justify-start gap-4">
-                                                    <button onClick={() => handleDelete(employee.documentId)} disabled={loading} title="Delete employee" className="text-red-600 hover:text-red-800"> <FaTrash />
+                                                    <button onClick={() => handleDelete(employee.documentId)} title="Delete employee" className="text-red-600 hover:text-red-800"> <FaTrash />
                                                     </button>
                                                     {employee.fullName}
                                                 </td>

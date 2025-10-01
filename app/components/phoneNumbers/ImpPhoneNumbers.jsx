@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { useImpPhoneNOStore } from '@/app/store/ImpPhoneNOStore'
+import { useImpPhoneNOStore } from '@/app/hooks/ImpPhoneNOStore'
 function ImpPhoneNumbers() {
     const { impPhoneNO } = useImpPhoneNOStore()
     return (

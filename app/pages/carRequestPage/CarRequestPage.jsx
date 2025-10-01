@@ -1,3 +1,4 @@
+'use client'
 import CarPending from '@/app/components/carRequest/carPending/CarPending'
 import CarRequestArchive from '@/app/components/carRequest/carRequestArchive/CarRequestArchive'
 import Title from '@/app/components/common/Title'

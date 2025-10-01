@@ -1,7 +1,7 @@
 'use client'
-import { useHadithStore } from '@/app/store/UseHadithStore'
+import { useHadithStore } from '@/app/hooks/UseHadithStore'
 import React, { useEffect, useState } from 'react'
-function RiyadAssalihin(){
+function RiyadhAsSaaliheen(){
   const { data } = useHadithStore()
   const [randomItem, setRandomItem] = useState(null);
 
@@ -28,4 +28,4 @@ function RiyadAssalihin(){
   )
 }
 
-export default RiyadAssalihin
+export default RiyadhAsSaaliheen

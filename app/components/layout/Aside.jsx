@@ -52,6 +52,12 @@ function Aside({ toggleAside }) {
                         <li>
                           <Link href="/reservationRequest"> <FolderIcon /> reservation requests </Link>
                         </li>
+                        {
+                          userData?.[0]?.jobTitle?.toLowerCase() === 'hr manager' &&
+                          <li>
+                            <Link href="/reservation"> <FolderIcon /> reservations</Link>
+                          </li>
+                        }
                         <li>
                           <Link href="/vacationRequests"> <FolderIcon /> vacation requests </Link>
                         </li>

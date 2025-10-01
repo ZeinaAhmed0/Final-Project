@@ -1,13 +1,13 @@
 'use client';
 import { create } from "zustand";
-import logo from '@/public/logo.png'
-import filGoal from '@/public/filGoal.webp';
-import EGas from '@/public/EGas.webp';
-import ministry from '@/public/MinistryOfPetroleum.png';
-import wikipedia from '@/public/wikipedia.png';
-import yallaKora from '@/public/yallakora.webp';
-import youm7 from '@/public/youm7.webp';
-import bbc from '@/public/BBC.webp';
+import logo from '@/public/images/logo.png'
+import filGoal from '@/public/images/filGoal.webp';
+import EGas from '@/public/images/EGas.webp';
+import ministry from '@/public/images/MinistryOfPetroleum.png';
+import wikipedia from '@/public/images/wikipedia.png';
+import yallaKora from '@/public/images/yallakora.webp';
+import youm7 from '@/public/images/youm7.webp';
+import bbc from '@/public/images/BBC.webp';
 export const useSitesStore = create(set => ({
     newsSites: [
         {

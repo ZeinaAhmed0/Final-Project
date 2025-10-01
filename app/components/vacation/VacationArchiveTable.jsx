@@ -3,22 +3,15 @@ import { UseVacationStore } from '@/app/store/UseVacationStore';
 import { UseEmpInformationStore } from '@/app/store/UseEmpInformationStore';
 import React, { useEffect } from 'react';
 import Title from '../common/Title';
-import { UseLoadingStore } from '@/app/store/UseLoadingStore';
-import LoadingPage from '@/app/pages/LoadingPage/LoadingPage';
 
 function VacationArchiveTable() {
     const { approvedVacations, fetchVac} = UseVacationStore();
     const { fetchUser, empName } = UseEmpInformationStore();
-    const {setLoading, loading} = UseLoadingStore();
     useEffect(() => {
         fetchUser ();
         fetchVac();
-        setLoading(false);
     }, [fetchUser , fetchVac]);
-    if (loading) {
-        return <LoadingPage/>;
-        
-    }
+
     const myVacations = approvedVacations.filter(vac => vac.empName === empName);
     return (
         <div className="flex flex-col gap-4 rounded-lg shadow-lg p-6 bg-white max-w-7xl mx-auto">

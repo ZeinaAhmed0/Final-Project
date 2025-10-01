@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import HBD from '@/public/happy-birthday.webp'
+import HBD from '@/public/images/happy-birthday.webp'
 import ImgContainer from '../../common/ImgContainer'
 import { useApisStore } from '@/app/store/UseApisStore';
 import { UseLoadingStore } from '@/app/store/UseLoadingStore';

@@ -1,24 +1,16 @@
 'use client'
 import { UseEmpInformationStore } from '@/app/store/UseEmpInformationStore';
 import React, { useEffect } from 'react';
-import { UseLoadingStore } from '@/app/store/UseLoadingStore';
-import LoadingPage from '@/app/pages/LoadingPage/LoadingPage';
 import { UseCarRequestStore } from '@/app/store/UseCarRequestStore';
 import Title from '../../common/Title';
 function CarOrder() {
     const { empName, fetchUser } = UseEmpInformationStore();
     const { fetchReq, approvedCarRequests } = UseCarRequestStore();
-    const { setLoading, loading } = UseLoadingStore();
     useEffect(() => {
         fetchUser();
         fetchReq();
-        setLoading(false);
     }, [fetchUser, fetchReq]);
-    console.log(approvedCarRequests);
 
-    if (loading) {
-        return <LoadingPage />;
-    }
     const myOrders = approvedCarRequests.filter(req => req.driverName === empName);
     return (
         <>
