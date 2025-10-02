@@ -9,7 +9,7 @@ function VacationPending() {
     const { empName, userData, fetchUser } = UseEmpInformationStore();
     useEffect(() => {
         fetchUser ();
-    })
+    },[])
     const myVacations = pendedVacations.filter(vac => vac.empName === empName);
     if (userData?.[0]?.jobTitle?.toLowerCase() !== 'general manager') {
         return (

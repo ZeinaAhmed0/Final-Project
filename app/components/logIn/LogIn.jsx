@@ -28,7 +28,6 @@ function LoginPage() {
             router.push("/");
         }
     }, [isLogin, router]);
-
     const onSubmit = async (values, { setSubmitting, setStatus }) => {
         try {
             const jwt = await fetchToken(values.email, values.password);
@@ -46,7 +45,6 @@ function LoginPage() {
             setLoading(false);
         }
     };
-
     return (
         <div className="min-h-screen flex items-center justify-center bg-blue-100">
             {loading ? (

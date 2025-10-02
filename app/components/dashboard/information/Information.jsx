@@ -7,14 +7,11 @@ import Title from "../../common/Title";
 
 function Information() {
     const { userData, fetchUser } = UseEmpInformationStore();
-    useEffect(() => {
-        fetchUser();
-    }, []);
     const { fetchApi } = useApisStore();
     useEffect(() => {
+        fetchUser(); 
         fetchApi();
-    }, [fetchApi]);
-
+    }, []);
     return (
         <>
         <div className="flex flex-col gap-2 rounded-lg shadow-md p-5 mx-auto bg-white">

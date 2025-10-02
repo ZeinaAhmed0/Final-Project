@@ -34,7 +34,6 @@ function CarRequestApproval() {
             [documentId]: !prev[documentId],
         }));
     };
-
     const handleApprove = async () => {
         const selectedIds = Object.keys(selected).filter(id => selected[id]);
         if (selectedIds.length === 0) {
@@ -54,10 +53,6 @@ function CarRequestApproval() {
     };
     const handleRejectSelected = async () => {
         const selectedIds = Object.keys(selected).filter(id => selected[id]);
-        if (selectedIds.length === 0) {
-            toast.error('Please select at least one request to reject.');
-            return;
-        }
         try {
             for (const id of selectedIds) {
                 await updateCarRequestStatus(id, false);
@@ -67,7 +62,6 @@ function CarRequestApproval() {
             await fetchReq();
         } catch (error) {
             toast.error('Failed to reject CarRequests.');
-            console.error(error);
         }
     };
 

@@ -7,13 +7,11 @@ import LoadingPage from '@/app/pages/LoadingPage/LoadingPage';
 function Credit() {
     const { userData, fetchUser  } = UseEmpInformationStore();
     const [loading, setLoading] = useState(true);
-
     useEffect(() => {
         fetchUser();
         setLoading(false);
     }, []);
         
-
     loading ? <LoadingPage/> : '';
     if (!userData || userData.length === 0) {
         return (
@@ -23,7 +21,6 @@ function Credit() {
             </div>
         );
     }
-
     const vacTypes = [
         {
             label: "Rest Day",
@@ -41,7 +38,6 @@ function Credit() {
             used: userData[0]?.emergencyLeaveTaken || 0,
         },
     ];
-
     return (
         <div className="flex flex-col gap-2 rounded-lg shadow-md p-5 max-w-md mx-auto">
             <div>

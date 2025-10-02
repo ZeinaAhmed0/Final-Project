@@ -58,12 +58,9 @@ function VacationForm() {
                   if (res.status === 200 || res.status === 201) {
                     toast.success('Vacation request submitted successfully!');
                     resetForm();
-                  } else {
-                    throw new Error(`API Error: ${res.status} ${res.statusText}`);
                   }
                 } catch (error) {
                   toast.error('Failed to send request. Please try again.');
-                  console.error(`Error submitting request: ${error.response?.data?.message || error.message}`);
                 } finally {
                   setSubmitting(false);
                 }
@@ -81,7 +78,6 @@ function VacationForm() {
                       <span className="text-(--color-primary) font-bold">{new Date().toISOString().split('T')[0]}</span>
                     </div>
                   </div>
-
                   <div className="space-y-6">
                     <h3 className="text-xl font-bold text-(--color-primary) border-b border-sky-200 pb-2">Vacation Details</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -96,7 +92,6 @@ function VacationForm() {
                         />
                         <ErrorMessage name="dateFrom" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
-
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="dateTo">
                           End Date <span className="text-red-500">*</span>
@@ -109,7 +104,6 @@ function VacationForm() {
                         <ErrorMessage name="dateTo" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
                     </div>
-
                     <div className="space-y-2">
                       <label className="block text-sm font-semibold text-gray-700" htmlFor="leavesType">
                         Leave Type <span className="text-red-500">*</span>
@@ -127,7 +121,6 @@ function VacationForm() {
                       <ErrorMessage name="leavesType" component="div" className="text-red-500 text-sm mt-1" />
                     </div>
                   </div>
-
                   <div className="space-y-6">
                     <h3 className="text-xl font-bold text-(--color-primary) border-b border-sky-200 pb-2">Additional Information</h3>
                     <div className="space-y-4">
@@ -144,7 +137,6 @@ function VacationForm() {
                         />
                         <ErrorMessage name="description" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
-
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="notes">
                           Notes
@@ -160,7 +152,6 @@ function VacationForm() {
                       </div>
                     </div>
                   </div>
-
                   <div className="space-y-6">
                     <h3 className="text-xl font-bold text-(--color-primary) border-b border-sky-200 pb-2">Approvers</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -178,7 +169,6 @@ function VacationForm() {
                         </Field>
                         <ErrorMessage name="directManager" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
-
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="manager">
                           Manager <span className="text-red-500">*</span>
@@ -195,7 +185,6 @@ function VacationForm() {
                       </div>
                     </div>
                   </div>
-
                   <div className="flex justify-end pt-4">
                     <button
                       type="submit"

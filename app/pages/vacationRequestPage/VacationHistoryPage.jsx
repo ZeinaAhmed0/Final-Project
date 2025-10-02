@@ -10,6 +10,7 @@ function VacationHistoryPage() {
 
     useEffect(() => {
         fetchVac();
+        
     }, []);
 
     if (!userData || userData.length === 0) {

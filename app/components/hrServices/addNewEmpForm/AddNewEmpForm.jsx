@@ -28,7 +28,6 @@ function AddNewEmpForm() {
         emergencyLeave: '',
         restDay: '',
     };
-
     const validationSchema = Yup.object({
         fullName: Yup.string().required('Full Name is required'),
         employeePassword: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),

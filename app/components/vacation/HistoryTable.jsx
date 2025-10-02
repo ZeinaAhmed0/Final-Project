@@ -6,11 +6,9 @@ import React, { useEffect } from 'react';
 
 function HistoryTable() {
     const { vacations, fetchVac } = UseVacationStore();
-
     useEffect(() => {
         fetchVac();
-    }, [fetchVac]);
-
+    }, []);
     return (
         <OuterContainer>
             <div className="flex flex-col gap-4 rounded-lg shadow-lg p-6 bg-white max-w-7xl mx-auto overflow-x-auto">

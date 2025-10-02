@@ -21,7 +21,6 @@ function ReservationForm() {
     purposeOfStay: Yup.string().required(),
     notes: Yup.string().optional(),
   });
-
   return (
     <>
       <Toaster />
@@ -62,8 +61,6 @@ function ReservationForm() {
                   }
                 } catch (error) {
                   toast.error('Failed to send request. Please try again.');
-                  console.log(error);
-                  
                 } finally {
                   setSubmitting(false);
                 }

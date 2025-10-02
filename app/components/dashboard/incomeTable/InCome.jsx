@@ -24,7 +24,6 @@ function InCome() {
         setError("");
         setShowIncome(true);
     };
-
     return (
         <>
             <div className="overflow-x-auto">

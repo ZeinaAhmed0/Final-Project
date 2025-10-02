@@ -11,7 +11,6 @@ function CarRequestArchive() {
         fetchUser ();
         fetchReq();
     }, [fetchUser , fetchReq]);
-
     const myCarRequests = approvedCarRequests.filter(req => req.empName === empName);
     return (
         <>

@@ -28,8 +28,6 @@ function CarRequestForm() {
     serviceType: Yup.string().required(),
   });
   const drivers = emp.filter(ele => ele.jobTitle.toLowerCase() === 'driver');
-  console.log(drivers);
-
   return (
     <>
       <Toaster />
@@ -59,7 +57,7 @@ function CarRequestForm() {
                 const dataToSend = JSON.stringify({
                   data: {
                     ...values,
-                    insertDate: insertDate,
+                    insertDate:  new Date().toISOString().split('T')[0],
                     empName: empName,
                   },
                 });
@@ -73,12 +71,9 @@ function CarRequestForm() {
                   if (res.status === 200 || res.status === 201) {
                     toast.success('Car request submitted successfully!');
                     resetForm();
-                  } else {
-                    throw new Error(`API Error: ${res.status} ${res.statusText}`);
                   }
                 } catch (error) {
                   toast.error('Failed to send request. Please try again.');
-                  console.error(`Error submitting request: ${error.response?.data?.message || error.message}`);
                 } finally {
                   setSubmitting(false);
                 }
@@ -96,7 +91,6 @@ function CarRequestForm() {
                       <span className="text-(--color-primary) font-bold">{new Date().toISOString().split('T')[0]}</span>
                     </div>
                   </div>
-
                   <div className="space-y-6">
                     <h3 className="text-xl font-bold text-(--color-primary) border-b border-sky-200 pb-2">Car Details</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

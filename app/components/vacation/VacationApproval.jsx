@@ -10,7 +10,6 @@ function VacationApproval() {
     const { empName, fetchUser } = UseEmpInformationStore();
     const { vacations, fetchVac, updateVacationStatus, updateEmployeeLeaveTakenByName } = UseVacationStore();
     const [selected, setSelected] = useState({});
-
     useEffect(() => {
         fetchVac();
         fetchUser();
@@ -58,7 +57,6 @@ function VacationApproval() {
                 if (vac) {
                     const days = calculateDaysTaken(vac.dateFrom, vac.dateTo);
                     const field = getLeaveTypeField(vac.leavesType);
-
                     if (field && days > 0) {
                         await updateEmployeeLeaveTakenByName(vac.empName, field, days);
                     }
@@ -79,7 +77,6 @@ function VacationApproval() {
             [documentId]: !prev[documentId],
         }));
     };
-
     const handleRejectSelected = async () => {
         const selectedIds = Object.keys(selected).filter(id => selected[id]);
         if (selectedIds.length === 0) {
@@ -151,7 +148,6 @@ function VacationApproval() {
                             </tbody>
                         </table>
                     </div>
-
                     <div className="mt-6 flex gap-3">
                         <button
                             className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-md shadow transition"

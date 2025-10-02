@@ -10,11 +10,9 @@ import OuterContainer from "../../common/OuterContainer";
 function RemoveEmpForm() {
     const { emp, fetchApi } = useApisStore();
     const [searchTerm, setSearchTerm] = useState("");
-
     useEffect(() => {
         fetchApi();
     }, [fetchApi]);
-
     const filteredEmp = emp?.filter(
         (employee) => employee.jobTitle.toLowerCase() !== "general manager"
     );

@@ -10,7 +10,6 @@ function CarOrder() {
         fetchUser();
         fetchReq();
     }, [fetchUser, fetchReq]);
-
     const myOrders = approvedCarRequests.filter(req => req.driverName === empName);
     return (
         <>
