@@ -84,15 +84,15 @@ function CarRequestForm() {
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                     <div className="flex items-center space-x-3">
                       <label className="text-sm font-medium text-gray-700">Employee Name:</label>
-                      <span className="text-(--color-primary) font-bold">{empName}</span>
+                      <span className="text-[var(--color-primary)] font-bold">{empName}</span>
                     </div>
                     <div className="flex items-center space-x-3 mt-2">
                       <label className="text-sm font-medium text-gray-700">Insert Date:</label>
-                      <span className="text-(--color-primary) font-bold">{new Date().toISOString().split('T')[0]}</span>
+                      <span className="text-[var(--color-primary)] font-bold">{new Date().toISOString().split('T')[0]}</span>
                     </div>
                   </div>
                   <div className="space-y-6">
-                    <h3 className="text-xl font-bold text-(--color-primary) border-b border-sky-200 pb-2">Car Details</h3>
+                    <h3 className="text-xl font-bold text-[var(--color-primary)] border-b border-sky-200 pb-2">Car Details</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="driverName">
@@ -165,7 +165,7 @@ function CarRequestForm() {
                   </div>
 
                   <div className="space-y-6">
-                    <h3 className="text-xl font-bold text-(--color-primary) border-b border-sky-200 pb-2">Trip Details</h3>
+                    <h3 className="text-xl font-bold text-[var(--color-primary)] border-b border-sky-200 pb-2">Trip Details</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="yourLocation">
@@ -222,7 +222,7 @@ function CarRequestForm() {
                   </div>
 
                   <div className="space-y-6">
-                    <h3 className="text-xl font-bold text-(--color-primary) border-b border-sky-200 pb-2">Additional Information</h3>
+                    <h3 className="text-xl font-bold text-[var(--color-primary)] border-b border-sky-200 pb-2">Additional Information</h3>
                     <div className="space-y-4">
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="reason">
@@ -237,7 +237,6 @@ function CarRequestForm() {
                         />
                         <ErrorMessage name="reason" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
-
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="notes">
                           Notes
@@ -247,7 +246,7 @@ function CarRequestForm() {
                           as="textarea"
                           rows={3}
                           className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical"
-                          placeholder="Any additional notes (optional)"
+                          placeholder="Any additional notes ?"
                         />
                         <ErrorMessage name="notes" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
@@ -258,7 +257,7 @@ function CarRequestForm() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="btn bg-(--color-primary) hover:bg-sky-800 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[150px]"
+                      className="btn bg-[var(--color-primary)] hover:bg-sky-800 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[150px]"
                     >
                       {isSubmitting ? (
                         <>

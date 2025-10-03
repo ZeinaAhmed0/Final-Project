@@ -3,7 +3,7 @@ import React from 'react';
 import logo from '@/public/images/logo.png';
 import ImgContainer from '../common/ImgContainer';
 import { SlMenu } from "react-icons/sl";
-import NavbarAcc from '../navbarAcc/NavbarAcc';
+import NavbarAcc from './navbarAcc/NavbarAcc';
 import useAuthStore from '@/app/store/AuthStore';
 
 function Navbar({ toggleAside }) {

@@ -1,18 +1,12 @@
-import Title from '@/app/components/common/Title'
-import Birthday from '@/app/components/dashboard/birthday/Birthday'
-import RiyadhAsSaaliheen from '@/app/components/dashboard/riyadhAsSaaliheen/RiyadhAsSaaliheen'
+import HomePage from '@/app/pages/homePage/HomePage'
 import React from 'react'
 
-function HomePage() {
+function page() {
   return (
     <>
-      <div className='bg-(--color-primary) h-full'>
-        <Title title='home' bg='bg-(--color-secondary)'/>
-        <RiyadhAsSaaliheen/>
-        <Birthday />
-      </div>
+      <HomePage/>
     </>
   )
 }
 
-export default HomePage
+export default page

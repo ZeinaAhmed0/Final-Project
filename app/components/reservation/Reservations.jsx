@@ -2,6 +2,9 @@
 import React, { useEffect} from 'react';
 import Title from '../common/Title';
 import { UseReservationstore } from '@/app/store/UseReservationStore';
+import Table from '../common/TableComponents/Table';
+import TableTd from '../common/TableComponents/TableTd';
+import TableTh from '../common/TableComponents/TableTh';
 
 function Reservation() {
     const { reservations, fetchReservation} = UseReservationstore();
@@ -14,16 +17,15 @@ function Reservation() {
             <div className='flex flex-col gap-4 shadow-lg p-6 bg-white'>
                 <Title title='reservations requests' />
                 <>
-                    <div className="overflow-x-auto rounded-lg ">
-                        <table className="min-w-full border-collapse border border-gray-300 text-(--color-primary) rounded-lg ">
-                            <thead>
-                                <tr className='bg-(--color-primary) text-white font-semibold'>
-                                    <th className="border border-gray-300 px-4 py-2">emp name</th>
-                                    <th className="border border-gray-300 px-4 py-2">insert date</th>
-                                    <th className="border border-gray-300 px-4 py-2">visit station</th>
-                                    <th className="border border-gray-300 px-4 py-2">accommodation place</th>
-                                    <th className="border border-gray-300 px-4 py-2">purpose of stay</th>
-                                    <th className="border border-gray-300 px-4 py-2">notes</th>
+                    <Table>
+                        <thead>
+                                <tr className='bg-[var(--color-primary)] text-white lg:font-semibold md:text-xl sm:text-sm font-normal text:xs'>
+                                    <TableTh>emp name</TableTh>
+                                    <TableTh>insert date</TableTh>
+                                    <TableTh>visit station</TableTh>
+                                    <TableTh>accommodation place</TableTh>
+                                    <TableTh>purpose of stay</TableTh>
+                                    <TableTh>notes</TableTh>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,19 +37,18 @@ function Reservation() {
                                     </tr>
                                 ) : (
                                     reservations.map((vac) => (
-                                        <tr key={vac.documentId} className="text-center">
-                                            <td className="border border-gray-300">{vac.empName || '-'}</td>
-                                            <td className="border border-gray-300">{vac.insertDate}</td>
-                                            <td className="border border-gray-300">{vac.visitStation}</td>
-                                            <td className="border border-gray-300">{vac.accommodationPlace}</td>
-                                            <td className="border border-gray-300">{vac.purposeOfStay || '-'}</td>
-                                            <td className="border border-gray-300">{vac.notes || '-'}</td>
+                                        <tr key={vac.documentId} className="text-center lg:font-medium md:text-xl sm:text-sm font-normal text:xs">
+                                            <TableTd>{vac.empName || '-'}</TableTd>
+                                            <TableTd>{vac.insertDate}</TableTd>
+                                            <TableTd>{vac.visitStation}</TableTd>
+                                            <TableTd>{vac.accommodationPlace}</TableTd>
+                                            <TableTd>{vac.purposeOfStay || '-'}</TableTd>
+                                            <TableTd>{vac.notes || '-'}</TableTd>
                                         </tr>
                                     ))
                                 )}
                             </tbody>
-                        </table>
-                    </div>
+                    </Table>
                 </>
             </div>
         </div>

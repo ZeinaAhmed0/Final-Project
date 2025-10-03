@@ -3,12 +3,9 @@ import React, { useEffect, useState } from 'react'
 import HBD from '@/public/images/happy-birthday.webp'
 import ImgContainer from '../../common/ImgContainer'
 import { useApisStore } from '@/app/store/UseApisStore';
-import { UseLoadingStore } from '@/app/store/UseLoadingStore';
-import LoadingPage from '../../../pages/LoadingPage/LoadingPage';
 import Image from 'next/image';
 
 function Birthday() {
-  const { loading } = UseLoadingStore();
   const { emp, fetchApi } = useApisStore();
   useEffect(() => {
     fetchApi();
@@ -30,8 +27,6 @@ function Birthday() {
 
   return (
     <>
-      {
-        loading ? <LoadingPage /> : (
           <div className='m-6 bg-white'>
             <h1 className='p-3'>Today's Birthdays</h1>
             <hr className='opacity-20' />
@@ -53,12 +48,7 @@ function Birthday() {
                           <div className="flex items-center lg:flex-row md:flex-col sm:flex-col gap-3">
                             <div className="avatar">
                               <div className="w-15 h-15 rounded-full relative shadow-lg overflow-hidden" >
-                                <Image
-                                  src={emp.employeeImg?.[0]?.formats?.thumbnail?.url ? `http://localhost:1337${emp.employeeImg[0].formats.thumbnail.url}` : '/default-avatar.png'}
-                                  alt={emp.fullName}
-                                  fill
-                                  className='object-contain'
-                                />
+                                <Image src={emp.employeeImg?.[0]?.formats?.thumbnail?.url ? `http://localhost:1337${emp.employeeImg[0].formats.thumbnail.url}` : '/default-avatar.png'} alt={emp.fullName} fill className='object-contain'/>
                               </div>
                             </div>
                             <div>
@@ -75,7 +65,7 @@ function Birthday() {
                       </tr>
                     )) : (
                       <tr>
-                        <td colSpan="3" className="text-center py-4">No birthdays today.</td>
+                        <td colSpan='12' className="text-center py-4">No birthdays today.</td>
                       </tr>
                     )
                   }
@@ -83,8 +73,6 @@ function Birthday() {
               </table>
             </div>
           </div>
-        )
-      }
     </>
   )
 }

@@ -17,7 +17,7 @@ function Aside({ toggleAside }) {
         isLogin && (<aside className='w-45 h-screen flex items-start justify-start relative'>
           <button 
               onClick={toggleAside} 
-              className="text-white text-2xl mb-4 top-0 right-0 bg-(--color-primary) fixed lg:hidden md:block sm:block p-3 cursor-pointer"
+              className="text-white text-2xl mb-4 top-0 right-0 bg-[var(--color-primary)] fixed lg:hidden md:block sm:block p-3 cursor-pointer"
               aria-label="Close menu"
             >
               <AiOutlineClose />
@@ -96,7 +96,10 @@ function Aside({ toggleAside }) {
                   <li>
                     <Link href="/importantPhoneNumbers"> <FolderIcon /> important phone numbers </Link>
                   </li>
-                  <li>
+                  {
+                    userData?.[0]?.jobTitle?.toLowerCase() !== 'driver'
+                    &&
+                    <li>
                     <details>
                       <summary> <FolderIcon /> works orders</summary>
                       <ul>
@@ -105,7 +108,7 @@ function Aside({ toggleAside }) {
                         </li>
                       </ul>
                     </details>
-                  </li>
+                  </li>}
                   <li>
                     <details>
                       <summary> <FolderIcon /> transport services </summary>

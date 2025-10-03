@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { useAuthStore } from "@/app/store/AuthStore";
 import { useRouter } from "next/navigation";
 import LoadingPage from "@/app/pages/LoadingPage/LoadingPage";
-import { UseLoadingStore } from "@/app/store/UseLoadingStore";
+import { UseLoadingStore } from "@/app/hooks/UseLoadingStore";
 import { TfiEmail } from "react-icons/tfi";
 import ImgContainer from "../common/ImgContainer";
 import { PiLockKey } from "react-icons/pi";
@@ -114,7 +114,7 @@ function LoginPage() {
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full bg-(--color-primary) text-white py-2 rounded font-bold hover:bg-sky-800 disabled:opacity-50"
+                                className="w-full bg-[var(--color-primary)] text-white py-2 rounded font-bold hover:bg-sky-800 disabled:opacity-50"
                             >
                                 {isSubmitting ? "Logging in..." : "Login"}
                             </button>

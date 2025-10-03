@@ -1,30 +1,12 @@
-import Calendar from '@/app/components/dashboard/calender/Calender'
-import Title from '@/app/components/common/Title'
-import InCome from '@/app/components/dashboard/incomeTable/InCome'
-import Information from '@/app/components/dashboard/information/Information'
-import VacationTable from '@/app/components/vacation/VacationTable'
 import React from 'react'
+import MyPage from '@/app/pages/myPage/MyPage'
 
-function MyPage() {
+function page() {
   return (
-<>
-  <div className="bg-(--color-secondary) min-h-screen">
-    <Title title="my page" bg="bg-white" />
-    <div className="m-4 space-y-6 p-3">
-      <Information />
-      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="flex flex-col gap-6 justify-start">
-          <InCome />
-          <Calendar />
-        </div>
-        <div>
-          <VacationTable />
-        </div>
-      </div>
-    </div>
-  </div>
-</>
+    <>
+      <MyPage />
+    </>
   )
 }
 
-export default MyPage
+export default page

@@ -4,59 +4,54 @@ import { UseEmpInformationStore } from "@/app/store/UseEmpInformationStore";
 import Image from "next/image";
 import React, { useEffect } from "react"
 import Title from "../../common/Title";
+import Table from "../../common/TableComponents/Table";
+import TableTd from "../../common/TableComponents/TableTd";
+import TableTh from "../../common/TableComponents/TableTh";
 
 function Information() {
     const { userData, fetchUser } = UseEmpInformationStore();
     const { fetchApi } = useApisStore();
     useEffect(() => {
-        fetchUser(); 
+        fetchUser();
         fetchApi();
     }, []);
     return (
         <>
-        <div className="flex flex-col gap-2 rounded-lg shadow-md p-5 mx-auto bg-white">
-            <div>
-                <Title title='user information'/>
-            </div>
-        <div className="overflow-x-auto">
-            <table className="min-w-full bg-white border border-gray-300">
-                <thead>
-                    <tr className="bg-(--color-primary) text-white md:text-lg">
-                        <th className="px-4 py-2 border border-gray-300">Photo</th>
-                        <th className="px-4 py-2 border border-gray-300">Employee ID</th>
-                        <th className="px-4 py-2 border border-gray-300">Name</th>
-                        <th className="px-4 py-2 border border-gray-300">Department</th>
-                        <th className="px-4 py-2 border border-gray-300">Sub Department</th>
-                        <th className="px-4 py-2 border border-gray-300">Location</th>
-                        <th className="px-4 py-2 border border-gray-300">Job Title</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {userData?.map((emp, i) => (
-                        <tr key={i} className="border border-gray-300 md:text-lg">
-                            <td className="py-2 border border-gray-300 text-center">
-                                {emp?.employeeImg?.[0]?.formats?.thumbnail?.url && (
-                                    <Image
-                                        src={`http://localhost:1337${emp.employeeImg[0].formats.thumbnail.url}`}
-                                        alt={emp.fullName}
-                                        width={60}
-                                        height={60}
-                                        className="object-cover mx-auto"
-                                    />
-                                )}
-                            </td>
-                            <td className="px-4 py-2 border border-gray-300 text-center">{emp.id}</td>
-                            <td className="px-4 py-2 border border-gray-300 text-center">{emp.fullName}</td>
-                            <td className="px-4 py-2 border border-gray-300 text-center">{emp.department}</td>
-                            <td className="px-4 py-2 border border-gray-300 text-center">{emp.subDepartment}</td>
-                            <td className="px-4 py-2 border border-gray-300 text-center">{emp.location}</td>
-                            <td className="px-4 py-2 border border-gray-300 text-center">{emp.jobTitle}</td>
+            <div className="flex flex-col gap-2 rounded-lg shadow-md p-5 mx-auto bg-white">
+                <div>
+                    <Title title='user information' />
+                </div>
+                <Table>
+                    <thead>
+                        <tr className="bg-[var(--color-primary)] text-white">
+                            <TableTh>Photo</TableTh>
+                            <TableTh>Employee ID</TableTh>
+                            <TableTh>Name</TableTh>
+                            <TableTh>Department</TableTh>
+                            <TableTh>Sub Department</TableTh>
+                            <TableTh>Location</TableTh>
+                            <TableTh>Job Title</TableTh>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-        </div>
+                    </thead>
+                    <tbody>
+                        {userData?.map((emp, i) => (
+                            <tr key={i} className="border border-gray-300">
+                                <td className="py-2 border border-gray-300 text-center">
+                                    {emp?.employeeImg?.[0]?.formats?.thumbnail?.url && (
+                                        <Image src={`http://localhost:1337${emp.employeeImg[0].formats.thumbnail.url}`} alt={emp.fullName} width={60} height={60} className="object-cover mx-auto" />
+                                    )}
+                                </td>
+                                <TableTd>{emp.id}</TableTd>
+                                <TableTd>{emp.fullName}</TableTd>
+                                <TableTd>{emp.department}</TableTd>
+                                <TableTd>{emp.subDepartment}</TableTd>
+                                <TableTd>{emp.location}</TableTd>
+                                <TableTd>{emp.jobTitle}</TableTd>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
+            </div>
         </>
     )
 }

@@ -10,7 +10,7 @@ function NavbarAcc() {
         <>
             <div className="dropdown dropdown-center ">
                 <div tabIndex={0} role="button" className="btn-blue m-1 rounded-2xl flex items-center justify-center gap-1 cursor-pointer">
-                    <VscPerson /><span>Welcome {empName}</span><RiArrowDownSFill />
+                    <VscPerson /><span className='lg:text-[1rem] md:text-sm sm:text-xs text-[0.9rem]'>Welcome {empName}</span><RiArrowDownSFill />
                 </div>
                 <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-26 p-2 shadow-sm ">
                     <li><Link href="/myPage">my page</Link></li>

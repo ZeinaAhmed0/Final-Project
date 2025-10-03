@@ -5,13 +5,17 @@ import toast, { Toaster } from 'react-hot-toast';
 import { UseCarRequestStore } from '@/app/store/UseCarRequestStore';
 import Title from '../../common/Title';
 import { FaCheck, FaTimes } from 'react-icons/fa';
+import Table from '../../common/TableComponents/Table';
+import TableTh from '../../common/TableComponents/TableTh';
+import TableTd from '../../common/TableComponents/TableTd';
 
 function CarRequestApproval() {
-    const { empName, userData } = UseEmpInformationStore();
+    const { empName, userData, fetchUser } = UseEmpInformationStore();
     const { CarRequests, fetchReq, updateCarRequestStatus } = UseCarRequestStore();
     const [selected, setSelected] = useState({});
     useEffect(() => {
         fetchReq();
+        fetchUser();
     }, []);
     const filteredCarRequests = CarRequests.filter((Req) => {
         if (Req.approval !== null) return false;
@@ -73,39 +77,38 @@ function CarRequestApproval() {
                 <p className="text-center text-gray-500 mt-4">No pending car requests.</p>
             ) : (
                 <>
-                    <div className="overflow-x-auto mt-4 rounded-lg bg-white">
-                        <table className="min-w-full border border-gray-300 overflow-hidden ">
-                            <thead className="bg-(--color-primary) text-white">
+                    <Table>
+                        <thead className="bg-[var(--color-primary)] text-white">
                                 <tr>
-                                    <th className="border border-gray-300 px-4 py-2">Emp Name</th>
-                                    <th className="border border-gray-300 px-4 py-2">From</th>
-                                    <th className="border border-gray-300 px-4 py-2">To</th>
-                                    <th className="border border-gray-300 px-4 py-2">Location</th>
-                                    <th className="border border-gray-300 px-4 py-2">Destination</th>
-                                    <th className="border border-gray-300 px-4 py-2">Service Type</th>
-                                    <th className="border border-gray-300 px-4 py-2">Reason</th>
-                                    <th className="border border-gray-300 px-4 py-2">Description</th>
-                                    <th className="border border-gray-300 px-4 py-2">Passengers</th>
-                                    <th className="border border-gray-300 px-4 py-2">Car Type</th>
-                                    <th className="border border-gray-300 px-4 py-2">Driver</th>
-                                    <th className="border border-gray-300 px-4 py-2">Select</th>
+                                    <TableTh>Emp Name</TableTh>
+                                    <TableTh>From</TableTh>
+                                    <TableTh>To</TableTh>
+                                    <TableTh>Location</TableTh>
+                                    <TableTh>Destination</TableTh>
+                                    <TableTh>Service Type</TableTh>
+                                    <TableTh>Reason</TableTh>
+                                    <TableTh>Description</TableTh>
+                                    <TableTh>Passengers</TableTh>
+                                    <TableTh>Car Type</TableTh>
+                                    <TableTh>Driver</TableTh>
+                                    <TableTh>Select</TableTh>
                                 </tr>
                             </thead>
                             <tbody>
                                 {filteredCarRequests.map((req) => (
                                     <tr key={req.documentId} className="text-center hover:bg-gray-50">
-                                        <td className="border border-gray-300 px-4 py-2">{req.empName || '-'}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{req.dateFrom}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{req.dateTo}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{req.yourLocation || '-'}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{req.destination || '-'}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{req.serviceType}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{req.reason || '-'}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{req.description || '-'}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{req.numberOfPassengers || '-'}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{req.carType || '-'}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{req.driverName || '-'}</td>
-                                        <td className="border border-gray-300 px-4 py-2">
+                                        <TableTd>{req.empName || '-'}</TableTd>
+                                        <TableTd>{req.dateFrom}</TableTd>
+                                        <TableTd>{req.dateTo}</TableTd>
+                                        <TableTd>{req.yourLocation || '-'}</TableTd>
+                                        <TableTd>{req.destination || '-'}</TableTd>
+                                        <TableTd>{req.serviceType}</TableTd>
+                                        <TableTd>{req.reason || '-'}</TableTd>
+                                        <TableTd>{req.description || '-'}</TableTd>
+                                        <TableTd>{req.numberOfPassengers || '-'}</TableTd>
+                                        <TableTd>{req.carType || '-'}</TableTd>
+                                        <TableTd>{req.driverName || '-'}</TableTd>
+                                        <TableTd>
                                             <input
                                                 type="checkbox"
                                                 checked={!!selected[req.documentId]}
@@ -113,12 +116,11 @@ function CarRequestApproval() {
                                                 disabled={req.approval === true}
                                                 className="h-4 w-4 text-sky-600 rounded"
                                             />
-                                        </td>
+                                        </TableTd>
                                     </tr>
                                 ))}
                             </tbody>
-                        </table>
-                    </div>
+                    </Table>
                     <div className="mt-6 flex gap-3">
                         <button
                             className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg shadow transition"

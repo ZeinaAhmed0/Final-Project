@@ -3,6 +3,9 @@ import React, { useEffect } from 'react'
 import Title from '../common/Title';
 import { UseVacationStore } from '@/app/store/UseVacationStore';
 import { UseEmpInformationStore } from '@/app/store/UseEmpInformationStore';
+import Table from '../common/TableComponents/Table';
+import TableTd from '../common/TableComponents/TableTd';
+import TableTh from '../common/TableComponents/TableTh';
 
 function VacationTable() {
     const { fetchVac, approvedVacations } = UseVacationStore();
@@ -20,14 +23,13 @@ function VacationTable() {
                 <div>
                     <Title title='vacations' />
                 </div>
-                <div className="overflow-x-auto">
-                    <table className="table-auto w-full border-collapse border border-gray-300 text-(--color-primary)">
-                        <thead>
-                            <tr className="bg-(--color-primary) text-white">
-                                <th className="border border-gray-300 px-4 py-2">From</th>
-                                <th className="border border-gray-300 px-4 py-2">To</th>
-                                <th className="border border-gray-300 px-4 py-2">Days</th>
-                                <th className="border border-gray-300 px-4 py-2">Type</th>
+                <Table>
+                    <thead>
+                            <tr className="bg-[var(--color-primary)] text-white lg:font-semibold md:text-xl sm:text-sm font-normal text:xs">
+                                <TableTh>From</TableTh>
+                                <TableTh>To</TableTh>
+                                <TableTh>Days</TableTh>
+                                <TableTh>Type</TableTh>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,18 +38,17 @@ function VacationTable() {
                                     const diffTime = new Date(vac.dateTo).getTime() - new Date(vac.dateFrom).getTime();
                                     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
                                     return (
-                                        <tr key={vac.id}>
-                                            <td className="border border-gray-300 px-4 py-2">{vac.dateFrom}</td>
-                                            <td className="border border-gray-300 px-4 py-2">{vac.dateTo}</td>
-                                            <td className="border border-gray-300 px-4 py-2">{diffDays}</td>
-                                            <td className="border border-gray-300 px-4 py-2">{vac.leavesType}</td>
+                                        <tr key={vac.id} className='lg:font-semibold md:text-xl sm:text-sm font-normal text:xs'>
+                                            <TableTd>{vac.dateFrom}</TableTd>
+                                            <TableTd>{vac.dateTo}</TableTd>
+                                            <TableTd>{diffDays}</TableTd>
+                                            <TableTd>{vac.leavesType}</TableTd>
                                         </tr>
                                     )
                                 })
                             }
                         </tbody>
-                    </table>
-                </div>
+                </Table>
             </div>
         </>
     )

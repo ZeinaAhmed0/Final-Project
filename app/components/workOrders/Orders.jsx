@@ -3,6 +3,9 @@ import React, { useEffect } from 'react'
 import Title from '../common/Title';
 import { UseOrderStore } from '@/app/store/UseOrdersStore';
 import { UseEmpInformationStore } from '@/app/store/UseEmpInformationStore';
+import Table from '../common/TableComponents/Table';
+import TableTd from '../common/TableComponents/TableTd';
+import TableTh from '../common/TableComponents/TableTh';
 
 function Orders() {
     const { userData, fetchUser } = UseEmpInformationStore();
@@ -16,43 +19,38 @@ function Orders() {
         return (
             <div className="flex flex-col gap-4 rounded-lg shadow-lg p-6 bg-white max-w-7xl mx-auto">
                 <Title title='orders' />
-                <div className="overflow-x-auto">
-                    <table className="min-w-full border-collapse border border-gray-300 text-(--color-primary)">
-                        <thead>
-                            <tr className="bg-(--color-primary) text-white font-semibold">
-                                <th className="border border-gray-300 px-4 py-2">Insert Date</th>
-                                <th className="border border-gray-300 px-4 py-2">emp name</th>
-                                <th className="border border-gray-300 px-4 py-2">service type</th>
-                                <th className="border border-gray-300 px-4 py-2">request field</th>
-                                <th className="border border-gray-300 px-4 py-2">service description</th>
-                                <th className="border border-gray-300 px-4 py-2">priority level</th>
+                <Table>
+                    <thead>
+                        <tr className="bg-[var(--color-primary)] text-white lg:font-semibold md:text-xl sm:text-sm font-normal text:xs">
+                            <TableTh>Insert Date</TableTh>
+                            <TableTh>emp name</TableTh>
+                            <TableTh>service type</TableTh>
+                            <TableTh>request field</TableTh>
+                            <TableTh>service description</TableTh>
+                            <TableTh>priority level</TableTh>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {myWork.length === 0 ? (
+                            <tr>
+                                <td colSpan={12} className="text-center py-4 text-gray-500">
+                                    No orders found.
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            {myWork.length === 0 ? (
-                                <tr>
-                                    <td colSpan={12} className="text-center py-4 text-gray-500">
-                                        No orders found.
-                                    </td>
+                        ) : (
+                            myWork.map((ele, i) => (
+                                <tr key={i} className={`text-center ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'} lg:font-semibold md:text-xl sm:text-sm font-normal text:xs`}>
+                                    <TableTd>{ele.insertDate}</TableTd>
+                                    <TableTd>{ele.empName}</TableTd>
+                                    <TableTd>{ele.serviceType}</TableTd>
+                                    <TableTd>{ele.requestField}</TableTd>
+                                    <TableTd>{ele.serviceDescription}</TableTd>
+                                    <TableTd>{ele.priorityLevel}</TableTd>
                                 </tr>
-                            ) : (
-                                myWork.map((ele, i) => (
-                                    <tr
-                                        key={i}
-                                        className={`text-center ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-sky-100`}
-                                    >
-                                        <td className="border border-gray-300 px-4 py-2">{ele.insertDate}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{ele.empName}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{ele.serviceType}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{ele.requestField}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{ele.serviceDescription}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{ele.priorityLevel}</td>
-                                    </tr>
-                                ))
-                            )}
-                        </tbody>
-                    </table>
-                </div>
+                            ))
+                        )}
+                    </tbody>
+                </Table>
             </div>
         );
     }

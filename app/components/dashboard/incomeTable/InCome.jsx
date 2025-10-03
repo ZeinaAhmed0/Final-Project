@@ -27,7 +27,7 @@ function InCome() {
     return (
         <>
             <div className="overflow-x-auto">
-                <Title title="my income" bg="bg-(--color-primary)" textColor="text-white" />
+                <Title title="my income" bg="bg-[var(--color-primary)]" textColor="text-white" />
                 <div className="flex flex-col gap-2 bg-white p-5">
                     <div className="flex flex-col sm:flex-row gap-2 items-center">
                         <div className="flex gap-4 items-center">

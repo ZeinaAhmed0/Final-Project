@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import useAuthStore from '@/app/store/AuthStore';
-import { UseLoadingStore } from '@/app/store/UseLoadingStore';
+import { UseLoadingStore } from '@/app/hooks/UseLoadingStore';
 import LoadingPage from '@/app/pages/LoadingPage/LoadingPage';
 
 export default function ProtectedRoute({ children }) {

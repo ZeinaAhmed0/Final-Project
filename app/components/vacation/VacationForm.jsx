@@ -15,15 +15,14 @@ function VacationForm() {
     fetchUser();
   }, []);
   const validationSchema = Yup.object({
-    dateFrom: Yup.date().required(),
+    dateFrom: Yup.date().required('date from is required'),
     dateTo: Yup.date().required().min(Yup.ref('dateFrom'), 'End date cannot be before start date'),
-    leavesType: Yup.string().required(),
-    notes: Yup.string(),
-    description: Yup.string(),
-    manager: Yup.string().required(),
-    directManager: Yup.string().required(),
+    leavesType: Yup.string().required('Leave type is required'),
+    notes: Yup.string().optional(),
+    description: Yup.string().optional(),
+    manager: Yup.string().required('Manager is required'),
+    directManager: Yup.string().required('Direct Manager is required'),
   });
-
   return (
     <>
       <Toaster />
@@ -71,15 +70,15 @@ function VacationForm() {
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                     <div className="flex items-center space-x-3">
                       <label className="text-sm font-medium text-gray-700">Employee Name:</label>
-                      <span className="text-(--color-primary) font-bold">{empName}</span>
+                      <span className="text-[var(--color-primary)] font-bold">{empName}</span>
                     </div>
                     <div className="flex items-center space-x-3 mt-2">
                       <label className="text-sm font-medium text-gray-700">Insert Date:</label>
-                      <span className="text-(--color-primary) font-bold">{new Date().toISOString().split('T')[0]}</span>
+                      <span className="text-[var(--color-primary)] font-bold">{new Date().toISOString().split('T')[0]}</span>
                     </div>
                   </div>
                   <div className="space-y-6">
-                    <h3 className="text-xl font-bold text-(--color-primary) border-b border-sky-200 pb-2">Vacation Details</h3>
+                    <h3 className="text-xl font-bold text-[var(--color-primary)] border-b border-sky-200 pb-2">Vacation Details</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="dateFrom">
@@ -122,7 +121,7 @@ function VacationForm() {
                     </div>
                   </div>
                   <div className="space-y-6">
-                    <h3 className="text-xl font-bold text-(--color-primary) border-b border-sky-200 pb-2">Additional Information</h3>
+                    <h3 className="text-xl font-bold text-[var(--color-primary)] border-b border-sky-200 pb-2">Additional Information</h3>
                     <div className="space-y-4">
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="description">
@@ -133,7 +132,6 @@ function VacationForm() {
                           as="textarea"
                           rows={3}
                           className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical"
-                          placeholder="Describe the vacation details (optional)"
                         />
                         <ErrorMessage name="description" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
@@ -146,14 +144,13 @@ function VacationForm() {
                           as="textarea"
                           rows={3}
                           className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical"
-                          placeholder="Any additional notes (optional)"
                         />
                         <ErrorMessage name="notes" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
                     </div>
                   </div>
                   <div className="space-y-6">
-                    <h3 className="text-xl font-bold text-(--color-primary) border-b border-sky-200 pb-2">Approvers</h3>
+                    <h3 className="text-xl font-bold text-[var(--color-primary)] border-b border-sky-200 pb-2">Approvers</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="directManager">
@@ -189,7 +186,7 @@ function VacationForm() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="btn bg-(--color-primary) hover:bg-sky-800 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[150px]"
+                      className="btn bg-[var(--color-primary)] hover:bg-sky-800 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[150px]"
                     >
                       {isSubmitting ? (
                         <>
