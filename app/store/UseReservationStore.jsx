@@ -2,6 +2,7 @@
 import { create } from "zustand";
 import { endPoint } from "./UseApisStore";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export const UseReservationstore = create((set) => ({
     reservations: [],
@@ -11,7 +12,7 @@ export const UseReservationstore = create((set) => ({
             if (!token) {
                 return;
             }
-            const res = await axios.get(`${endPoint}reservations`, {
+            const res = await axios.get(`${endPoint}reservations?pagination[pageSize]=100`, {
                 headers: {
                     "Content-Type": 'application/json',
                     Authorization: `Bearer ${token}`,
@@ -19,6 +20,7 @@ export const UseReservationstore = create((set) => ({
             });
             set({ reservations: res.data.data });
         } catch (error) {
+            toast.error('Failed to get reservations');
         }
     }
 }));

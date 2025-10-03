@@ -70,7 +70,7 @@ function CarRequestApproval() {
     };
 
     return (
-        <div className='lg:col-span-8 col-span-12 bg-white p-5 rounded-xl shadow-md'>
+        <div className='lg:col-span-8 col-span-12 bg-white p-5 m-6 rounded-xl shadow-md'>
             <Toaster />
             <Title title='Car Requests Approval' />
             {filteredCarRequests.length === 0 ? (

@@ -66,7 +66,6 @@ function WorkOrderForm() {
                                     }
                                 } catch (error) {
                                     toast.error('Failed to send request. Please try again.');
-                                    console.error(`Error submitting request: ${error.response?.data?.message || error.message}`);
                                 } finally {
                                     setSubmitting(false);
                                 }
@@ -108,11 +107,7 @@ function WorkOrderForm() {
                                                 <label className="block text-sm font-semibold text-gray-700" htmlFor="department">
                                                     Department <span className="text-red-500">*</span>
                                                 </label>
-                                                <Field
-                                                    name="department"
-                                                    as="select"
-                                                    className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
-                                                >
+                                                <Field name="department" as="select" className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors">
                                                     <option hidden>Select Department</option>
                                                     <option value='production'>production</option>
                                                     <option value='project'>project</option>

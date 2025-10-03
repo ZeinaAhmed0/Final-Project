@@ -110,7 +110,7 @@ function CarRequestForm() {
                             ))
                           }
                         </Field>
-                        <ErrorMessage name="driverName" component="div" className="text-red-500 text-sm mt-1" />
+                        <ErrorMessage name="driverName" component='div' className="text-red-500 text-sm mt-1" />
                       </div>
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="numberOfPassengers">
@@ -123,7 +123,7 @@ function CarRequestForm() {
                           max="20"
                           className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
                         />
-                        <ErrorMessage name="numberOfPassengers" component="div" className="text-red-500 text-sm mt-1" />
+                        <ErrorMessage name="numberOfPassengers" component='div' className="text-red-500 text-sm mt-1" />
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -142,9 +142,8 @@ function CarRequestForm() {
                         <option value="pickup truck">Pickup Truck</option>
                         <option value="truck">Truck</option>
                       </Field>
-                      <ErrorMessage name="carType" component="div" className="text-red-500 text-sm mt-1" />
+                      <ErrorMessage name="carType" component='div' className="text-red-500 text-sm mt-1" />
                     </div>
-
                     <div className="space-y-2">
                       <label className="block text-sm font-semibold text-gray-700" htmlFor="serviceType">
                         Service Type <span className="text-red-500">*</span>
@@ -160,10 +159,9 @@ function CarRequestForm() {
                         <option value="operation">Operation</option>
                         <option value="transportation">Transportation</option>
                       </Field>
-                      <ErrorMessage name="serviceType" component="div" className="text-red-500 text-sm mt-1" />
+                      <ErrorMessage name="serviceType" component='div' className="text-red-500 text-sm mt-1" />
                     </div>
                   </div>
-
                   <div className="space-y-6">
                     <h3 className="text-xl font-bold text-[var(--color-primary)] border-b border-sky-200 pb-2">Trip Details</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -177,9 +175,8 @@ function CarRequestForm() {
                           className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
                           placeholder="Enter your current location"
                         />
-                        <ErrorMessage name="yourLocation" component="div" className="text-red-500 text-sm mt-1" />
+                        <ErrorMessage name="yourLocation" component='div' className="text-red-500 text-sm mt-1" />
                       </div>
-
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="destination">
                           Destination <span className="text-red-500">*</span>
@@ -190,10 +187,9 @@ function CarRequestForm() {
                           className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
                           placeholder="Enter destination"
                         />
-                        <ErrorMessage name="destination" component="div" className="text-red-500 text-sm mt-1" />
+                        <ErrorMessage name="destination" component='div' className="text-red-500 text-sm mt-1" />
                       </div>
                     </div>
-
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="dateFrom">
@@ -204,9 +200,8 @@ function CarRequestForm() {
                           type="date"
                           className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
                         />
-                        <ErrorMessage name="dateFrom" component="div" className="text-red-500 text-sm mt-1" />
+                        <ErrorMessage name="dateFrom" component='div' className="text-red-500 text-sm mt-1" />
                       </div>
-
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="dateTo">
                           End Date <span className="text-red-500">*</span>
@@ -216,11 +211,10 @@ function CarRequestForm() {
                           type="date"
                           className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
                         />
-                        <ErrorMessage name="dateTo" component="div" className="text-red-500 text-sm mt-1" />
+                        <ErrorMessage name="dateTo" component='div' className="text-red-500 text-sm mt-1" />
                       </div>
                     </div>
                   </div>
-
                   <div className="space-y-6">
                     <h3 className="text-xl font-bold text-[var(--color-primary)] border-b border-sky-200 pb-2">Additional Information</h3>
                     <div className="space-y-4">
@@ -233,9 +227,8 @@ function CarRequestForm() {
                           as="textarea"
                           rows={3}
                           className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical"
-                          placeholder="Describe the reason for the request"
                         />
-                        <ErrorMessage name="reason" component="div" className="text-red-500 text-sm mt-1" />
+                        <ErrorMessage name="reason" component='div' className="text-red-500 text-sm mt-1" />
                       </div>
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="notes">
@@ -246,13 +239,11 @@ function CarRequestForm() {
                           as="textarea"
                           rows={3}
                           className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical"
-                          placeholder="Any additional notes ?"
                         />
-                        <ErrorMessage name="notes" component="div" className="text-red-500 text-sm mt-1" />
+                        <ErrorMessage name="notes" component='div' className="text-red-500 text-sm mt-1" />
                       </div>
                     </div>
                   </div>
-
                   <div className="flex justify-end pt-4">
                     <button
                       type="submit"

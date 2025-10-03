@@ -1,6 +1,7 @@
 'use client'
 import { create } from "zustand"
 import axios from "axios"
+import toast from "react-hot-toast"
 export const endPoint = 'http://localhost:1337/api/'
 export const useApisStore = create((set ) => ({
     emp: [],
@@ -12,6 +13,8 @@ export const useApisStore = create((set ) => ({
             }
             })
             set({ emp: res.data.data })
-        } catch (err) {}
+        } catch (error) {
+            toast.error('Please try again.');
+        }
     }
 }))

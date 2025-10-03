@@ -37,7 +37,7 @@ function CarRequestArchive() {
                         {myCarRequests.length === 0 ? (
                             <tr>
                                 <td colSpan={12} className="text-center py-4 text-gray-500">
-                                    No approved requests found.
+                                    No old requests found.
                                 </td>
                             </tr>
                         ) : (

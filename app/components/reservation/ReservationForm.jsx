@@ -126,7 +126,6 @@ function ReservationForm() {
                         />
                         <ErrorMessage name="purposeOfStay" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
-
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="notes">
                           Notes

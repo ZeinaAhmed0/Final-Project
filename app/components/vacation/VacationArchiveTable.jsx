@@ -8,12 +8,14 @@ import TableTh from '../common/TableComponents/TableTh';
 import TableTd from '../common/TableComponents/TableTd';
 
 function VacationArchiveTable() {
-    const { approvedVacations, fetchVac} = UseVacationStore();
+    const { approvedVacations, fetchVac,vacations} = UseVacationStore();
     const { fetchUser, empName } = UseEmpInformationStore();
     useEffect(() => {
         fetchUser ();
         fetchVac();
     }, []);
+    console.log(vacations, approvedVacations);
+    
     const myVacations = approvedVacations.filter(vac => vac.empName === empName);
     return (
         <div className="flex flex-col gap-4 rounded-lg shadow-lg p-6 bg-white max-w-7xl mx-auto">

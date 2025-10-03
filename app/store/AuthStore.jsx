@@ -17,8 +17,7 @@ export const useAuthStore = create((set) => ({
             set({ token: jwt, isLogin: true });
             return jwt;
         } catch (error) {
-            const message = 'Invalid email or password';
-            throw new Error(message);
+            throw new Error('Invalid email or password');
         }
     },
     loadTokenFromStorage: () => {

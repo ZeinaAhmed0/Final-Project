@@ -16,7 +16,7 @@ function CarOrder() {
     const myOrders = approvedCarRequests.filter(req => req.driverName === empName);
     return (
         <>
-            <div className="flex flex-col gap-4 rounded-lg shadow-lg p-6 bg-white max-w-7xl mx-auto mt-6">
+            <div className="flex flex-col gap-4 rounded-lg shadow-lg p-6 bg-white max-w-7xl m-6">
                 <Title title='car orders' />
                 <div className="overflow-x-auto">
                     <Table>
@@ -41,10 +41,7 @@ function CarOrder() {
                                 </tr>
                             ) : (
                                 myOrders.map((req, i) => (
-                                    <tr
-                                        key={i}
-                                        className={`text-center ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-sky-100`}
-                                    >
+                                    <tr key={i} className={`text-center ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
                                         <TableTd>{req.empName || '-'}</TableTd>
                                         <TableTd>{req.dateFrom}</TableTd>
                                         <TableTd>{req.dateTo}</TableTd>

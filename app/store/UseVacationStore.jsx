@@ -2,6 +2,7 @@
 import { create } from "zustand";
 import { endPoint } from "./UseApisStore";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export const UseVacationStore = create((set) => ({
     vacations: [],
@@ -13,7 +14,7 @@ export const UseVacationStore = create((set) => ({
             if (!token) {
                 return;
             }
-            const res = await axios.get(`${endPoint}vacations`, {
+            const res = await axios.get(`${endPoint}vacations?pagination[pageSize]=100`, {
                 headers: {
                     "Content-Type": 'application/json',
                     Authorization: `Bearer ${token}`,
@@ -23,6 +24,7 @@ export const UseVacationStore = create((set) => ({
             set({ approvedVacations: res.data.data.filter(vac => vac.approval !== null) });
             set({ pendedVacations: res.data.data.filter(vac => vac.approval !== false && vac.approval !== true) });
         } catch (error) {
+            toast.error( error.message);
         }
     },
     updateVacationStatus: async (documentId, approval) => {
@@ -43,7 +45,9 @@ export const UseVacationStore = create((set) => ({
                     },
                 }
             );
-        } catch (err) {}
+        } catch (error) {
+            toast.error('Failed, Please try again.');
+        }
     },
     updateEmployeeLeaveTakenByName: async (empName, field, days) => {
         try {
@@ -74,6 +78,8 @@ export const UseVacationStore = create((set) => ({
                     },
                 }
             );
-        } catch (err) {}
+        } catch (error) {
+            toast.error('Failed, Please try again.');
+        }
     },
 }));

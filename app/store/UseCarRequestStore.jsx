@@ -2,6 +2,7 @@
 import { create } from "zustand";
 import { endPoint } from "./UseApisStore";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export const UseCarRequestStore = create((set) => ({
     CarRequests: [],
@@ -13,7 +14,7 @@ export const UseCarRequestStore = create((set) => ({
             if (!token) {
                 return;
             }
-            const res = await axios.get(`${endPoint}car-requests`, {
+            const res = await axios.get(`${endPoint}car-requests?pagination[pageSize]=100`, {
                 headers: {
                     "Content-Type": 'application/json',
                     Authorization: `Bearer ${token}`,
@@ -23,7 +24,7 @@ export const UseCarRequestStore = create((set) => ({
             set({ approvedCarRequests: res.data.data.filter(Req => Req.approval === true) });
             set({ pendedCarRequests: res.data.data.filter(Req => Req.approval !== false && Req.approval !== true) });
         } catch (error) {
-            console.error("Failed to fetch CarRequestS:", error);
+            toast.error('Failed, Please try again.');
         }
     },
     updateCarRequestStatus: async (documentId, approval) => {
@@ -44,7 +45,9 @@ export const UseCarRequestStore = create((set) => ({
                     },
                 }
             );
-        } catch (error){}
+        } catch (error){
+        toast.error('Failed, Please try again.');
+        }
     },
     
 }));

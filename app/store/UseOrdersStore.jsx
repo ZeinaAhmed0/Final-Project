@@ -2,6 +2,7 @@
 import { create } from "zustand";
 import { endPoint } from "./UseApisStore";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export const UseOrderStore = create((set) => ({
     orders: [],
@@ -11,7 +12,7 @@ export const UseOrderStore = create((set) => ({
             if (!token) {
                 return;
             }
-            const res = await axios.get(`${endPoint}work-orders`, {
+            const res = await axios.get(`${endPoint}work-orders?pagination[pageSize]=100`, {
                 headers: {
                     "Content-Type": 'application/json',
                     Authorization: `Bearer ${token}`,
@@ -19,6 +20,7 @@ export const UseOrderStore = create((set) => ({
             });
             set({ orders: res.data.data});
         } catch (error) {
+            toast.error('Failed, Please try again.');
         }
     },
 }));

@@ -8,10 +8,7 @@ function NotFoundPage() {
       <OuterContainer>
         <div className='flex flex-col items-center justify-center'>
           <ErrorPage/>
-        <Link
-          href="/"
-          className="bg-blue-500 hover:bg-blue-700 text-[var(--color-white)] font-bold py-2 px-4 rounded transition-colors inline-block"
-        >
+        <Link href="/" className="bg-blue-500 hover:bg-blue-700 text-[var(--color-white)] font-bold py-2 px-4 rounded transition-colors inline-block">
           Go Home
         </Link>
         </div>
