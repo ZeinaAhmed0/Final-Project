@@ -148,7 +148,7 @@ function WorkOrderForm() {
                                                 <label className="block text-sm font-semibold text-gray-700" htmlFor="serviceDescription">
                                                     Service Description <span className="text-red-500">*</span>
                                                 </label>
-                                                <Field name="serviceDescription" as="textarea" rows={4} className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical" placeholder="Describe the required service in detail"/>
+                                                <Field name="serviceDescription" as="textarea" rows={4} className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical"/>
                                                 <ErrorMessage name="serviceDescription" component="div" className="text-red-500 text-sm mt-1" />
                                             </div>
                                         </div>
