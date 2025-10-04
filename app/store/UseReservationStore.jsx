@@ -20,7 +20,7 @@ export const UseReservationstore = create((set) => ({
             });
             set({ reservations: res.data.data });
         } catch (error) {
-            toast.error('Failed to get reservations');
+            toast.error('error had occurred. please refresh the site');;
         }
     }
 }));

@@ -11,29 +11,21 @@ function Credit() {
     useEffect(() => {
         fetchUser();
     }, []);
-    if (!userData || userData.length === 0) {
-        return (
-            <div className="flex flex-col gap-2 rounded-lg shadow-md p-5 max-w-md mx-auto">
-                <Title title='credit' />
-                <p className="text-center text-gray-500">No user data available.</p>
-            </div>
-        );
-    }
     const vacTypes = [
         {
             label: "Rest Day",
-            total: userData[0]?.restDay || 0,
-            used: userData[0]?.restDayTaken || 0,
+            total: userData[0]?.restDay,
+            used: userData[0]?.restDayTaken,
         },
         {
             label: "Annual Vacation",
-            total: userData[0]?.annualLeaves || 0,
-            used: userData[0]?.annualLeavesTaken || 0,
+            total: userData[0]?.annualLeaves,
+            used: userData[0]?.annualLeavesTaken,
         },
         {
             label: "Emergency Leave",
-            total: userData[0]?.emergencyLeave || 0,
-            used: userData[0]?.emergencyLeaveTaken || 0,
+            total: userData[0]?.emergencyLeave,
+            used: userData[0]?.emergencyLeaveTaken,
         },
     ];
     return (

@@ -98,11 +98,7 @@ function CarRequestForm() {
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="driverName">
                           Driver <span className="text-red-500">*</span>
                         </label>
-                        <Field
-                          name="driverName"
-                          as="select"
-                          className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
-                        >
+                        <Field name="driverName" as="select" className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors">
                           <option hidden>Choose Driver</option>
                           {
                             drivers.map((ele) => (
@@ -116,13 +112,7 @@ function CarRequestForm() {
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="numberOfPassengers">
                           Number of Passengers <span className="text-red-500">*</span>
                         </label>
-                        <Field
-                          name="numberOfPassengers"
-                          type="number"
-                          min="1"
-                          max="20"
-                          className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
-                        />
+                        <Field name="numberOfPassengers" type="number" min="1" max="20" className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"/>
                         <ErrorMessage name="numberOfPassengers" component='div' className="text-red-500 text-sm mt-1" />
                       </div>
                     </div>
@@ -130,11 +120,7 @@ function CarRequestForm() {
                       <label className="block text-sm font-semibold text-gray-700" htmlFor="carType">
                         Car Type <span className="text-red-500">*</span>
                       </label>
-                      <Field
-                        name="carType"
-                        as="select"
-                        className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
-                      >
+                      <Field name="carType" as="select" className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors">
                         <option hidden>Select Car Type</option>
                         <option value="sedan">Sedan</option>
                         <option value="suv">SUV</option>
@@ -148,11 +134,7 @@ function CarRequestForm() {
                       <label className="block text-sm font-semibold text-gray-700" htmlFor="serviceType">
                         Service Type <span className="text-red-500">*</span>
                       </label>
-                      <Field
-                        name="serviceType"
-                        as="select"
-                        className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
-                      >
+                      <Field name="serviceType" as="select" className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors">
                         <option hidden>Select Service Type</option>
                         <option value="hr">HR</option>
                         <option value="procurement and supply">Procurement and Supply</option>
@@ -169,24 +151,14 @@ function CarRequestForm() {
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="yourLocation">
                           Your Location <span className="text-red-500">*</span>
                         </label>
-                        <Field
-                          name="yourLocation"
-                          type="text"
-                          className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
-                          placeholder="Enter your current location"
-                        />
+                        <Field name="yourLocation" type="text" className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors" placeholder="Enter your current location"/>
                         <ErrorMessage name="yourLocation" component='div' className="text-red-500 text-sm mt-1" />
                       </div>
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="destination">
                           Destination <span className="text-red-500">*</span>
                         </label>
-                        <Field
-                          name="destination"
-                          type="text"
-                          className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
-                          placeholder="Enter destination"
-                        />
+                        <Field name="destination" type="text" className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors" placeholder="Enter destination"/>
                         <ErrorMessage name="destination" component='div' className="text-red-500 text-sm mt-1" />
                       </div>
                     </div>
@@ -195,22 +167,14 @@ function CarRequestForm() {
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="dateFrom">
                           Start Date <span className="text-red-500">*</span>
                         </label>
-                        <Field
-                          name="dateFrom"
-                          type="date"
-                          className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
-                        />
+                        <Field name="dateFrom" type="date" className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"/>
                         <ErrorMessage name="dateFrom" component='div' className="text-red-500 text-sm mt-1" />
                       </div>
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="dateTo">
                           End Date <span className="text-red-500">*</span>
                         </label>
-                        <Field
-                          name="dateTo"
-                          type="date"
-                          className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
-                        />
+                        <Field name="dateTo" type="date" className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"/>
                         <ErrorMessage name="dateTo" component='div' className="text-red-500 text-sm mt-1" />
                       </div>
                     </div>
@@ -222,40 +186,26 @@ function CarRequestForm() {
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="reason">
                           Reason <span className="text-red-500">*</span>
                         </label>
-                        <Field
-                          name="reason"
-                          as="textarea"
-                          rows={3}
-                          className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical"
-                        />
+                        <Field name="reason" as="textarea" rows={3} className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical"/>
                         <ErrorMessage name="reason" component='div' className="text-red-500 text-sm mt-1" />
                       </div>
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="notes">
                           Notes
                         </label>
-                        <Field
-                          name="notes"
-                          as="textarea"
-                          rows={3}
-                          className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical"
-                        />
+                        <Field name="notes" as="textarea" rows={3} className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical"/>
                         <ErrorMessage name="notes" component='div' className="text-red-500 text-sm mt-1" />
                       </div>
                     </div>
                   </div>
                   <div className="flex justify-end pt-4">
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="btn bg-[var(--color-primary)] hover:bg-sky-800 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[150px]"
-                    >
-                      {isSubmitting ? (
-                        <>
+                    <button type="submit" disabled={isSubmitting} className="btn bg-[var(--color-primary)] hover:bg-sky-800 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[150px]">
+                      {isSubmitting ? 
+                      ( <>
                           <span className="loading loading-spinner loading-xs mr-2"></span>
                           Submitting...
-                        </>
-                      ) : (
+                        </> ) 
+                      : (
                         'Submit Request'
                       )}
                     </button>

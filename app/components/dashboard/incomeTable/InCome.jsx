@@ -34,12 +34,7 @@ function InCome() {
                             <label htmlFor="monthSelect" className="font-semibold md:text-lg sm:text-sm">
                             pick a month :
                         </label>
-                        <select
-                            id="monthSelect"
-                            value={selectedMonth}
-                            onChange={(e) => setSelectedMonth(e.target.value)}
-                            className="select w-fit"
-                        >
+                        <select id="monthSelect" value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)} className="select w-fit">
                             {
                                 months.map((ele, i) => (
                                     <option key={i} value={ele}>

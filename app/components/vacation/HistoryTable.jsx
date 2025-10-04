@@ -39,11 +39,7 @@ function HistoryTable() {
                                     <TableTd>{vac.dateTo}</TableTd>
                                     <TableTd>{vac.leavesType}</TableTd>
                                     <TableTd>
-                                        {vac.approval === true
-                                            ? 'Approved'
-                                            : vac.approval === false
-                                            ? 'Rejected'
-                                            : 'Pending'}
+                                        {vac.approval === true? 'Approved' : vac.approval === false? 'Rejected' : 'Pending'}
                                     </TableTd>
                                     <TableTd>{vac.notes || '-'}</TableTd>
                                 </tr>

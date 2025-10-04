@@ -82,14 +82,13 @@ function AddNewEmpForm() {
             resetForm();
             setPreview(null);
         } catch (error) {
-            toast.error('Failed to add. Please try again.');
+            toast.error('error had occurred. please refresh the site');
         } finally {
             setSubmitting(false);
         }
         
         
     };
-
     return (
         <>
             <Toaster />
@@ -98,11 +97,7 @@ function AddNewEmpForm() {
                 <hr className='opacity-25' />
             </div>
             <OuterContainer>
-                <Formik
-                    initialValues={initialValues}
-                    validationSchema={validationSchema}
-                    onSubmit={handleSubmit}
-                >
+                <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
                     {({ isSubmitting, setFieldValue }) => (
                         <Form className="space-y-4 p-6 bg-white rounded shadow-md">
                             <div className='flex flex-col md:flex-row gap-4'>

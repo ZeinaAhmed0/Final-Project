@@ -84,22 +84,14 @@ function VacationForm() {
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="dateFrom">
                           Start Date <span className="text-red-500">*</span>
                         </label>
-                        <Field
-                          name="dateFrom"
-                          type="date"
-                          className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
-                        />
+                        <Field name="dateFrom" type="date" className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"/>
                         <ErrorMessage name="dateFrom" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="dateTo">
                           End Date <span className="text-red-500">*</span>
                         </label>
-                        <Field
-                          name="dateTo"
-                          type="date"
-                          className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
-                        />
+                        <Field name="dateTo" type="date" className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"/>
                         <ErrorMessage name="dateTo" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
                     </div>
@@ -107,11 +99,7 @@ function VacationForm() {
                       <label className="block text-sm font-semibold text-gray-700" htmlFor="leavesType">
                         Leave Type <span className="text-red-500">*</span>
                       </label>
-                      <Field
-                        name="leavesType"
-                        as="select"
-                        className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
-                      >
+                      <Field name="leavesType" as="select" className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors">
                         <option hidden>Select Leave Type</option>
                         <option value="annual vacation">Annual Vacation</option>
                         <option value="emergency vacation">Emergency Vacation</option>
@@ -127,24 +115,12 @@ function VacationForm() {
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="description">
                           Description
                         </label>
-                        <Field
-                          name="description"
-                          as="textarea"
-                          rows={3}
-                          className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical"
-                        />
+                        <Field name="description" as="textarea" rows={3} className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical"/>
                         <ErrorMessage name="description" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
                       <div className="space-y-2">
-                        <label className="block text-sm font-semibold text-gray-700" htmlFor="notes">
-                          Notes
-                        </label>
-                        <Field
-                          name="notes"
-                          as="textarea"
-                          rows={3}
-                          className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical"
-                        />
+                        <label className="block text-sm font-semibold text-gray-700" htmlFor="notes"> Notes </label>
+                        <Field name="notes" as="textarea" rows={3} className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical" />
                         <ErrorMessage name="notes" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
                     </div>
@@ -156,11 +132,7 @@ function VacationForm() {
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="directManager">
                           Direct Manager <span className="text-red-500">*</span>
                         </label>
-                        <Field
-                          name="directManager"
-                          as="select"
-                          className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
-                        >
+                        <Field name="directManager" as="select" className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors">
                           <option hidden>Select Direct Manager</option>
                           <option value={userData?.[0]?.directManager}>{userData?.[0]?.directManager}</option>
                         </Field>
@@ -170,11 +142,7 @@ function VacationForm() {
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="manager">
                           Manager <span className="text-red-500">*</span>
                         </label>
-                        <Field
-                          name="manager"
-                          as="select"
-                          className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
-                        >
+                        <Field name="manager" as="select" className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors">
                           <option hidden>Select Manager</option>
                           <option value={userData?.[0]?.manager}>{userData?.[0]?.manager}</option>
                         </Field>
@@ -183,11 +151,7 @@ function VacationForm() {
                     </div>
                   </div>
                   <div className="flex justify-end pt-4">
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="btn bg-[var(--color-primary)] hover:bg-sky-800 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[150px]"
-                    >
+                    <button type="submit" disabled={isSubmitting} className="btn bg-[var(--color-primary)] hover:bg-sky-800 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[150px]">
                       {isSubmitting ? (
                         <>
                           <span className="loading loading-spinner loading-xs mr-2"></span>

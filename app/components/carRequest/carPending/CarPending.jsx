@@ -39,10 +39,7 @@ function CarPending() {
                                     </tr>
                                 ) : (
                                     myRequests?.map((req, i) => (
-                                        <tr
-                                            key={i}
-                                            className={`text-center ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-sky-100`}
-                                        >
+                                        <tr key={i} className={`text-center ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
                                             <TableTd>{req.insertDate}</TableTd>
                                             <TableTd>{req.dateFrom}</TableTd>
                                             <TableTd>{req.dateTo}</TableTd>

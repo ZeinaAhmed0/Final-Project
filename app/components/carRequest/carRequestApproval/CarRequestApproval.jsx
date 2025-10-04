@@ -18,7 +18,6 @@ function CarRequestApproval() {
         fetchUser();
     }, []);
     const filteredCarRequests = CarRequests.filter((Req) => {
-        if (Req.approval !== null) return false;
         switch (Req.serviceType) {
             case 'hr':
                 return userData?.[0]?.jobTitle.toLowerCase() === 'hr manager' && Req.empName !== empName;
@@ -28,8 +27,6 @@ function CarRequestApproval() {
                 return userData?.[0]?.jobTitle.toLowerCase() === 'project manager' && Req.empName !== empName;
             case 'operation':
                 return userData?.[0]?.jobTitle.toLowerCase() === 'production manager' && Req.empName !== empName;
-            default:
-                return false;
         }
     });
     const handleCheckboxChange = (documentId) => {
@@ -68,75 +65,73 @@ function CarRequestApproval() {
             toast.error('Failed to reject CarRequests.');
         }
     };
-
     return (
         <div className='lg:col-span-8 col-span-12 bg-white p-5 m-6 rounded-xl shadow-md'>
             <Toaster />
             <Title title='Car Requests Approval' />
-            {filteredCarRequests.length === 0 ? (
-                <p className="text-center text-gray-500 mt-4">No pending car requests.</p>
-            ) : (
-                <>
-                    <Table>
-                        <thead className="bg-[var(--color-primary)] text-white">
-                                <tr>
-                                    <TableTh>Emp Name</TableTh>
-                                    <TableTh>From</TableTh>
-                                    <TableTh>To</TableTh>
-                                    <TableTh>Location</TableTh>
-                                    <TableTh>Destination</TableTh>
-                                    <TableTh>Service Type</TableTh>
-                                    <TableTh>Reason</TableTh>
-                                    <TableTh>Description</TableTh>
-                                    <TableTh>Passengers</TableTh>
-                                    <TableTh>Car Type</TableTh>
-                                    <TableTh>Driver</TableTh>
-                                    <TableTh>Select</TableTh>
+            <>
+                <Table>
+                    <thead className="bg-[var(--color-primary)] text-white">
+                        <tr>
+                            <TableTh>Emp Name</TableTh>
+                            <TableTh>From</TableTh>
+                            <TableTh>To</TableTh>
+                            <TableTh>Location</TableTh>
+                            <TableTh>Destination</TableTh>
+                            <TableTh>Service Type</TableTh>
+                            <TableTh>Reason</TableTh>
+                            <TableTh>Description</TableTh>
+                            <TableTh>Passengers</TableTh>
+                            <TableTh>Car Type</TableTh>
+                            <TableTh>Driver</TableTh>
+                            <TableTh>Select</TableTh>
+                        </tr>
+                    </thead>
+                    {filteredCarRequests.length === 0 ?
+                        (<p className="text-center text-gray-500 mt-4">No pending car requests.</p>) :
+                        (<tbody>
+                            {filteredCarRequests.map((req) => (
+                                <tr key={req.documentId} className="text-center hover:bg-gray-50">
+                                    <TableTd>{req.empName || '-'}</TableTd>
+                                    <TableTd>{req.dateFrom}</TableTd>
+                                    <TableTd>{req.dateTo}</TableTd>
+                                    <TableTd>{req.yourLocation || '-'}</TableTd>
+                                    <TableTd>{req.destination || '-'}</TableTd>
+                                    <TableTd>{req.serviceType}</TableTd>
+                                    <TableTd>{req.reason || '-'}</TableTd>
+                                    <TableTd>{req.description || '-'}</TableTd>
+                                    <TableTd>{req.numberOfPassengers || '-'}</TableTd>
+                                    <TableTd>{req.carType || '-'}</TableTd>
+                                    <TableTd>{req.driverName || '-'}</TableTd>
+                                    <TableTd>
+                                        <input
+                                            type="checkbox"
+                                            checked={!!selected[req.documentId]}
+                                            onChange={() => handleCheckboxChange(req.documentId)}
+                                            disabled={req.approval === true}
+                                            className="h-4 w-4 text-sky-600 rounded"
+                                        />
+                                    </TableTd>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                {filteredCarRequests.map((req) => (
-                                    <tr key={req.documentId} className="text-center hover:bg-gray-50">
-                                        <TableTd>{req.empName || '-'}</TableTd>
-                                        <TableTd>{req.dateFrom}</TableTd>
-                                        <TableTd>{req.dateTo}</TableTd>
-                                        <TableTd>{req.yourLocation || '-'}</TableTd>
-                                        <TableTd>{req.destination || '-'}</TableTd>
-                                        <TableTd>{req.serviceType}</TableTd>
-                                        <TableTd>{req.reason || '-'}</TableTd>
-                                        <TableTd>{req.description || '-'}</TableTd>
-                                        <TableTd>{req.numberOfPassengers || '-'}</TableTd>
-                                        <TableTd>{req.carType || '-'}</TableTd>
-                                        <TableTd>{req.driverName || '-'}</TableTd>
-                                        <TableTd>
-                                            <input
-                                                type="checkbox"
-                                                checked={!!selected[req.documentId]}
-                                                onChange={() => handleCheckboxChange(req.documentId)}
-                                                disabled={req.approval === true}
-                                                className="h-4 w-4 text-sky-600 rounded"
-                                            />
-                                        </TableTd>
-                                    </tr>
-                                ))}
-                            </tbody>
-                    </Table>
-                    <div className="mt-6 flex gap-3">
-                        <button
-                            className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg shadow transition"
-                            onClick={handleApprove}
-                            disabled={Object.values(selected).every(v => !v)}>
-                            <FaCheck /> Approve
-                        </button>
-                        <button
-                            className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg shadow transition"
-                            onClick={handleRejectSelected}
-                            disabled={Object.values(selected).every(v => !v)}>
-                            <FaTimes /> Reject
-                        </button>
-                    </div>
-                </>
-            )}
+                            ))}
+                        </tbody>
+                        )}
+                </Table>
+                <div className="mt-6 flex gap-3">
+                    <button
+                        className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg shadow transition"
+                        onClick={handleApprove}
+                        disabled={Object.values(selected).every(v => !v)}>
+                        <FaCheck /> Approve
+                    </button>
+                    <button
+                        className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg shadow transition"
+                        onClick={handleRejectSelected}
+                        disabled={Object.values(selected).every(v => !v)}>
+                        <FaTimes /> Reject
+                    </button>
+                </div>
+            </>
         </div>
     );
 }

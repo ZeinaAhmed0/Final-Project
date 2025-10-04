@@ -78,7 +78,6 @@ function ReservationForm() {
                       <span className="text-[var(--color-primary)] font-bold">{new Date().toISOString().split('T')[0]}</span>
                     </div>
                   </div>
-
                   <div className="space-y-6">
                     <h3 className="text-xl font-bold text-[var(--color-primary)] border-b border-sky-200 pb-2">Reservation Details</h3>
                     <div className="space-y-4">
@@ -94,22 +93,15 @@ function ReservationForm() {
                         />
                         <ErrorMessage name="visitStation" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
-
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="accommodationPlace">
                           Accommodation Place <span className="text-red-500">*</span>
                         </label>
-                        <Field
-                          name="accommodationPlace"
-                          type="text"
-                          className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
-                          placeholder="Enter accommodation place"
-                        />
+                        <Field name="accommodationPlace" type="text" className="w-full input input-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors" placeholder="Enter accommodation place"/>
                         <ErrorMessage name="accommodationPlace" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
                     </div>
                   </div>
-
                   <div className="space-y-6">
                     <h3 className="text-xl font-bold text-[var(--color-primary)] border-b border-sky-200 pb-2">Additional Information</h3>
                     <div className="space-y-4">
@@ -117,36 +109,20 @@ function ReservationForm() {
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="purposeOfStay">
                           Purpose of Stay <span className="text-red-500">*</span>
                         </label>
-                        <Field
-                          name="purposeOfStay"
-                          as="textarea"
-                          rows={3}
-                          className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical"
-                          placeholder="Describe the purpose of the stay"
-                        />
+                        <Field name="purposeOfStay" as="textarea" rows={3} className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical" placeholder="Describe the purpose of the stay"/>
                         <ErrorMessage name="purposeOfStay" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
                       <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700" htmlFor="notes">
                           Notes
                         </label>
-                        <Field
-                          name="notes"
-                          as="textarea"
-                          rows={3}
-                          className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical"
-                        />
+                        <Field name="notes" as="textarea" rows={3} className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical"/>
                         <ErrorMessage name="notes" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
                     </div>
                   </div>
-
                   <div className="flex justify-end pt-4">
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="btn bg-[var(--color-primary)] hover:bg-sky-800 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[150px]"
-                    >
+                    <button type="submit" disabled={isSubmitting} className="btn bg-[var(--color-primary)] hover:bg-sky-800 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[150px]">
                       {isSubmitting ? (
                         <>
                           <span className="loading loading-spinner loading-xs mr-2"></span>

@@ -35,8 +35,7 @@ function WorkOrderForm() {
             <OuterContainer>
                 <div className="max-w-2xl mx-auto">
                     <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-200">
-                        <Formik
-                            initialValues={{
+                        <Formik initialValues={{
                                 serviceType: '',
                                 department: '',
                                 requestField: '',
@@ -90,11 +89,7 @@ function WorkOrderForm() {
                                                 <label className="block text-sm font-semibold text-gray-700" htmlFor="serviceType">
                                                     Service Type <span className="text-red-500">*</span>
                                                 </label>
-                                                <Field
-                                                    name="serviceType"
-                                                    as="select"
-                                                    className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
-                                                >
+                                                <Field name="serviceType" as="select" className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors">
                                                     <option hidden>Select Service Type</option>
                                                     <option value="technical">Technical</option>
                                                     <option value="administrative">Administrative</option>
@@ -113,7 +108,6 @@ function WorkOrderForm() {
                                                     <option value='project'>project</option>
                                                     <option value='procurement and supply'>procurement and supply</option>
                                                     <option value='HSE'>HSE</option>
-                                                    
                                                 </Field>
                                                 <ErrorMessage name="department" component="div" className="text-red-500 text-sm mt-1" />
                                             </div>
@@ -123,11 +117,7 @@ function WorkOrderForm() {
                                                 <label className="block text-sm font-semibold text-gray-700" htmlFor="requestField">
                                                     Request Field <span className="text-red-500">*</span>
                                                 </label>
-                                                <Field
-                                                    name="requestField"
-                                                    as="select"
-                                                    className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
-                                                >
+                                                <Field name="requestField" as="select" className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors" >
                                                     <option hidden>Select Request Field</option>
                                                     <option value="it">IT</option>
                                                     <option value="hr">HR</option>
@@ -141,11 +131,7 @@ function WorkOrderForm() {
                                             <label className="block text-sm font-semibold text-gray-700" htmlFor="priorityLevel">
                                                 Priority Level <span className="text-red-500">*</span>
                                             </label>
-                                            <Field
-                                                name="priorityLevel"
-                                                as="select"
-                                                className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors"
-                                            >
+                                            <Field name="priorityLevel" as="select" className="w-full select select-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors">
                                                 <option hidden>Select Priority Level</option>
                                                 <option value="high">High</option>
                                                 <option value="medium">Medium</option>
@@ -162,23 +148,13 @@ function WorkOrderForm() {
                                                 <label className="block text-sm font-semibold text-gray-700" htmlFor="serviceDescription">
                                                     Service Description <span className="text-red-500">*</span>
                                                 </label>
-                                                <Field
-                                                    name="serviceDescription"
-                                                    as="textarea"
-                                                    rows={4}
-                                                    className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical"
-                                                    placeholder="Describe the required service in detail"
-                                                />
+                                                <Field name="serviceDescription" as="textarea" rows={4} className="w-full textarea textarea-bordered bg-stone-100 border-gray-300 focus:border-sky-500 focus:bg-white transition-colors resize-vertical" placeholder="Describe the required service in detail"/>
                                                 <ErrorMessage name="serviceDescription" component="div" className="text-red-500 text-sm mt-1" />
                                             </div>
                                         </div>
                                     </div>
                                     <div className="flex justify-end pt-4">
-                                        <button
-                                            type="submit"
-                                            disabled={isSubmitting}
-                                            className="btn bg-[var(--color-primary)] hover:bg-sky-800 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[150px]"
-                                        >
+                                        <button type="submit" disabled={isSubmitting} className="btn bg-[var(--color-primary)] hover:bg-sky-800 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[150px]">
                                             {isSubmitting ? (
                                                 <>
                                                     <span className="loading loading-spinner loading-xs mr-2"></span>

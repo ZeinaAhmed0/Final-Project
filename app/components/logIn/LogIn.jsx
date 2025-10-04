@@ -50,11 +50,7 @@ function LoginPage() {
             {loading ? (
                 <LoadingPage />
             ) : (
-                <Formik
-                initialValues={{ email: "", password: "" }}
-                    validationSchema={LoginSchema}
-                    onSubmit={onSubmit}
-                >
+                <Formik initialValues={{ email: "", password: "" }} validationSchema={LoginSchema} onSubmit={onSubmit}>
                     {({ isSubmitting , status }) => (
                         <Form className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
                             <div className="flex items-center justify-center flex-col mb-3">

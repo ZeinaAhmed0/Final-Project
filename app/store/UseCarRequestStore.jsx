@@ -24,7 +24,7 @@ export const UseCarRequestStore = create((set) => ({
             set({ approvedCarRequests: res.data.data.filter(Req => Req.approval === true) });
             set({ pendedCarRequests: res.data.data.filter(Req => Req.approval !== false && Req.approval !== true) });
         } catch (error) {
-            toast.error('Failed, Please try again.');
+            toast.error('error had occurred. please refresh the site');
         }
     },
     updateCarRequestStatus: async (documentId, approval) => {
@@ -36,7 +36,7 @@ export const UseCarRequestStore = create((set) => ({
             await axios.put(
                 `${endPoint}car-requests/${documentId}`,
                 {
-                    data: { approval: approval , approveDate:new Date().toISOString().split('T')[0] }
+                    data: { approval: approval, approveDate: new Date().toISOString().split('T')[0] }
                 },
                 {
                     headers: {
@@ -45,9 +45,9 @@ export const UseCarRequestStore = create((set) => ({
                     },
                 }
             );
-        } catch (error){
-        toast.error('Failed, Please try again.');
+        } catch (error) {
+            toast.error('error had occurred. please refresh the site');
         }
     },
-    
+
 }));

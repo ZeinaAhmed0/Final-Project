@@ -46,7 +46,7 @@ export const UseVacationStore = create((set) => ({
                 }
             );
         } catch (error) {
-            toast.error('Failed, Please try again.');
+            toast.error('error had occurred. please refresh the site');
         }
     },
     updateEmployeeLeaveTakenByName: async (empName, field, days) => {
@@ -79,7 +79,7 @@ export const UseVacationStore = create((set) => ({
                 }
             );
         } catch (error) {
-            toast.error('Failed, Please try again.');
+            toast.error('error had occurred. please refresh the site');
         }
     },
 }));

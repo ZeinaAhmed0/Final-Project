@@ -10,7 +10,7 @@ function Reservation() {
     const { reservations, fetchReservation} = UseReservationstore();
     useEffect(() => {
         fetchReservation();
-    }, [fetchReservation()]);
+    }, []);
 
     return (
         <div className='col-span-12'>

@@ -20,7 +20,7 @@ export const UseOrderStore = create((set) => ({
             });
             set({ orders: res.data.data});
         } catch (error) {
-            toast.error('Failed, Please try again.');
+            toast.error('error had occurred. please refresh the site');
         }
     },
 }));
